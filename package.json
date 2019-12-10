@@ -1,0 +1,20 @@
+{
+  "name": "biotope-preview",
+  "version": "1.0.0",
+  "description": "A package to preview all your biotope components",
+  "main": "index.js",
+  "scripts": {
+    "storybook:serve": "start-storybook -s ./dist",
+    "storybook:build": "build-storybook -c .storybook -o .out"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biotope/biotope-preview.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biotope/biotope-preview/issues"
+  },
+  "homepage": "https://github.com/biotope/biotope-preview#readme"
+}

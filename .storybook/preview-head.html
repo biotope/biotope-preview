@@ -1,0 +1,15 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.4.0/custom-elements-es5-adapter.js" integrity="sha256-t3CF/CSG7eF8WUulDvxPaqXIEqDU7fOQTEv1DHVdbFs=" crossorigin="anonymous"></script>
+<script>
+    window.onload = function () {
+        var script = document.createElement('script');
+        script.src = 'https://unpkg.com/@biotope/resource-loader@2.1.1/dist/resourceLoader.min.js';
+        document.body.appendChild(script);
+        script.addEventListener('load', () => {
+            resourceLoader({
+                    base: '/resources/'
+                });
+            })
+    }
+</script>
+
+
