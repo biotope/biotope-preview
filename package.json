@@ -4,7 +4,8 @@
   "description": "A package to preview all your biotope components",
   "main": "index.js",
   "scripts": {
-    "storybook:serve": "start-storybook -s ./dist",
+    "storybook-init": "cpx .storybook",
+    "storybook:serve": "start-storybook -c .asdas -s ./dist",
     "storybook:build": "build-storybook -c .storybook -o .out"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "dependencies": {
     "@babel/core": "^7.7.5",
     "@storybook/html": "^5.2.8",
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "cpx": "^1.5.0"
   }
 }
