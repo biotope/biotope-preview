@@ -1,5 +1,5 @@
 {
-  "name": "biotope-preview",
+  "name": "@biotope/preview",
   "version": "1.0.0",
   "description": "A package to preview all your biotope components",
   "main": "index.js",
