@@ -17,7 +17,7 @@
     "url": "https://github.com/biotope/biotope-preview/issues"
   },
   "homepage": "https://github.com/biotope/biotope-preview#readme",
-  "devDependencies": {
+  "dependencies": {
     "@storybook/html": "^5.2.8"
   }
 }
