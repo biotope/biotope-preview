@@ -49,7 +49,7 @@ const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
     const json = JSON.parse(response);
     const tagName = json.tagName;
     const configs = json.previewConfigs.map(config => {
-        const propsString = config.props.map(prop => `${prop.name}${prop.value ? '=' + prop.value : ''}`).join(' ');
+        const propsString = config.props.map(prop => `${prop.name}${prop.value ? renderValue(prop.value) : ''}`).join(' ');
         let configString = configTemplate.replace('#attributes', propsString);
 
         configString = configString.replace(/#tagName/g, tagName);
@@ -67,4 +67,11 @@ const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
         console.log(storyString);
         console.log('Saved!');
     });
+}
+
+const renderValue = (value) => {
+    if(typeof value === 'object') {
+        return '=\'' + JSON.stringify(value).replace(/"/g, '\"') + '\'';
+    }
+    return '=\'' + value + '\'';
 }
