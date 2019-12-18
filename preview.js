@@ -60,7 +60,7 @@ const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
     let storyString = storyTemplate
         .replace('#configs', configs)
         .replace(/#componentName/g, `'${json.name}'`)
-        .replace(/#componentPath/g, 'resources/components/' + componentFolderPath);
+        .replace(/#componentPath/g, componentFolderPath);
     
     fs.writeFile(totalComponentPath + `/${tagName}.stories.js`, storyString, (err) => {
         if (err) throw err;
