@@ -1,0 +1,51 @@
+{
+  "_from": "git+https://github.com/biotope/biotope-preview.git#storybook-test",
+  "_id": "@biotope/preview@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/@biotope/preview",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "@biotope/preview@git+https://github.com/biotope/biotope-preview.git#storybook-test",
+    "name": "@biotope/preview",
+    "escapedName": "@biotope%2fpreview",
+    "scope": "@biotope",
+    "rawSpec": "git+https://github.com/biotope/biotope-preview.git#storybook-test",
+    "saveSpec": "git+https://github.com/biotope/biotope-preview.git#storybook-test",
+    "fetchSpec": "https://github.com/biotope/biotope-preview.git",
+    "gitCommittish": "storybook-test"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/biotope/biotope-preview.git#c32849b635e9c0d36f7129353d6fa1fb6ebe7080",
+  "_spec": "@biotope/preview@git+https://github.com/biotope/biotope-preview.git#storybook-test",
+  "_where": "/Users/kai.wissler/Code/siedle/siedle-frontend-framework",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/biotope/biotope-preview/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@babel/core": "^7.7.5",
+    "@storybook/addon-knobs": "^5.2.8",
+    "@storybook/html": "^5.2.8",
+    "babel-loader": "^8.0.6"
+  },
+  "deprecated": false,
+  "description": "A package to preview all your biotope components",
+  "homepage": "https://github.com/biotope/biotope-preview#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "@biotope/preview",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biotope/biotope-preview.git"
+  },
+  "scripts": {
+    "storybook": "node preview.js && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components"
+  },
+  "version": "1.0.0"
+}
