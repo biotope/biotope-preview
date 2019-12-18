@@ -4,8 +4,7 @@
   "description": "A package to preview all your biotope components",
   "main": "index.js",
   "scripts": {
-    "storybook:build": "build-storybook -c .storybook -o .out",
-    "storybook:serve": "start-storybook -c .storybook -s ../../../dist"
+    "storybook:build": "build-storybook -c .storybook -o ../../../preview -s ../../../dist/",
   },
   "repository": {
     "type": "git",
