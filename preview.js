@@ -8,7 +8,7 @@ storiesOf(#componentName, module)#configs;
 
 const configTemplate = `
 .add(#configName, () => {
-    return \`<#tagName data-resources=\"[{paths : [\'#componentPath/index.js\']}]\" #attributes>#slot</#tagName>\`;
+    return \`<#tagName data-resources=\"[{paths : [\'#componentPath/index.js\']}]\" #attributes></#tagName>\`;
 })`
 
 fs.readdir(componentsSrc, (error, componentFolders) => {
@@ -51,8 +51,7 @@ const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
     const configs = json.previewConfigs.map(config => {
         const propsString = config.props.map(prop => `${prop.name}${prop.value ? '=' + prop.value : ''}`).join(' ');
         let configString = configTemplate.replace('#attributes', propsString);
-        
-        configString = configString.replace('#slot', '');
+
         configString = configString.replace(/#tagName/g, tagName);
         configString = configString.replace(/#configName/g, `'${config.name}'`);
 
