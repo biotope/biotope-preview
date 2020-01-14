@@ -49,7 +49,8 @@ const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
     const json = JSON.parse(response);
     const tagName = json.tagName;
     const configs = json.previewConfigs.map(config => {
-        const propsString = config.props.map(prop => `${prop.name}${prop.value ? renderValue(prop.value) : ''}`).join(' ');
+        const props = config.props;
+        const propsString = Object.keys(props).map(propKey => `${propKey}${props[propKey] ? renderValue(props[propKey]) : ''}`).join(' ');
         let configString = configTemplate.replace('#attributes', propsString);
 
         configString = configString.replace(/#tagName/g, tagName);
