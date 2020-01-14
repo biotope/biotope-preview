@@ -11,25 +11,17 @@ The following data is required for the process to work:
     "previewConfigs": [
         {
             "name": "Default",
-            "props": [
-                {
-                    "name": "text",
-                    "value": {
-                        "headline": "Stage",
-                        "claim": "With a claim",
-                        "secondaryColor": false
-                    }
-                },
-                {
-                    "name": "image",
-                    "value": {
-                        "url": "https://picsum.photos/id/804/1000/600",
-                        "alignment": "center",
-                        "alignmentLarge": "center",
-                        "altText": "Image"
-                    }
-                }
-            ]
+            "text": {
+                "headline": "Stage",
+                "claim": "With a claim",
+                "secondaryColor": false
+            },
+            "image": {
+                "url": "https://picsum.photos/id/804/1000/600",
+                "alignment": "center",
+                "alignmentLarge": "center",
+                "altText": "Image"
+            }
         }
     ]
   ```
