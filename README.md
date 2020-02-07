@@ -38,3 +38,5 @@ The following data is required for the process to work:
     ]
 }
   ```
+  
+Then you can run either `storybook:build` or `storybook:serve`. `storybook:build` will create a preview folder in your project with a index.html you can then open in a browser. `storybook:serve` will not create any folder, but only serve a temporary storybook preview.
