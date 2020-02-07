@@ -54,10 +54,10 @@ const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
         let configString = configTemplate.replace('#attributes', propsString);
 		const innerHTML = config.innerHTML || '';
 
-        configString = configString.replace(/#tagName/g, tagName);
-		configString = configString.replace(/#configName/g, `'${config.name}'`);
-		configString = configString.replace(/#innerHTML/g, innerHTML);
-		
+    configString = configString.replace(/#tagName/g, tagName);
+	configString = configString.replace(/#configName/g, `'${config.name}'`);
+	configString = configString.replace(/#innerHTML/g, innerHTML);
+
         return configString;
     }).join('');
     let storyString = storyTemplate
