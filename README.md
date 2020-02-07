@@ -30,11 +30,11 @@ Next, your component needs a package.json with the following data. This is requi
     ]
 }
 ```
-After creating a package.json with required data, you have to run:
+After creating a package.json with the required data, you have to run:
 ```javascript
 npm run build
 ```
-because storybook needs the component in the `dist` folder
+because storybook needs the component in the `dist` folder.
 
 To create a preview folder for your biotope elements project, you need to add the following scripts to your project's package.json:
 ```javascript
