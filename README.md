@@ -1,4 +1,9 @@
-# biotope-preview 🌻 
+# biotope-preview 🌻
+
+First, simply install the @biotope/preview package as any other regular npm package:
+`
+npm install https://github.com/biotope/biotope-preview.git
+`
 
 To create a preview folder for your biotope elements project, you need to add the following scripts to your project's package.json: `
 "storybook:build": "npm explore @biotope/preview -- npm run storybook:build",
