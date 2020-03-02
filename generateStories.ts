@@ -56,7 +56,7 @@ const createStoriesFileForPackageJson = (componentFolderPath: string, fileName: 
     const storyString = storyTemplate
         .replace('#configs', configs)
         .replace(/#componentName/g, `'${json.name}'`)
-        .replace(/#dependencies/g, json.resources.toString());
+        .replace(/#dependencies/g, `[${json.resources.map((r => `'${r}'`))}]`);
     
     fs.writeFile(`./stories/${tagName}.stories.js`, storyString, (err) => {
         if (err) throw err;
