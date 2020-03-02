@@ -1,4 +1,5 @@
-const fs = require('fs');
+import * as fs from 'fs';
+import { IStoryConfiguration } from './interfaces/IStoryConfiguration';
 const componentsSrc = `../../../src/components`;
 
 const storyTemplate = `import { storiesOf } from '@storybook/html';
@@ -8,7 +9,7 @@ storiesOf(#componentName, module)#configs;
 
 const configTemplate = `
 .add(#configName, () => {
-    return \`<#tagName data-resources=\"[{paths : [\'#componentPath/index.js\']}]\" #attributes></#tagName>\`;
+    return \`<#tagName data-resources=\"[{paths : #dependencies}]\" #attributes></#tagName>\`;
 })`
 
 fs.readdir(componentsSrc, (error, componentFolders) => {
@@ -17,7 +18,7 @@ fs.readdir(componentsSrc, (error, componentFolders) => {
       process.exit(1);
     }
     
-    componentFolders.forEach((componentFolderPath, index) => {
+    componentFolders.forEach((componentFolderPath) => {
         if(fs.lstatSync(componentsSrc + '/' + componentFolderPath).isDirectory()) {
             fs.readdir(componentsSrc + '/' + componentFolderPath, (error, componentFolderFiles) => {
                 if (error) {
@@ -37,17 +38,11 @@ fs.readdir(componentsSrc, (error, componentFolders) => {
     })
 });
 
-const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
+const createStoriesFileForPackageJson = (componentFolderPath: string, fileName: string) => {
     const totalComponentPath = componentsSrc + '/' + componentFolderPath;
-    const response = fs.readFileSync(totalComponentPath + `/${fileName}`, (error, file) => {
-        if (error) {
-            console.error("Could not read the component's package.json.", error);
-        } else {
-            return file;
-        }
-    });
-    const json = JSON.parse(response);
-    const tagName = json.tagName;
+    const response = fs.readFileSync(totalComponentPath + `/${fileName}`, "utf8");
+    const json: IStoryConfiguration = JSON.parse(response);
+    const tagName = json.htmlTagName;
     const configs = json.previewConfigs.map(config => {
         const props = config.props;
         const propsString = Object.keys(props).map(propKey => `${propKey}${props[propKey] ? renderValue(props[propKey]) : ''}`).join(' ');
@@ -58,10 +53,10 @@ const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
 
         return configString;
     }).join('');
-    let storyString = storyTemplate
+    const storyString = storyTemplate
         .replace('#configs', configs)
         .replace(/#componentName/g, `'${json.name}'`)
-        .replace(/#componentPath/g, componentFolderPath);
+        .replace(/#dependencies/g, `[${json.resources.map((r => `'${r}'`))}]`);
     
     fs.writeFile(`./stories/${tagName}.stories.js`, storyString, (err) => {
         if (err) throw err;
@@ -70,7 +65,7 @@ const createStoriesFileForPackageJson = (componentFolderPath, fileName) => {
     });
 }
 
-const renderValue = (value) => {
+const renderValue = (value: any) => {
     if(typeof value === 'object') {
         return '=\'' + JSON.stringify(value).replace(/"/g, '\"') + '\'';
     }
