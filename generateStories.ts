@@ -1,4 +1,4 @@
-import fs from 'fs';
+import * as fs from 'fs';
 import { IStoryConfiguration } from './interfaces/IStoryConfiguration';
 const componentsSrc = `../../../src/components`;
 

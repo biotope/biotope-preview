@@ -46,5 +46,8 @@
     "storybook:serve": "ts-node generateStories.ts && start-storybook -c .storybook -s ../../../dist/resources/components",
     "storybook:build": "ts-node generateStories.ts && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components"
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "devDependencies": {
+    "@types/node": "^13.7.7"
+  }
 }
