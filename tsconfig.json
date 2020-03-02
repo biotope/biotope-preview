@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-      "outDir": "build/lib",
+      "outDir": "lib",
       "module": "commonjs",
-      "target": "es2015",
+      "target": "es2017",
       "lib": ["es5", "es6", "es7", "es2017", "dom"],
       "sourceMap": true,
       "allowJs": false,
@@ -21,6 +21,6 @@
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true
     },
-    "include": ["./index.ts","src/**/*"],
+    "include": ["src/**/*"],
     "exclude": ["node_modules", "build", "scripts"]
 }

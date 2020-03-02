@@ -1,7 +1,7 @@
-import { getSubFolders } from './src/getSubFolders';
-import { filterFoldersForPackageJson } from './src/filterFoldersForPackageJson';
-import { createStoriesFileForStoryConfig } from './src/createStoriesFileForStoryConfig';
-import { getJsonContent } from './src/getJsonContent';
+import { getSubFolders } from './getSubFolders';
+import { filterFoldersForPackageJson } from './filterFoldersForPackageJson';
+import { createStoriesFileForStoryConfig } from './createStoriesFileForStoryConfig';
+import { getJsonContent } from './getJsonContent';
 import { IStoryConfiguration } from './interfaces/IStoryConfiguration';
 
 const componentsSrc = `../../../src/components`;

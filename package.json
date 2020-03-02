@@ -48,8 +48,8 @@
     "url": "git+https://github.com/biotope/biotope-preview.git"
   },
   "scripts": {
-    "storybook:serve": "ts-node index.ts && start-storybook -c .storybook -s ../../../dist/resources/components",
-    "storybook:build": "ts-node index.ts && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components"
+    "storybook:serve": "node lib/index.js && start-storybook -c .storybook -s ../../../dist/resources/components",
+    "storybook:build": "node lib/index.js && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components"
   },
   "version": "1.0.0",
   "devDependencies": {}
