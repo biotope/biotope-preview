@@ -31,6 +31,7 @@
   "dependencies": {
     "@storybook/addon-knobs": "^5.2.8",
     "@storybook/html": "^5.2.8",
+    "@types/node": "^13.7.7",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
   },
@@ -49,7 +50,5 @@
     "storybook:build": "ts-node generateStories.ts && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components"
   },
   "version": "1.0.0",
-  "devDependencies": {
-    "@types/node": "^13.7.7"
-  }
+  "devDependencies": {}
 }
