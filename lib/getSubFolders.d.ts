@@ -1,1 +1,1 @@
-export declare const getSubFolders: (src: string) => Promise<string[]>;
+export declare const getSubFolders: (src: string, includeAbsolutePath?: boolean) => Promise<string[]>;
