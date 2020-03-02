@@ -29,11 +29,8 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "@babel/core": "^7.7.5",
-    "@babel/preset-typescript": "^7.8.3",
     "@storybook/addon-knobs": "^5.2.8",
     "@storybook/html": "^5.2.8",
-    "babel-loader": "^8.0.6",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
   },
