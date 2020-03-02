@@ -30,7 +30,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "@babel/core": "^7.7.5",
-    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
     "@storybook/addon-knobs": "^5.2.8",
     "@storybook/html": "^5.2.8",
     "babel-loader": "^8.0.6",
