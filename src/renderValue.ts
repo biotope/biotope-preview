@@ -6,8 +6,8 @@ export const renderValue = (value: any, key: string, knobs: IKnobConfig) => {
     }
     if (knobs) {
         const knobConfigKey = Object.keys(knobs).find(knobKey => knobKey === key);
-        const knobConfig = knobs[knobConfigKey];
-        if (knobConfig) {
+        if (knobConfigKey) {
+            const knobConfig = knobs[knobConfigKey];
             return `=\${${knobConfig.type}("${knobConfig.name}", "${value}")}`;
         }
     }

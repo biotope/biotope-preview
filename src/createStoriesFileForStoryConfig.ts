@@ -20,7 +20,7 @@ export const createStoriesFileForStoryConfig = (storyConfig: IStoryConfiguration
     const tagName = storyConfig.htmlTagName;
     const knobs = storyConfig.knobs;
     const configs = storyConfig.previewConfigs.map(config => {
-        const props = config.props;
+        const props = config.props || {};
         const propsString = Object.keys(props).map(propKey => `${propKey}${props[propKey] ? renderValue(props[propKey], propKey, knobs) : ''}`).join(' ');
         let configString = configTemplate.replace('#attributes', propsString);
 

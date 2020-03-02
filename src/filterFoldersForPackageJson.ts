@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
 export const filterFoldersForPackageJson = (srcPath: string, componentFolders: string[]): string[] => {
-    return componentFolders.filter((componentFolderPath) => {
+    const filteredFolders = componentFolders.filter((componentFolderPath) => {
         if (fs.lstatSync(srcPath + '/' + componentFolderPath).isDirectory()) {
             fs.readdir(srcPath + '/' + componentFolderPath, (error, componentFolderFiles) => {
                 if (error) {
@@ -10,10 +10,12 @@ export const filterFoldersForPackageJson = (srcPath: string, componentFolders: s
                 }
                 componentFolderFiles.forEach((fileName) => {
                     if (fileName === 'package.json') {
-                        return `${srcPath}/${componentFolderPath}`;
+                        return true;
                     }
+                    return false;
                 })
             })
         }
     });
+    return filteredFolders.map(filteredFolder => `${srcPath}/${filteredFolder}`);
 }
