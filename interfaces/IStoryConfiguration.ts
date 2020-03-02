@@ -3,6 +3,7 @@ export interface IStoryConfiguration {
     resources: string[];
     htmlTagName: string,
     previewConfigs: IPreviewConfig[];
+    knobs: IKnobConfig;
 }
 
 interface IPreviewConfig {
@@ -21,4 +22,11 @@ interface ISlottedConfig {
     props?: IProp[];
     slot?: ISlottedConfig[];
     innerHTML?: string;
+}
+
+export interface IKnobConfig {
+    [key: string]: {
+        type: string;
+        name: string;
+    };
 }
