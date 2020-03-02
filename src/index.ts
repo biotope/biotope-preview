@@ -1,10 +1,12 @@
+import path from 'path';
 import { getSubFolders } from './getSubFolders';
 import { filterFilePathsForPackageJson } from './filterFilePathsForPackageJson';
 import { createStoriesFileForStoryConfig } from './createStoriesFileForStoryConfig';
 import { getJsonContent } from './getJsonContent';
 import { IStoryConfiguration } from './interfaces/IStoryConfiguration';
 
-const componentsSrc = `../../../src/components`;
+const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
+const componentsSrc = `${projectBasePath}/src/components`;
 
 (async () => {
     const subFolders = await getSubFolders(componentsSrc);
