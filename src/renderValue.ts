@@ -1,4 +1,4 @@
-import { IKnobConfig } from "./interfaces/IStoryConfiguration";
+import { IKnobConfig } from "../interfaces/IStoryConfiguration";
 
 export const renderValue = (value: any, key: string, knobs: IKnobConfig) => {
     if (typeof value === 'object') {

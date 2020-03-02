@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { IStoryConfiguration } from "./interfaces/IStoryConfiguration";
+import { IStoryConfiguration } from "../interfaces/IStoryConfiguration";
 import { renderValue } from "./renderValue";
 
 const storyTemplate = `import { storiesOf } from '@storybook/html';
