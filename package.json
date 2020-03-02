@@ -30,10 +30,11 @@
   "bundleDependencies": false,
   "dependencies": {
     "@babel/core": "^7.7.5",
-    "babel-loader": "^8.0.6",
     "@storybook/addon-knobs": "^5.2.8",
     "@storybook/html": "^5.2.8",
     "@types/node": "^13.7.7",
+    "babel-loader": "^8.0.6",
+    "path": "^0.12.7",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
   },
@@ -48,8 +49,8 @@
     "url": "git+https://github.com/biotope/biotope-preview.git"
   },
   "scripts": {
-    "storybook:serve": "ts-node generateStories.ts && start-storybook -c .storybook -s ../../../dist/resources/components",
-    "storybook:build": "ts-node generateStories.ts && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components"
+    "storybook:serve": "node lib/index.js && start-storybook -c .storybook -s ../../../dist/resources/components",
+    "storybook:build": "node lib/index.js && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components"
   },
   "version": "1.0.0",
   "devDependencies": {}
