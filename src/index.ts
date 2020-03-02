@@ -1,4 +1,4 @@
-import path from 'path';
+import path = require('path');
 import { getSubFolders } from './getSubFolders';
 import { filterFilePathsForPackageJson } from './filterFilePathsForPackageJson';
 import { createStoriesFileForStoryConfig } from './createStoriesFileForStoryConfig';
