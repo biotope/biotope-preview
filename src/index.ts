@@ -1,9 +1,9 @@
 import path = require('path');
-import { getSubFolders } from './getSubFolders';
-import { filterFilePathsForPackageJson } from './filterFilePathsForPackageJson';
-import { createStoriesFileForStoryConfig } from './createStoriesFileForStoryConfig';
-import { getJsonContent } from './getJsonContent';
-import { IStoryConfiguration } from './interfaces/IStoryConfiguration';
+import { getSubFolders } from './file-handlers/get-sub-folders';
+import { filterFilePathsForPackageJson } from './file-handlers/filter-file-paths-for-package-json';
+import { createStoriesFileForStoryConfig } from './file-handlers/create-stories-file-for-story-config';
+import { getJsonContent } from './file-handlers/get-json-content';
+import { IStoryConfiguration } from './interfaces/i-story-configuration';
 
 const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 const componentsSrc = `${projectBasePath}/src/components`;
@@ -17,5 +17,5 @@ const componentsSrc = `${projectBasePath}/src/components`;
     );
     const filteredFilesPaths = filterFilePathsForPackageJson([].concat.apply([], filesPaths));
     const storyConfigs = filteredFilesPaths.map((filePath: string) => getJsonContent(filePath));
-    storyConfigs.map((storyConfig: IStoryConfiguration) => createStoriesFileForStoryConfig(storyConfig));    
+    await Promise.all(storyConfigs.map((storyConfig: IStoryConfiguration) => createStoriesFileForStoryConfig(storyConfig)));
 })().catch(e => process.exit(e));

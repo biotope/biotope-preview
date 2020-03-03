@@ -1,32 +1,33 @@
 export interface IStoryConfiguration {
-    type: 'storyConfig';
     name: string;
-    resources: string[];
     htmlTagName: string;
+    resources?: string[];
     previewConfigs: IPreviewConfig[];
-    knobs: IKnobConfiguration;
+    knobs?: IKnobConfiguration;
 }
+
 interface IPreviewConfig {
     name: string;
-    props?: IProp[];
+    props?: IProp;
     slot?: ISlottedConfiguration[];
     innerHTML?: string;
 }
+
 interface IProp {
     [key: string]: any;
 }
+
 export interface ISlottedConfiguration {
-    type: 'slottedConfig';
     htmlTagName: string;
     resources?: string[];
-    props?: IProp[];
+    props?: IProp;
     slot?: ISlottedConfiguration[];
     innerHTML?: string;
 }
+
 export interface IKnobConfiguration {
     [key: string]: {
         type: string;
         name: string;
     };
 }
-export {};
