@@ -52,6 +52,7 @@
     "url": "git+https://github.com/biotope/biotope-preview.git"
   },
   "scripts": {
+    "build": "rm -r lib && tsc",
     "storybook:serve": "node lib/index.js && start-storybook -c .storybook -s ../../../dist/resources/components",
     "storybook:build": "node lib/index.js && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components",
     "release": "np --no-yarn",
