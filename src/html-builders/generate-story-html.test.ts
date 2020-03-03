@@ -1,4 +1,4 @@
-import { generateHtmlTemplateForStoryConfig } from "./generateHtmlTemplateForStoryConfig";
+import { generateStoryHtml } from "./generate-story-html";
 
 test("returns HTML string for tag name only", () => {
     const expectedTemplate = `
@@ -10,7 +10,7 @@ test("returns HTML string for tag name only", () => {
             return \`<component></component>\`;
         });
     `;
-    const generatedTemplate = generateHtmlTemplateForStoryConfig({
+    const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{
@@ -32,7 +32,7 @@ test("returns HTML string for resources", () => {
             return \`<component data-resources="[{paths : ['path/to/resource.js']}]"></component>\`;
         });
     `;
-    const generatedTemplate = generateHtmlTemplateForStoryConfig({
+    const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         resources: [
@@ -56,7 +56,7 @@ test("returns HTML string for props", () => {
             return \`<component prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"></component>\`;
         });
     `;
-    const generatedTemplate = generateHtmlTemplateForStoryConfig({
+    const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{
@@ -87,7 +87,7 @@ test("returns HTML string for multiple preview configs", () => {
             return \`<component prop1=\"test2\" prop2=2 prop3=\"{'subProp1':'test2'}\"></component>\`;
         });
     `;
-    const generatedTemplate = generateHtmlTemplateForStoryConfig({
+    const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{
@@ -124,7 +124,7 @@ test("returns HTML string for preview config with slot", () => {
             return \`<component><div></div></component>\`;
         });
     `;
-    const generatedTemplate = generateHtmlTemplateForStoryConfig({
+    const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{
@@ -148,7 +148,7 @@ test("returns HTML string for preview config with innerHTML", () => {
             return \`<component>Test</component>\`;
         });
     `;
-    const generatedTemplate = generateHtmlTemplateForStoryConfig({
+    const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{
@@ -171,7 +171,7 @@ test("returns HTML string for preview config with knobs", () => {
             return \`<component prop1=\${text("Prop 1", "Test Value")}></component>\`;
         });
     `;
-    const generatedTemplate = generateHtmlTemplateForStoryConfig({
+    const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{

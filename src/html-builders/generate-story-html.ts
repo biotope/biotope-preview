@@ -1,7 +1,7 @@
-import { IStoryConfiguration } from "../interfaces/IStoryConfiguration";
-import { convertValueToAttribute } from "./convertValueToAttribute";
-import { generateHtmlStringForSlotConfig } from "./generateHtmlStringForSlotConfig";
-import { renderKnob } from "./renderKnob";
+import { IStoryConfiguration } from "../interfaces/i-story-configuration";
+import { convertValueToAttribute } from "./convert-value-to-attribute";
+import { generateSlotHtml } from "./generate-slot-html";
+import { renderKnob } from "./render-knob";
 
 
 const storyTemplate = `import { storiesOf } from '@storybook/html';
@@ -18,7 +18,7 @@ const configTemplate = `
     return \`<#tagName#dependencies#attributes>#content</#tagName>\`;
 })`
 
-export const generateHtmlTemplateForStoryConfig = (storyConfig: IStoryConfiguration): string => {
+export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
     if(!storyConfig) {
         throw Error('Could not read the story configuration.')
     }
@@ -37,7 +37,7 @@ export const generateHtmlTemplateForStoryConfig = (storyConfig: IStoryConfigurat
         configString = configString.replace(/#configName/g, `"${config.name}"`);
 
         if(config.slot) {
-            configString = configString.replace('#content', config.slot.map(slotConfig => generateHtmlStringForSlotConfig(slotConfig)).join(''));
+            configString = configString.replace('#content', config.slot.map(slotConfig => generateSlotHtml(slotConfig)).join(''));
         } else if(config.innerHTML) {
             configString = configString.replace('#content', config.innerHTML);
         } else {

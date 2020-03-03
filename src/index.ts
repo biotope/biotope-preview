@@ -1,9 +1,9 @@
 import path = require('path');
-import { getSubFolders } from './fileHandlers/getSubFolders';
-import { filterFilePathsForPackageJson } from './fileHandlers/filterFilePathsForPackageJson';
-import { createStoriesFileForStoryConfig } from './fileHandlers/createStoriesFileForStoryConfig';
-import { getJsonContent } from './fileHandlers/getJsonContent';
-import { IStoryConfiguration } from './interfaces/IStoryConfiguration';
+import { getSubFolders } from './file-handlers/get-sub-folders';
+import { filterFilePathsForPackageJson } from './file-handlers/filter-file-paths-for-package-json';
+import { createStoriesFileForStoryConfig } from './file-handlers/create-stories-file-for-story-config';
+import { getJsonContent } from './file-handlers/get-json-content';
+import { IStoryConfiguration } from './interfaces/i-story-configuration';
 
 const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 const componentsSrc = `${projectBasePath}/src/components`;

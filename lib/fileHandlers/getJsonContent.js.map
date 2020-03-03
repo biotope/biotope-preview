@@ -1,1 +1,0 @@
-{"version":3,"file":"getJsonContent.js","sourceRoot":"","sources":["../../src/fileHandlers/getJsonContent.ts"],"names":[],"mappings":";;AAAA,yBAAyB;AAEZ,QAAA,cAAc,GAAG,CAAC,QAAgB,EAAO,EAAE;IACpD,MAAM,QAAQ,GAAG,EAAE,CAAC,YAAY,CAAC,QAAQ,EAAE,MAAM,CAAC,CAAC;IACnD,OAAO,IAAI,CAAC,KAAK,CAAC,QAAQ,CAAC,CAAC;AAChC,CAAC,CAAA"}

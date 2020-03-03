@@ -1,4 +1,4 @@
-import { convertValueToAttribute } from './convertValueToAttribute';
+import { convertValueToAttribute } from './convert-value-to-attribute';
 
 test("returns value for number", () => {
     expect(convertValueToAttribute(1)).toBe(1);

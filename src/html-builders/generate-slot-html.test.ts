@@ -1,20 +1,20 @@
-import { generateHtmlStringForSlotConfig } from "./generateHtmlStringForSlotConfig";
+import { generateSlotHtml } from "./generate-slot-html";
 
 test("returns HTML string for tag name only", () => {
-    expect(generateHtmlStringForSlotConfig({
+    expect(generateSlotHtml({
         htmlTagName: "div"
     })).toBe('<div></div>')
 });
 
 test("returns HTML string with innerHTML", () => {
-    expect(generateHtmlStringForSlotConfig({
+    expect(generateSlotHtml({
         htmlTagName: "div",
         innerHTML: "Test"
     })).toBe('<div>Test</div>')
 });
 
 test("returns HTML string with props", () => {
-    expect(generateHtmlStringForSlotConfig({
+    expect(generateSlotHtml({
         htmlTagName: "div",
         props: {
             prop1: "test",
@@ -27,7 +27,7 @@ test("returns HTML string with props", () => {
 });
 
 test("returns HTML string with resources", () => {
-    expect(generateHtmlStringForSlotConfig({
+    expect(generateSlotHtml({
         htmlTagName: "div",
         resources: [
             "path/to/resource.js"
@@ -36,7 +36,7 @@ test("returns HTML string with resources", () => {
 });
 
 test("returns HTML string with slot", () => {
-    expect(generateHtmlStringForSlotConfig({
+    expect(generateSlotHtml({
         htmlTagName: "div",
         slot: [
             {
@@ -47,7 +47,7 @@ test("returns HTML string with slot", () => {
 });
 
 test("returns innerHTML only if no slot is configured", () => {
-    expect(generateHtmlStringForSlotConfig({
+    expect(generateSlotHtml({
         htmlTagName: "div",
         slot: [
             {
@@ -59,7 +59,7 @@ test("returns innerHTML only if no slot is configured", () => {
 });
 
 test("returns HTML string for full configuration", () => {
-    expect(generateHtmlStringForSlotConfig({
+    expect(generateSlotHtml({
         htmlTagName: "div",
         resources: [
             "path/to/resource.js"

@@ -1,4 +1,4 @@
-import { renderKnob } from './renderKnob';
+import { renderKnob } from './render-knob';
 
 test("returns value with knob for number", () => {
     expect(renderKnob('Test', 1, 'number')).toBe(`\${number("Test", 1)}`);
