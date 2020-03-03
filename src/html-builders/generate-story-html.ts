@@ -7,16 +7,15 @@ import { renderKnob } from "./render-knob";
 const storyTemplate = `import { storiesOf } from '@storybook/html';
 import { withKnobs, text, boolean, number, color } from "@storybook/addon-knobs";
 
-storiesOf(#componentName, module)#configs;
+export default { title: #componentName, decorators: [withKnobs] };
+
+#configs;
 `
 
-const knobsTemplate = `
-.addDecorator(withKnobs)`
-
 const configTemplate = `
-.add(#configName, () => {
+export const #configName = () => {
     return \`<#tagName#dependencies#attributes>#content</#tagName>\`;
-})`
+}`
 
 export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
     if(!storyConfig) {
@@ -34,7 +33,7 @@ export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
         let configString = configTemplate.replace('#attributes', propsString);
 
         configString = configString.replace(/#tagName/g, tagName);
-        configString = configString.replace(/#configName/g, `"${config.name}"`);
+        configString = configString.replace(/#configName/g, camelize(config.name));
 
         if(config.slot) {
             configString = configString.replace('#content', config.slot.map(slotConfig => generateSlotHtml(slotConfig)).join(''));
@@ -44,10 +43,16 @@ export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
             configString = configString.replace('#content', '');
         }
 
-        return `${Object.keys(knobs).length !== 0 ? knobsTemplate + configString : configString}`;
-    }).join('');
+        return configString;
+    }).join(';');
     return storyTemplate
         .replace('#configs', configs)
         .replace(/#componentName/g, `"${storyConfig.name}"`)
         .replace(/#dependencies/g, storyConfig.resources ? ` data-resources=\"[{paths : [${(storyConfig.resources).map((r => `'${r}'`))}]}]\"` : '');
+}
+
+const camelize = (str: string) => {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
 }
