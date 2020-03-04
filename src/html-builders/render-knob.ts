@@ -15,7 +15,7 @@ export const renderKnob = ({name, type, groupId, options}: IKnobConfiguration, d
         case 'object': return renderObjectKnob({name, groupId, defaultValue});
         case 'array': return renderArrayKnob({name, groupId, defaultValue});
         case 'select': return renderBooleanKnob({name, groupId, defaultValue});
-        case 'radioButton': return renderBooleanKnob({name, groupId, defaultValue});
+        case 'radioButtons': return renderBooleanKnob({name, groupId, defaultValue});
         case 'options': return renderBooleanKnob({name, groupId, defaultValue});
         case 'files': return renderBooleanKnob({name, groupId, defaultValue});
         case 'date': return renderBooleanKnob({name, groupId, defaultValue});
