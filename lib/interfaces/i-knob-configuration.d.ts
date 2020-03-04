@@ -39,7 +39,15 @@ export interface ISelectKnobConfiguration {
     name: string;
     defaultValue: any;
     groupId?: string;
-    options?: {
+    options: {
         [key: string]: any;
+    };
+}
+export interface IRadioButtonsConfiguration {
+    name: string;
+    defaultValue: any;
+    groupId?: string;
+    options: {
+        [key: string]: string;
     };
 }

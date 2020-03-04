@@ -13,5 +13,5 @@ test("returns select knob with options array of objects", () => {
 });
 
 test("returns select knob with groupId", () => {
-    expect(renderSelectKnob({name: "knobName", defaultValue: {x: 1}, groupId: "123"})).toBe(`\"\${select('knobName', {\'x\':1}, '123')}\"`)
+    expect(renderSelectKnob({name: "knobName", defaultValue: 1, options: {x: 1, y: 2}, groupId: "123"})).toBe(`\"\${select('knobName', {\'x\':1,\'y\':2}, 1, '123')}\"`)
 });

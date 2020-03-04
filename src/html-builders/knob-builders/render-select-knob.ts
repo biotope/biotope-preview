@@ -3,5 +3,5 @@ import { escapeObjectForTemplateLiterals } from "../escape-object-for-template-l
 
 export const renderSelectKnob = (config: ISelectKnobConfiguration) => {
     const { name, defaultValue, groupId, options }= config;
-    return `\"\${select('${name}', ${options ? `${escapeObjectForTemplateLiterals(options)}, ` : ''}${escapeObjectForTemplateLiterals(defaultValue)}${groupId ? `, '${groupId}'` : ''})}\"`;
+    return `\"\${select('${name}', ${escapeObjectForTemplateLiterals(options)}, ${escapeObjectForTemplateLiterals(defaultValue)}${groupId ? `, '${groupId}'` : ''})}\"`;
 }

@@ -5,7 +5,7 @@ import { renderKnob } from "./render-knob";
 
 
 const storyTemplate = `import { storiesOf } from '@storybook/html';
-import { withKnobs, text, boolean, number, color, select, array, object } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, number, color, select, array, object, radios } from "@storybook/addon-knobs";
 
 export default { title: #componentName, decorators: [withKnobs] };
 
