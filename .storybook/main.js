@@ -2,6 +2,7 @@ module.exports = {
     stories: ['../stories/*.stories.[tj]s'],
     addons: [
         '@storybook/addon-knobs',
-        '@storybook/addon-storysource'
+        '@storybook/addon-storysource',
+        '@storybook/addon-viewport'
     ]
 };
