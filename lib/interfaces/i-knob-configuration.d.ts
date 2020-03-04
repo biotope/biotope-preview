@@ -1,9 +1,5 @@
-export interface IInputKnobConfiguration {
-    type: string;
-    name: string;
-    groupId?: string;
-}
 export interface IKnobConfiguration {
+    type: string;
     name: string;
     groupId?: string;
 }
@@ -31,9 +27,7 @@ export interface IArrayKnobConfiguration extends IKnobConfiguration {
 }
 export interface ISelectKnobConfiguration extends IKnobConfiguration {
     defaultValue: any;
-    options: {
-        [key: string]: any;
-    };
+    options: any;
 }
 export interface IRadioButtonsKnobConfiguration extends IKnobConfiguration {
     defaultValue: any;
