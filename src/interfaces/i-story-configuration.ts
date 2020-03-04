@@ -25,7 +25,7 @@ interface IProp {
 export interface ISlottedConfiguration {
     htmlTagName: string;
     resources?: string[];
-    props?: IProp;
+    props?: IProp[];
     slot?: ISlottedConfiguration[];
     innerHTML?: string;
 }
