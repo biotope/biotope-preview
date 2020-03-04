@@ -24,6 +24,10 @@
   "_spec": "@biotope/preview@git+https://github.com/biotope/biotope-preview.git#storybook-test",
   "_where": "/Users/kai.wissler/Code/siedle/siedle-frontend-framework",
   "author": "",
+  "bin": {
+    "biotope-preview-build": "lib/build.js",
+    "biotope-preview-serve": "lib/serve.js"
+  },
   "bugs": {
     "url": "https://github.com/biotope/biotope-preview/issues"
   },
@@ -42,7 +46,7 @@
   "description": "A package to preview all your biotope components",
   "homepage": "https://github.com/biotope/biotope-preview#readme",
   "license": "ISC",
-  "main": "index.js",
+  "main": "lib/build.js",
   "name": "@biotope/preview",
   "publishConfig": {
     "access": "public"
@@ -53,8 +57,8 @@
   },
   "scripts": {
     "build": "rm -r lib && tsc",
-    "storybook:serve": "node lib/index.js && start-storybook -c .storybook -s ../../../dist/resources/components",
-    "storybook:build": "node lib/index.js && build-storybook -c .storybook -o ../../../preview -s ../../../dist/resources/components",
+    "storybook:serve": "node lib/serve.js",
+    "storybook:build": "node lib/build.js",
     "release": "np --no-yarn",
     "test": "jest"
   },

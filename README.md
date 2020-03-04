@@ -34,13 +34,20 @@ After creating a package.json with the required data, you have to run:
 ```javascript
 npm run build
 ```
-because storybook needs the component in the `dist` folder.
+because storybook relies on the compiled components' source files in the `dist` folder.
 
-To create a preview folder for your biotope elements project, you need to add the following scripts to your project's package.json:
-```javascript
-"storybook:build": "npm explore @biotope/preview -- npm run storybook:build",
-"storybook:serve": "npm explore @biotope/preview -- npm run storybook:serve"
-```
 It parses your src/components/ subfolders for the component's package.json's and creates previews based on the configuration inside.
 
-Then you can run either `storybook:build` or `storybook:serve`. `storybook:build` will create a preview folder in your project with a index.html you can then open in a browser. `storybook:serve` will not create any folder, but only serve a temporary storybook preview.
+Then you can run either 
+
+```javascript
+npx biotope-preview-build
+```
+
+or
+
+```javascript
+npx biotope-preview-serve
+```
+
+`biotope-preview-build` will create a preview folder in your project with a index.html you then can serve somewhere. `biotope-preview-serve` will not create any folder, but only serve a temporary storybook preview.
