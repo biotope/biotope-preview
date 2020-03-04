@@ -16,10 +16,7 @@ interface IPreviewConfig {
 interface IProp {
     name: string;
     value: any;
-    knob?: {
-        type: string;
-        name: string;
-    }
+    knob?: IKnobConfiguration;
 }
 
 export interface ISlottedConfiguration {
@@ -31,8 +28,6 @@ export interface ISlottedConfiguration {
 }
 
 export interface IKnobConfiguration {
-    [key: string]: {
-        type: string;
-        name: string;
-    };
+    type: string;
+    name: string;
 }

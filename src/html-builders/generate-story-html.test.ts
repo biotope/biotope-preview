@@ -56,13 +56,22 @@ test("returns HTML string for props", () => {
         htmlTagName: "component",
         previewConfigs: [{
             name: "Config 1",
-            props: {
-                prop1: "test",
-                prop2: 2,
-                prop3: {
-                    subProp1: "test"
+            props: [
+                {
+                    name: "prop1",
+                    value: "test"
+                },
+                {
+                    name: "prop2",
+                    value: 2
+                },
+                {
+                    name: "prop3",
+                    value: {
+                        subProp1: "test"
+                    }
                 }
-            },
+            ],
         }]
     });
 
@@ -84,22 +93,40 @@ test("returns HTML string for multiple preview configs", () => {
         htmlTagName: "component",
         previewConfigs: [{
             name: "Config 1",
-            props: {
-                prop1: "test",
-                prop2: 2,
-                prop3: {
-                    subProp1: "test"
+            props: [
+                {
+                    name: "prop1",
+                    value: "test"
+                },
+                {
+                    name: "prop2",
+                    value: 2
+                },
+                {
+                    name: "prop3",
+                    value: {
+                        subProp1: "test"
+                    }
                 }
-            },
+            ],
         }, {
             name: "Config 2",
-            props: {
-                prop1: "test2",
-                prop2: 2,
-                prop3: {
-                    subProp1: "test2"
+            props: [
+                {
+                    name: "prop1",
+                    value: "test2"
+                },
+                {
+                    name: "prop2",
+                    value: 2
+                },
+                {
+                    name: "prop3",
+                    value: {
+                        subProp1: "test2"
+                    }
                 }
-            },
+            ],
         }]
     });
 
@@ -158,16 +185,17 @@ test("returns HTML string for preview config with knobs", () => {
         htmlTagName: "component",
         previewConfigs: [{
             name: "Config 1",
-            props: {
-                prop1: "Test Value"
-            }
-        }],
-        knobs: {
-            prop1: {
-                type: "text",
-                name: "Prop 1"
-            }
-        }
+            props: [
+                {
+                    name: "prop1",
+                    value: "Test Value",
+                    knob: {
+                        type: "text",
+                        name: "Prop 1"
+                    }
+                }
+            ],
+        }]
     });
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));

@@ -16,13 +16,22 @@ test("returns HTML string with innerHTML", () => {
 test("returns HTML string with props", () => {
     expect(generateSlotHtml({
         htmlTagName: "div",
-        props: {
-            prop1: "test",
-            prop2: 2,
-            prop3: {
-                subProp1: "test"
+        props: [
+            {
+                name: "prop1",
+                value: "test"
+            },
+            {
+                name: "prop2",
+                value: 2
+            },
+            {
+                name: "prop3",
+                value: {
+                    subProp1: "test"
+                }
             }
-        }
+        ],
     })).toBe(`<div prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"></div>`);
 });
 
@@ -63,14 +72,22 @@ test("returns HTML string for full configuration", () => {
         htmlTagName: "div",
         resources: [
             "path/to/resource.js"
-        ],
-        props: {
-            prop1: "test",
-            prop2: 2,
-            prop3: {
-                subProp1: "test"
+        ],props: [
+            {
+                name: "prop1",
+                value: "test"
+            },
+            {
+                name: "prop2",
+                value: 2
+            },
+            {
+                name: "prop3",
+                value: {
+                    subProp1: "test"
+                }
             }
-        },
+        ],
         slot: [
             {
                 htmlTagName: "div"
