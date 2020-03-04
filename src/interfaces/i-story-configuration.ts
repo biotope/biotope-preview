@@ -3,7 +3,7 @@ export interface IStoryConfiguration {
     htmlTagName: string;
     resources?: string[];
     previewConfigs: IPreviewConfig[];
-    knobs?: IKnobConfiguration;
+    
 }
 
 interface IPreviewConfig {
@@ -14,7 +14,13 @@ interface IPreviewConfig {
 }
 
 interface IProp {
-    [key: string]: any;
+    [key: string]: {
+        value: any;
+        knob?: {
+            type: string;
+            name: string;
+        }
+    };
 }
 
 export interface ISlottedConfiguration {

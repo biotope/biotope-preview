@@ -22,13 +22,12 @@ export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
         throw Error('Could not read the story configuration.')
     }
     const tagName = storyConfig.htmlTagName;
-    const knobs = storyConfig.knobs || {};
     const configs = storyConfig.previewConfigs.map(config => {
         const props = config.props || {};
         const propsString = Object.keys(props).map(
             propKey => {
-                const isKnobProp = Object.keys(knobs).find(knobKey => knobKey === propKey);
-                return ` ${propKey}=${isKnobProp ? renderKnob(knobs[propKey].name, props[propKey], knobs[propKey].type) : convertValueToAttribute(props[propKey])}`
+                const { knob, value } = props[propKey];
+                return ` ${propKey}=${knob ? renderKnob(knob.name, value, knob.type) : convertValueToAttribute(value)}`
             }).join('');
         let configString = configTemplate.replace('#attributes', propsString);
 
