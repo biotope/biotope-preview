@@ -1,3 +1,5 @@
+import { IKnobConfiguration } from "./i-knob-configuration";
+
 export interface IStoryConfiguration {
     name: string;
     htmlTagName: string;
@@ -25,9 +27,4 @@ export interface ISlottedConfiguration {
     props?: IProp[];
     slot?: ISlottedConfiguration[];
     innerHTML?: string;
-}
-
-export interface IKnobConfiguration {
-    type: string;
-    name: string;
 }
