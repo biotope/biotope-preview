@@ -13,10 +13,33 @@ export interface INumberKnobConfiguration {
     name: string;
     defaultValue: number;
     groupId?: string;
-    options?: any;
+    options?: {
+        range?: boolean;
+        min?: number;
+        max?: number;
+        step?: number;
+    };
 }
 export interface IBooleanKnobConfiguration {
     name: string;
     defaultValue: boolean;
     groupId?: string;
+}
+export interface IObjectKnobConfiguration {
+    name: string;
+    defaultValue: any;
+    groupId?: string;
+}
+export interface IArrayKnobConfiguration {
+    name: string;
+    defaultValue: string[];
+    groupId?: string;
+}
+export interface ISelectKnobConfiguration {
+    name: string;
+    defaultValue: any;
+    groupId?: string;
+    options?: {
+        [key: string]: any;
+    };
 }

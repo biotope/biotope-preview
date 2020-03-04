@@ -12,6 +12,10 @@ test("returns value for object", () => {
     expect(convertValueToAttribute({test1: "test"})).toBe(`"{'test1':'test'}"`);
 });
 
-test("returns value for array", () => {
+test("returns value for number array", () => {
     expect(convertValueToAttribute([1, 2])).toBe(`"[1,2]"`);
+});
+
+test("returns value for string array", () => {
+    expect(convertValueToAttribute(['1','2'])).toBe(`"['1','2']"`);
 });
