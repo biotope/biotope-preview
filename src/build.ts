@@ -23,7 +23,7 @@ const componentsSrc = `${projectBasePath}/src/components`;
 
     storybook({
         mode: 'static',
-        configDir: '.storybook',
+        configDir: path.resolve(__dirname, '../.storybook'),
         staticDir: [`${projectBasePath}/dist/resources/components`],
         outputDir: `${projectBasePath}/preview`,
     });
