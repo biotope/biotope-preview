@@ -47,9 +47,7 @@ export interface IArrayKnobConfiguration  extends IKnobConfiguration{
 
 export interface ISelectKnobConfiguration extends IKnobConfiguration {
     defaultValue: any;
-    options: {
-        [key: string]: any;
-    };
+    options: any;
 }
 
 export interface IRadioButtonsKnobConfiguration extends IKnobConfiguration {
