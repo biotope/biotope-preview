@@ -1,30 +1,26 @@
+import { IInputKnobConfiguration } from "./i-knob-configuration";
 export interface IStoryConfiguration {
     name: string;
     htmlTagName: string;
     resources?: string[];
     previewConfigs: IPreviewConfig[];
-    knobs?: IKnobConfiguration;
 }
 interface IPreviewConfig {
     name: string;
-    props?: IProp;
+    props?: IProp[];
     slot?: ISlottedConfiguration[];
     innerHTML?: string;
 }
 interface IProp {
-    [key: string]: any;
+    name: string;
+    value: any;
+    knob?: IInputKnobConfiguration;
 }
 export interface ISlottedConfiguration {
     htmlTagName: string;
     resources?: string[];
-    props?: IProp;
+    props?: IProp[];
     slot?: ISlottedConfiguration[];
     innerHTML?: string;
-}
-export interface IKnobConfiguration {
-    [key: string]: {
-        type: string;
-        name: string;
-    };
 }
 export {};

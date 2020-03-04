@@ -1,1 +1,2 @@
-export declare const renderKnob: (name: string, defaultValue: any, type: string) => string;
+import { IGenericKnobConfiguration } from "../interfaces/i-knob-configuration";
+export declare const renderKnob: (knobConfig: IGenericKnobConfiguration, type: string) => string;
