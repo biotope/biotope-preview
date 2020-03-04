@@ -22,8 +22,6 @@ export const renderKnob = (
         case 'select': return renderSelectKnob((knobConfig as ISelectKnobConfiguration));
         case 'radioButtons': return renderRadioButtonsKnob((knobConfig as IRadioButtonsKnobConfiguration));
         case 'files': return renderFilesKnob((knobConfig as IFilesKnobConfiguration));
-        case 'boolean': return renderBooleanKnob((knobConfig as IBooleanKnobConfiguration));
-        case 'boolean': return renderBooleanKnob((knobConfig as IBooleanKnobConfiguration));
         default: return '';
     }
 }
