@@ -8,7 +8,7 @@ import { IStoryConfiguration } from './interfaces/i-story-configuration';
 const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 const componentsSrc = `${projectBasePath}/src/components`;
 
-(async () => {
+export const runCreationOfStoriesFiles = async () => {
     const subFolders = await getSubFolders(componentsSrc);
     const filesPaths = await Promise.all(
         subFolders.map(
@@ -18,4 +18,4 @@ const componentsSrc = `${projectBasePath}/src/components`;
     const filteredFilesPaths = filterFilePathsForPackageJson([].concat.apply([], filesPaths));
     const storyConfigs = filteredFilesPaths.map((filePath: string) => getJsonContent(filePath));
     await Promise.all(storyConfigs.map((storyConfig: IStoryConfiguration) => createStoriesFileForStoryConfig(storyConfig)));
-})().catch(e => process.exit(e));
+}
