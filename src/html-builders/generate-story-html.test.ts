@@ -1,7 +1,7 @@
 import { generateStoryHtml } from "./generate-story-html";
 
 const imports = `import { storiesOf } from '@storybook/html';
-import { withKnobs, text, boolean, number, color, select, array, object, radios } from "@storybook/addon-knobs";`;
+import { withKnobs, text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";`;
 
 test("returns HTML string for tag name only", () => {
     const expectedTemplate = `${imports}

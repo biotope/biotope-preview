@@ -50,11 +50,17 @@ export interface ISelectKnobConfiguration {
     };
 }
 
-export interface IRadioButtonsConfiguration {
+export interface IRadioButtonsKnobConfiguration {
     name: string;
     defaultValue: any;
     groupId?: string;
     options: {
         [key: string]: string;
     };
+}
+
+export interface IFilesKnobConfiguration {
+    name: string;
+    groupId?: string;
+    acceptedFormats?: string[]; 
 }

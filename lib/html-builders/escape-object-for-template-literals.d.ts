@@ -1,1 +1,1 @@
-export declare const escapeObjectForTemplateLiterals: (object: any) => string;
+export declare const escapeObjectForTemplateLiterals: (object: any) => any;
