@@ -3,11 +3,11 @@ export const renderKnob = (name: string, defaultValue: any, type: string) => {
     if (typeof defaultValue === 'number' || typeof defaultValue === 'boolean') {
         valueAttribute = defaultValue;
     } else if (typeof defaultValue === 'object') {
-        valueAttribute = `"${JSON.stringify(defaultValue).replace(/"/g, '\'').replace(/'/g, '\'')}"`;
+        valueAttribute = `'${JSON.stringify(defaultValue).replace(/"/g, '\'').replace(/'/g, '\'')}'`;
     } else {
-        valueAttribute = `"${defaultValue}"`;
+        valueAttribute = `'${defaultValue}'`;
     }
 
-    return `\${${type}("${name}", ${valueAttribute})}`;
+    return `\"\${${type}('${name}', ${valueAttribute})}\"`;
 
 }

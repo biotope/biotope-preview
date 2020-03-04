@@ -48,7 +48,7 @@ test("returns HTML string with knob", () => {
                 }
             },
         ],
-    })).toBe(`<div prop1=\${text("Prop 1", "test")}></div>`);
+    })).toBe(`<div prop1=\"\${text('Prop 1', 'test')}\"></div>`);
 });
 
 test("returns HTML string with resources", () => {

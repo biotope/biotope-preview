@@ -178,7 +178,7 @@ test("returns HTML string for preview config with knobs", () => {
     export default { title: "Component", decorators: [withKnobs] };
 
     export const config1 = () => {
-        return \`<component prop1=\${text("Prop 1", "Test Value")}></component>\`;
+        return \`<component prop1=\"\${text('Prop 1', 'Test Value')}\"></component>\`;
     };`
     const generatedTemplate = generateStoryHtml({
         name: "Component",
