@@ -35,6 +35,22 @@ test("returns HTML string with props", () => {
     })).toBe(`<div prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"></div>`);
 });
 
+test("returns HTML string with knob", () => {
+    expect(generateSlotHtml({
+        htmlTagName: "div",
+        props: [
+            {
+                name: "prop1",
+                value: "test",
+                knob: {
+                    name: "Prop 1",
+                    type: "text"
+                }
+            },
+        ],
+    })).toBe(`<div prop1=\${text("Prop 1", "test")}></div>`);
+});
+
 test("returns HTML string with resources", () => {
     expect(generateSlotHtml({
         htmlTagName: "div",

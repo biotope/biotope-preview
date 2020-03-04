@@ -13,22 +13,17 @@ interface IPreviewConfig {
 interface IProp {
     name: string;
     value: any;
-    knob?: {
-        type: string;
-        name: string;
-    };
+    knob?: IKnobConfiguration;
 }
 export interface ISlottedConfiguration {
     htmlTagName: string;
     resources?: string[];
-    props?: IProp;
+    props?: IProp[];
     slot?: ISlottedConfiguration[];
     innerHTML?: string;
 }
 export interface IKnobConfiguration {
-    [key: string]: {
-        type: string;
-        name: string;
-    };
+    type: string;
+    name: string;
 }
 export {};
