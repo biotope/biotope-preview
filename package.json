@@ -58,7 +58,7 @@
     "release": "np --no-yarn",
     "test": "jest"
   },
-  "version": "0.0.2",
+  "version": "0.0.0",
   "devDependencies": {
     "@types/jest": "^25.1.3",
     "jest": "^25.1.0",
