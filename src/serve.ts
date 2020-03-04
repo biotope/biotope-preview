@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import path = require('path');
 import { getSubFolders } from './file-handlers/get-sub-folders';
 import { filterFilePathsForPackageJson } from './file-handlers/filter-file-paths-for-package-json';
