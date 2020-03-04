@@ -46,7 +46,7 @@
   "description": "A package to preview all your biotope components",
   "homepage": "https://github.com/biotope/biotope-preview#readme",
   "license": "ISC",
-  "main": "index.js",
+  "main": "lib/build.js",
   "name": "@biotope/preview",
   "publishConfig": {
     "access": "public"
