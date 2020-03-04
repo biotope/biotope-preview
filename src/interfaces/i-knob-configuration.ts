@@ -1,10 +1,5 @@
-export interface IInputKnobConfiguration {
-    type: string;
-    name: string;
-    groupId?: string;
-}
-
 export interface IKnobConfiguration {
+    type: string;
     name: string;
     groupId?: string;
 }

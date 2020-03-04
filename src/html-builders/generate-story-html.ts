@@ -1,7 +1,7 @@
 import { IStoryConfiguration } from "../interfaces/i-story-configuration";
 import { convertValueToAttribute } from "./convert-value-to-attribute";
 import { generateSlotHtml } from "./generate-slot-html";
-import { renderKnob } from "./render-knob";
+import { getKnobRenderer } from "./get-knob-renderer";
 
 
 const storyTemplate = `import { storiesOf } from '@storybook/html';
@@ -27,7 +27,11 @@ export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
         const propsString = props.map(
             prop => {
                 const { knob, value, name } = prop;
-                return ` ${name}=${knob ? renderKnob({...knob, defaultValue: value}, knob.type) : convertValueToAttribute(value)}`
+                if (knob) {
+                    const renderKnob = getKnobRenderer(knob.type);
+                    return ` ${name}=${renderKnob({...knob, defaultValue: value} as any)}`
+                }
+                return ` ${name}=${convertValueToAttribute(value)}`
             }
         ).join('');
         let configString = configTemplate.replace('#attributes', propsString);

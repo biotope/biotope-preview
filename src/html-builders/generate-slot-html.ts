@@ -1,6 +1,6 @@
 import { ISlottedConfiguration } from "../interfaces/i-story-configuration";
 import { convertValueToAttribute } from "./convert-value-to-attribute";
-import { renderKnob } from "./render-knob";
+import { getKnobRenderer } from "./get-knob-renderer";
 
 export const generateSlotHtml = (slotConfig: ISlottedConfiguration): string => {
     const tagName = slotConfig.htmlTagName;
@@ -8,7 +8,11 @@ export const generateSlotHtml = (slotConfig: ISlottedConfiguration): string => {
     const propsString = props.map(
         prop => {
             const { knob, value, name } = prop;
-            return ` ${name}=${knob ? renderKnob({...knob, defaultValue: value}, knob.type) : convertValueToAttribute(value)}`
+            if (knob) {
+                const renderKnob = getKnobRenderer(knob.type);
+                return ` ${name}=${renderKnob({...knob, defaultValue: value} as any)}`
+            }
+            return ` ${name}=${convertValueToAttribute(value)}`
         }
     ).join('');
     const slot = slotConfig.slot ? slotConfig.slot.map(slotConfig => generateSlotHtml(slotConfig)).join('') : slotConfig.innerHTML;
