@@ -27,7 +27,7 @@ export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
         const propsString = props.map(
             prop => {
                 const { knob, value, name } = prop;
-                return ` ${name}=${knob ? renderKnob(knob, value) : convertValueToAttribute(value)}`
+                return ` ${name}=${knob ? renderKnob({...knob, defaultValue: value}, knob.type) : convertValueToAttribute(value)}`
             }
         ).join('');
         let configString = configTemplate.replace('#attributes', propsString);

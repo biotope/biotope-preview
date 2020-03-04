@@ -1,18 +1,18 @@
-export interface IKnobConfiguration {
+export interface IInputKnobConfiguration {
     type: string;
     name: string;
     groupId?: string;
-    options?: any;
 }
-export interface IStringKnobConfiguration {
+export interface IKnobConfiguration {
     name: string;
+    groupId?: string;
+}
+export declare type IGenericKnobConfiguration = IStringKnobConfiguration | INumberKnobConfiguration | IBooleanKnobConfiguration | IObjectKnobConfiguration | IArrayKnobConfiguration | ISelectKnobConfiguration | IRadioButtonsKnobConfiguration | IFilesKnobConfiguration;
+export interface IStringKnobConfiguration extends IKnobConfiguration {
     defaultValue: string;
-    groupId?: string;
 }
-export interface INumberKnobConfiguration {
-    name: string;
+export interface INumberKnobConfiguration extends IKnobConfiguration {
     defaultValue: number;
-    groupId?: string;
     options?: {
         range?: boolean;
         min?: number;
@@ -20,39 +20,27 @@ export interface INumberKnobConfiguration {
         step?: number;
     };
 }
-export interface IBooleanKnobConfiguration {
-    name: string;
+export interface IBooleanKnobConfiguration extends IKnobConfiguration {
     defaultValue: boolean;
-    groupId?: string;
 }
-export interface IObjectKnobConfiguration {
-    name: string;
+export interface IObjectKnobConfiguration extends IKnobConfiguration {
     defaultValue: any;
-    groupId?: string;
 }
-export interface IArrayKnobConfiguration {
-    name: string;
+export interface IArrayKnobConfiguration extends IKnobConfiguration {
     defaultValue: string[];
-    groupId?: string;
 }
-export interface ISelectKnobConfiguration {
-    name: string;
+export interface ISelectKnobConfiguration extends IKnobConfiguration {
     defaultValue: any;
-    groupId?: string;
     options: {
         [key: string]: any;
     };
 }
-export interface IRadioButtonsKnobConfiguration {
-    name: string;
+export interface IRadioButtonsKnobConfiguration extends IKnobConfiguration {
     defaultValue: any;
-    groupId?: string;
     options: {
         [key: string]: string;
     };
 }
-export interface IFilesKnobConfiguration {
-    name: string;
-    groupId?: string;
+export interface IFilesKnobConfiguration extends IKnobConfiguration {
     acceptedFormats?: string[];
 }

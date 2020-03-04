@@ -8,7 +8,7 @@ export const generateSlotHtml = (slotConfig: ISlottedConfiguration): string => {
     const propsString = props.map(
         prop => {
             const { knob, value, name } = prop;
-            return ` ${name}=${knob ? renderKnob(knob, value) : convertValueToAttribute(value)}`
+            return ` ${name}=${knob ? renderKnob({...knob, defaultValue: value}, knob.type) : convertValueToAttribute(value)}`
         }
     ).join('');
     const slot = slotConfig.slot ? slotConfig.slot.map(slotConfig => generateSlotHtml(slotConfig)).join('') : slotConfig.innerHTML;
