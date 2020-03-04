@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-export const getSubFiles = async (src: string, includeAbsolutePath: boolean, foldersOnly: boolean): Promise<string[]> => {
+export const getContentsOfDirectory = async (src: string, includeAbsolutePath: boolean, foldersOnly: boolean): Promise<string[]> => {
     return new Promise((resolve, reject) => {
         if(fs.lstatSync(src).isDirectory()) {
             fs.readdir(src, (error, subContents) => {
