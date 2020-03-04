@@ -23,7 +23,7 @@
   "_resolved": "git+https://github.com/biotope/biotope-preview.git#c32849b635e9c0d36f7129353d6fa1fb6ebe7080",
   "_spec": "@biotope/preview@git+https://github.com/biotope/biotope-preview.git#storybook-test",
   "_where": "/Users/kai.wissler/Code/siedle/siedle-frontend-framework",
-  "author": "",
+  "author": "Biotope",
   "bin": {
     "biotope-preview-build": "lib/build.js",
     "biotope-preview-serve": "lib/serve.js"
@@ -31,7 +31,6 @@
   "bugs": {
     "url": "https://github.com/biotope/biotope-preview/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "@babel/core": "^7.7.5",
     "@storybook/addon-knobs": "^5.2.8",
