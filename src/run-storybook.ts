@@ -14,7 +14,7 @@ export const runStorybook = (mode: string = 'static'): Promise<void> => {
     } else {
         return storybook({
             mode: 'dev',
-            configDir: '.storybook',
+            configDir: path.resolve(__dirname, '../.storybook'),
             staticDir: [`${projectBasePath}/dist/resources/components`],
         });
     }
