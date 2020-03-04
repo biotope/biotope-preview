@@ -8,19 +8,18 @@ export interface IStoryConfiguration {
 
 interface IPreviewConfig {
     name: string;
-    props?: IProp;
+    props?: IProp[];
     slot?: ISlottedConfiguration[];
     innerHTML?: string;
 }
 
 interface IProp {
-    [key: string]: {
-        value: any;
-        knob?: {
-            type: string;
-            name: string;
-        }
-    };
+    name: string;
+    value: any;
+    knob?: {
+        type: string;
+        name: string;
+    }
 }
 
 export interface ISlottedConfiguration {

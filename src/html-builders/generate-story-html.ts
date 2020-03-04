@@ -23,12 +23,13 @@ export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
     }
     const tagName = storyConfig.htmlTagName;
     const configs = storyConfig.previewConfigs.map(config => {
-        const props = config.props || {};
-        const propsString = Object.keys(props).map(
-            propKey => {
-                const { knob, value } = props[propKey];
-                return ` ${propKey}=${knob ? renderKnob(knob.name, value, knob.type) : convertValueToAttribute(value)}`
-            }).join('');
+        const props = config.props || [];
+        const propsString = props.map(
+            prop => {
+                const { knob, value, name } = prop;
+                return ` ${name}=${knob ? renderKnob(knob.name, value, knob.type) : convertValueToAttribute(value)}`
+            }
+        ).join('');
         let configString = configTemplate.replace('#attributes', propsString);
 
         configString = configString.replace(/#tagName/g, tagName);
