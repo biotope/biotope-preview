@@ -64,7 +64,7 @@ test("returns HTML string with object knob", () => {
                 }
             },
         ],
-    })).toBe(`<div prop1=\"\${JSON.stringify(object('Object Prop', {\"x\":1})).replace(/"/g, '\"').replace(/'/g, '\"')}\"></div>`);
+    })).toBe(`<div prop1='\${JSON.stringify(object('Object Prop', {\"x\":1})).replace(/"/g, '\"').replace(/'/g, '\"')}'></div>`);
 });
 
 test("returns HTML string with resources", () => {
