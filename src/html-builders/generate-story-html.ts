@@ -1,11 +1,11 @@
 import { IStoryConfiguration } from "../interfaces/i-story-configuration";
 import { convertValueToAttribute } from "./convert-value-to-attribute";
 import { generateSlotHtml } from "./generate-slot-html";
-import { renderKnob } from "./render-knob";
+import { getKnobRenderer } from "./get-knob-renderer";
 
 
 const storyTemplate = `import { storiesOf } from '@storybook/html';
-import { withKnobs, text, boolean, number, color } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
 
 export default { title: #componentName, decorators: [withKnobs] };
 
@@ -22,14 +22,18 @@ export const generateStoryHtml = (storyConfig: IStoryConfiguration): string => {
         throw Error('Could not read the story configuration.')
     }
     const tagName = storyConfig.htmlTagName;
-    const knobs = storyConfig.knobs || {};
     const configs = storyConfig.previewConfigs.map(config => {
-        const props = config.props || {};
-        const propsString = Object.keys(props).map(
-            propKey => {
-                const isKnobProp = Object.keys(knobs).find(knobKey => knobKey === propKey);
-                return ` ${propKey}=${isKnobProp ? renderKnob(knobs[propKey].name, props[propKey], knobs[propKey].type) : convertValueToAttribute(props[propKey])}`
-            }).join('');
+        const props = config.props || [];
+        const propsString = props.map(
+            prop => {
+                const { knob, value, name } = prop;
+                if (knob) {
+                    const renderKnob = getKnobRenderer(knob.type);
+                    return ` ${name}=${renderKnob({...knob, defaultValue: value} as any)}`
+                }
+                return ` ${name}=${convertValueToAttribute(value)}`
+            }
+        ).join('');
         let configString = configTemplate.replace('#attributes', propsString);
 
         configString = configString.replace(/#tagName/g, tagName);

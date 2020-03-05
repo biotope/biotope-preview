@@ -16,14 +16,55 @@ test("returns HTML string with innerHTML", () => {
 test("returns HTML string with props", () => {
     expect(generateSlotHtml({
         htmlTagName: "div",
-        props: {
-            prop1: "test",
-            prop2: 2,
-            prop3: {
-                subProp1: "test"
+        props: [
+            {
+                name: "prop1",
+                value: "test"
+            },
+            {
+                name: "prop2",
+                value: 2
+            },
+            {
+                name: "prop3",
+                value: {
+                    subProp1: "test"
+                }
             }
-        }
-    })).toBe(`<div prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"></div>`);
+        ],
+    })).toBe(`<div prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'></div>`);
+});
+
+test("returns HTML string with text knob", () => {
+    expect(generateSlotHtml({
+        htmlTagName: "div",
+        props: [
+            {
+                name: "prop1",
+                value: "test",
+                knob: {
+                    name: "Prop 1",
+                    type: "text"
+                }
+            },
+        ],
+    })).toBe(`<div prop1=\"\${text('Prop 1', 'test')}\"></div>`);
+});
+
+test("returns HTML string with object knob", () => {
+    expect(generateSlotHtml({
+        htmlTagName: "div",
+        props: [
+            {
+                name: "prop1",
+                value: {x: 1},
+                knob: {
+                    name: "Object Prop",
+                    type: "object"
+                }
+            },
+        ],
+    })).toBe(`<div prop1='\${JSON.stringify(object('Object Prop', {\"x\":1})).replace(/"/g, '\"').replace(/'/g, '\"')}'></div>`);
 });
 
 test("returns HTML string with resources", () => {
@@ -63,19 +104,27 @@ test("returns HTML string for full configuration", () => {
         htmlTagName: "div",
         resources: [
             "path/to/resource.js"
-        ],
-        props: {
-            prop1: "test",
-            prop2: 2,
-            prop3: {
-                subProp1: "test"
+        ],props: [
+            {
+                name: "prop1",
+                value: "test"
+            },
+            {
+                name: "prop2",
+                value: 2
+            },
+            {
+                name: "prop3",
+                value: {
+                    subProp1: "test"
+                }
             }
-        },
+        ],
         slot: [
             {
                 htmlTagName: "div"
             }
         ],
         innerHTML: "Test"
-    })).toBe(`<div data-resources="[{paths : ['path/to/resource.js']}]" prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"><div></div></div>`);
+    })).toBe(`<div data-resources="[{paths : ['path/to/resource.js']}]" prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'><div></div></div>`);
 });

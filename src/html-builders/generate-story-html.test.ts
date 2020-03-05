@@ -1,7 +1,7 @@
 import { generateStoryHtml } from "./generate-story-html";
 
 const imports = `import { storiesOf } from '@storybook/html';
-import { withKnobs, text, boolean, number, color } from "@storybook/addon-knobs";`;
+import { withKnobs, text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";`;
 
 test("returns HTML string for tag name only", () => {
     const expectedTemplate = `${imports}
@@ -49,20 +49,29 @@ test("returns HTML string for props", () => {
     export default { title: "Component", decorators: [withKnobs] };
 
     export const config1 = () => {
-        return \`<component prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"></component>\`;
+        return \`<component prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'></component>\`;
     };`;
     const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{
             name: "Config 1",
-            props: {
-                prop1: "test",
-                prop2: 2,
-                prop3: {
-                    subProp1: "test"
+            props: [
+                {
+                    name: "prop1",
+                    value: "test"
+                },
+                {
+                    name: "prop2",
+                    value: 2
+                },
+                {
+                    name: "prop3",
+                    value: {
+                        subProp1: "test"
+                    }
                 }
-            },
+            ],
         }]
     });
 
@@ -74,32 +83,50 @@ test("returns HTML string for multiple preview configs", () => {
     export default { title: "Component", decorators: [withKnobs] };
 
     export const config1 = () => {
-        return \`<component prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"></component>\`;
+        return \`<component prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'></component>\`;
     };
     export const config2 = () => {
-        return \`<component prop1=\"test2\" prop2=2 prop3=\"{'subProp1':'test2'}\"></component>\`;
+        return \`<component prop1=\"test2\" prop2=2 prop3='{\"subProp1\":\"test2\"}'></component>\`;
     };`;
     const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{
             name: "Config 1",
-            props: {
-                prop1: "test",
-                prop2: 2,
-                prop3: {
-                    subProp1: "test"
+            props: [
+                {
+                    name: "prop1",
+                    value: "test"
+                },
+                {
+                    name: "prop2",
+                    value: 2
+                },
+                {
+                    name: "prop3",
+                    value: {
+                        subProp1: "test"
+                    }
                 }
-            },
+            ],
         }, {
             name: "Config 2",
-            props: {
-                prop1: "test2",
-                prop2: 2,
-                prop3: {
-                    subProp1: "test2"
+            props: [
+                {
+                    name: "prop1",
+                    value: "test2"
+                },
+                {
+                    name: "prop2",
+                    value: 2
+                },
+                {
+                    name: "prop3",
+                    value: {
+                        subProp1: "test2"
+                    }
                 }
-            },
+            ],
         }]
     });
 
@@ -151,23 +178,32 @@ test("returns HTML string for preview config with knobs", () => {
     export default { title: "Component", decorators: [withKnobs] };
 
     export const config1 = () => {
-        return \`<component prop1=\${text("Prop 1", "Test Value")}></component>\`;
+        return \`<component prop1=\"\${text('Prop 1', 'Test Value')}\" prop2='\${JSON.stringify(object('Prop 2', {\"x\":1})).replace(/"/g, '\"').replace(/'/g, '\"')}'></component>\`;
     };`
     const generatedTemplate = generateStoryHtml({
         name: "Component",
         htmlTagName: "component",
         previewConfigs: [{
             name: "Config 1",
-            props: {
-                prop1: "Test Value"
-            }
-        }],
-        knobs: {
-            prop1: {
-                type: "text",
-                name: "Prop 1"
-            }
-        }
+            props: [
+                {
+                    name: "prop1",
+                    value: "Test Value",
+                    knob: {
+                        type: "text",
+                        name: "Prop 1"
+                    }
+                },
+                {
+                    name: "prop2",
+                    value: {x: 1},
+                    knob: {
+                        type: "object",
+                        name: "Prop 2"
+                    }
+                }
+            ],
+        }]
     });
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
