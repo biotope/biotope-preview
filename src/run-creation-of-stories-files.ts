@@ -3,7 +3,7 @@ import { filterFilePathsForPackageJson } from './file-handlers/filter-file-paths
 import { createStoriesFileForStoryConfig } from './file-handlers/create-stories-file-for-story-config';
 import { getJsonContent } from './file-handlers/get-json-content';
 import { IStoryConfiguration } from './interfaces/i-story-configuration';
-import recursive from 'recursive-readdir';
+const recursive = require("recursive-readdir");
 
 const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 
