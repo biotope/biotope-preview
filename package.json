@@ -1,28 +1,4 @@
 {
-  "_from": "git+https://github.com/biotope/biotope-preview.git#storybook-test",
-  "_id": "@biotope/preview@1.0.0",
-  "_inBundle": false,
-  "_integrity": "",
-  "_location": "/@biotope/preview",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "git",
-    "raw": "@biotope/preview@git+https://github.com/biotope/biotope-preview.git#storybook-test",
-    "name": "@biotope/preview",
-    "escapedName": "@biotope%2fpreview",
-    "scope": "@biotope",
-    "rawSpec": "git+https://github.com/biotope/biotope-preview.git#storybook-test",
-    "saveSpec": "git+https://github.com/biotope/biotope-preview.git#storybook-test",
-    "fetchSpec": "https://github.com/biotope/biotope-preview.git",
-    "gitCommittish": "storybook-test"
-  },
-  "_requiredBy": [
-    "#DEV:/",
-    "#USER"
-  ],
-  "_resolved": "git+https://github.com/biotope/biotope-preview.git#c32849b635e9c0d36f7129353d6fa1fb6ebe7080",
-  "_spec": "@biotope/preview@git+https://github.com/biotope/biotope-preview.git#storybook-test",
-  "_where": "/Users/kai.wissler/Code/siedle/siedle-frontend-framework",
   "author": "Biotope",
   "bin": {
     "biotope-preview-build": "lib/build.js",
