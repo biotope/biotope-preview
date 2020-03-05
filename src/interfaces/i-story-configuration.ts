@@ -1,4 +1,4 @@
-import { IGenericKnobConfiguration } from "./i-knob-configuration";
+import { IKnobConfiguration } from "./i-knob-configuration";
 
 export interface IStoryConfiguration {
     name: string;
@@ -18,7 +18,7 @@ interface IPreviewConfig {
 interface IProp {
     name: string;
     value: any;
-    knob?: IGenericKnobConfiguration;
+    knob?: IKnobConfiguration;
 }
 
 export interface ISlottedConfiguration {
