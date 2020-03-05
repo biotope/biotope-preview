@@ -3,5 +3,5 @@ import { escapeObjectForTemplateLiterals } from "../escape-object-for-template-l
 
 export const renderObjectKnob = (config: IObjectKnobConfiguration) => {
     const { name, defaultValue, groupId }= config;
-    return `\${object('${name}', ${escapeObjectForTemplateLiterals(defaultValue)}${groupId ? `, '${groupId}'` : ''})}`;
+    return `\"\${JSON.stringify(object('${name}', ${escapeObjectForTemplateLiterals(defaultValue)}${groupId ? `, '${groupId}'` : ''})).replace(/"/g, '\"').replace(/'/g, '\"')}\"`;
 }
