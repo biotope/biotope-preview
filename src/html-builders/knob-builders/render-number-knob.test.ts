@@ -5,7 +5,7 @@ test("returns number knob", () => {
 });
 
 test("returns number knob with options", () => {
-    expect(renderNumberKnob({name: "knobName", defaultValue: 1, options: {range: true}})).toBe(`\"\${number('knobName', 1, {\'range\':true})}\"`)
+    expect(renderNumberKnob({name: "knobName", defaultValue: 1, options: {range: true}})).toBe(`\"\${number('knobName', 1, {\"range\":true})}\"`)
 });
 
 test("returns number knob with groupId", () => {

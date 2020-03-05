@@ -49,7 +49,7 @@ test("returns HTML string for props", () => {
     export default { title: "Component", decorators: [withKnobs] };
 
     export const config1 = () => {
-        return \`<component prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"></component>\`;
+        return \`<component prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'></component>\`;
     };`;
     const generatedTemplate = generateStoryHtml({
         name: "Component",
@@ -83,10 +83,10 @@ test("returns HTML string for multiple preview configs", () => {
     export default { title: "Component", decorators: [withKnobs] };
 
     export const config1 = () => {
-        return \`<component prop1=\"test\" prop2=2 prop3=\"{'subProp1':'test'}\"></component>\`;
+        return \`<component prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'></component>\`;
     };
     export const config2 = () => {
-        return \`<component prop1=\"test2\" prop2=2 prop3=\"{'subProp1':'test2'}\"></component>\`;
+        return \`<component prop1=\"test2\" prop2=2 prop3='{\"subProp1\":\"test2\"}'></component>\`;
     };`;
     const generatedTemplate = generateStoryHtml({
         name: "Component",
@@ -178,7 +178,7 @@ test("returns HTML string for preview config with knobs", () => {
     export default { title: "Component", decorators: [withKnobs] };
 
     export const config1 = () => {
-        return \`<component prop1=\"\${text('Prop 1', 'Test Value')}\"></component>\`;
+        return \`<component prop1=\"\${text('Prop 1', 'Test Value')}\" prop2='\${JSON.stringify(object('Prop 2', {\"x\":1})).replace(/"/g, '\"').replace(/'/g, '\"')}'></component>\`;
     };`
     const generatedTemplate = generateStoryHtml({
         name: "Component",
@@ -192,6 +192,14 @@ test("returns HTML string for preview config with knobs", () => {
                     knob: {
                         type: "text",
                         name: "Prop 1"
+                    }
+                },
+                {
+                    name: "prop2",
+                    value: {x: 1},
+                    knob: {
+                        type: "object",
+                        name: "Prop 2"
                     }
                 }
             ],

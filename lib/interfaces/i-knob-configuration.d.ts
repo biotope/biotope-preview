@@ -3,11 +3,15 @@ export interface IKnobConfiguration {
     name: string;
     groupId?: string;
 }
+export interface IKnobRenderConfiguration {
+    name: string;
+    groupId?: string;
+}
 export declare type IGenericKnobConfiguration = IStringKnobConfiguration | INumberKnobConfiguration | IBooleanKnobConfiguration | IObjectKnobConfiguration | IArrayKnobConfiguration | ISelectKnobConfiguration | IRadioButtonsKnobConfiguration | IFilesKnobConfiguration;
-export interface IStringKnobConfiguration extends IKnobConfiguration {
+export interface IStringKnobConfiguration extends IKnobRenderConfiguration {
     defaultValue: string;
 }
-export interface INumberKnobConfiguration extends IKnobConfiguration {
+export interface INumberKnobConfiguration extends IKnobRenderConfiguration {
     defaultValue: number;
     options?: {
         range?: boolean;
@@ -16,25 +20,25 @@ export interface INumberKnobConfiguration extends IKnobConfiguration {
         step?: number;
     };
 }
-export interface IBooleanKnobConfiguration extends IKnobConfiguration {
+export interface IBooleanKnobConfiguration extends IKnobRenderConfiguration {
     defaultValue: boolean;
 }
-export interface IObjectKnobConfiguration extends IKnobConfiguration {
+export interface IObjectKnobConfiguration extends IKnobRenderConfiguration {
     defaultValue: any;
 }
-export interface IArrayKnobConfiguration extends IKnobConfiguration {
+export interface IArrayKnobConfiguration extends IKnobRenderConfiguration {
     defaultValue: string[];
 }
-export interface ISelectKnobConfiguration extends IKnobConfiguration {
+export interface ISelectKnobConfiguration extends IKnobRenderConfiguration {
     defaultValue: any;
     options: any;
 }
-export interface IRadioButtonsKnobConfiguration extends IKnobConfiguration {
+export interface IRadioButtonsKnobConfiguration extends IKnobRenderConfiguration {
     defaultValue: any;
     options: {
         [key: string]: string;
     };
 }
-export interface IFilesKnobConfiguration extends IKnobConfiguration {
+export interface IFilesKnobConfiguration extends IKnobRenderConfiguration {
     acceptedFormats?: string[];
 }
