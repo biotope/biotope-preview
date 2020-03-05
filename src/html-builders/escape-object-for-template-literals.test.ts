@@ -1,4 +1,4 @@
-import { escapeObjectForTemplateLiterals } from './escape-object-for-template-literals';
+import { escapeObjectForTemplateLiterals } from "./escape-object-for-template-literals";
 
 test("escapes objects correctly", () => {
     expect(escapeObjectForTemplateLiterals({
@@ -7,5 +7,5 @@ test("escapes objects correctly", () => {
         z: {
             a: [1, "2"]
         }
-    })).toBe("{'x':1,'y':'2','z':{'a':[1,'2']}}");
+    })).toBe('{"x":1,"y":"2","z":{"a":[1,"2"]}}');
 });
