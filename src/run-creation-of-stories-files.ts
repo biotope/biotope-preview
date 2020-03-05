@@ -6,10 +6,9 @@ import { getJsonContent } from './file-handlers/get-json-content';
 import { IStoryConfiguration } from './interfaces/i-story-configuration';
 
 const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
-const componentsSrc = `${projectBasePath}/src/components`;
 
-export const runCreationOfStoriesFiles = async () => {
-    const subFolders = await getContentsOfDirectory(componentsSrc, true, true);
+export const runCreationOfStoriesFiles = async (componentsSrcDir: string = 'src/components') => {
+    const subFolders = await getContentsOfDirectory(`${projectBasePath}/${componentsSrcDir}`, true, true);
     const filesPaths = await Promise.all(
         subFolders.map(
             subFolder => getContentsOfDirectory(subFolder, true, false)

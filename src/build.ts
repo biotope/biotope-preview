@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 import { runCreationOfStoriesFiles } from "./run-creation-of-stories-files";
 import { runStorybook } from "./run-storybook";
+import { getParamValueFromArgs } from "./process-helpers/get-param-value-from-args";
 
 (async () => {
-    await runCreationOfStoriesFiles();
-    await runStorybook('static');
+    const userConfig = process.argv;
+    const componentsSrcDir = getParamValueFromArgs(userConfig, "componentsSrc");
+    const staticDir = getParamValueFromArgs(userConfig, "staticDir");
+    await runCreationOfStoriesFiles(componentsSrcDir);
+    await runStorybook({staticDir});
 })().catch(e => process.exit(e));
 
