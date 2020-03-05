@@ -39,7 +39,7 @@
     "release": "np --no-yarn",
     "test": "jest"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "devDependencies": {
     "@types/jest": "^25.1.3",
     "@types/recursive-readdir": "^2.2.0",
