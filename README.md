@@ -1,53 +1,65 @@
 # biotope-preview 🌻
 
-First, install the @biotope/preview package as any other regular npm package:
+### Setup 
+Install the @biotope/preview package like any other regular npm package:
 ```bash
-npm install https://github.com/biotope/biotope-preview.git --save
+npm install @biotope/preview --save
 ```
-Next, your component needs a package.json with the following data. This is required for the process to work:
+
+### Component configuration
+The components you would like to see inside of the preview each need a package.json inside their base folder with a configuration. This is required for the process to work:
 
 ```javascript
 {
-    "name": "yourComponentName",
-    "tagName": "your-component-html-tag",
+    "name": "Component Name",
+    "htmlTagName": "your-component-html-tag",
+    "resources": [
+        "path/to/component-script.js"
+    ],
     "previewConfigs": [
         {
             "name": "Name for your Component Preview in Storybook",
-            "props": {
-                "exampletext": {
-                    "headline": "Example",
-                    "claim": "With a claim",
-                    "secondaryColor": false
+            "props": [
+                {
+                    "name": "text-prop",
+                    "value": "Lorem ipsum"
                 },
-                "exampleimage": {
-                    "url": "https://picsum.photos/id/804/1000/600",
-                    "alignment": "center",
-                    "alignmentLarge": "center",
-                    "altText": "Image"
+                {
+                    "name": "number-prop",
+                    "value": 123
                 }
-            }
+            ]
+            "slot": [
+                {
+                    "htmlTagName": "slotted-component-html-tag",
+                    "resources": [...],
+                    "props": [...],
+                    "slot": [...]
+                    "innerHTML": "HTML content"
+                }
+            ]
         }
     ]
 }
 ```
-After creating a package.json with the required data, you have to run:
+
+Please make sure that your configuration matches the TypeScript interface IStoryConfiguration defined in the preview package.
+
+### Generating the preview
+Since @biotope/preview uses your components' compiled source code inside the dist folder, before generating the preview you need to run 
 ```javascript
 npm run build
 ```
-because storybook relies on the compiled components' source files in the `dist` folder.
 
-It parses your src/components/ subfolders for the component's package.json's and creates previews based on the configuration inside.
-
-Then you can run either 
+Then you can use either 
 
 ```javascript
 npx biotope-preview-build
 ```
-
-or
+to create a preview folder in your project with a index.html you then can serve somewhere, or
 
 ```javascript
 npx biotope-preview-serve
 ```
 
-`biotope-preview-build` will create a preview folder in your project with a index.html you then can serve somewhere. `biotope-preview-serve` will not create any folder, but only serve a temporary storybook preview.
+to only serve a temporary storybook preview.

@@ -42,8 +42,10 @@
   "version": "0.1.1-0",
   "devDependencies": {
     "@types/jest": "^25.1.3",
+    "@types/recursive-readdir": "^2.2.0",
     "jest": "^25.1.0",
     "np": "^6.2.0",
+    "recursive-readdir": "^2.2.2",
     "ts-jest": "^25.2.1"
   }
 }
