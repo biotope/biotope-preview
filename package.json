@@ -1,8 +1,8 @@
 {
   "author": "Biotope",
   "bin": {
-    "biotope-preview-build": "lib/gulp-build.js",
-    "biotope-preview-serve": "lib/gulp-serve.js"
+    "biotope-preview-build": "lib/build.js",
+    "biotope-preview-serve": "lib/serve.js"
   },
   "bugs": {
     "url": "https://github.com/biotope/biotope-preview/issues"
