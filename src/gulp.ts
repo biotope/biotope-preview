@@ -1,8 +1,8 @@
 const { src, dest } = require('gulp');
 const ts = require('gulp-typescript');
 const rename = require('gulp-rename');
-const buildPreview = require('./build');
-const servePreview = require('./serve');
+const { build } = require('./build');
+const { serve } = require('./serve');
 const path = require('path');
 const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 
@@ -18,10 +18,10 @@ export function compileTsConfigs() {
         .pipe(dest('configs'));
 }
 
-export function build() {
-    buildPreview();
+export function buildPreview() {
+    build();
 }
 
-export function serve() {
-    servePreview();
+export function servePreview() {
+    serve();
 }
