@@ -1,11 +1,11 @@
 export interface IKnobConfiguration {
     type: string;
-    name: string;
+    label: string;
     groupId?: string;
 }
 
 export interface IKnobRenderConfiguration {
-    name: string;
+    label: string;
     groupId?: string;
 }
 

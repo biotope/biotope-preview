@@ -1,0 +1,8 @@
+import { IStoryConfiguration } from "./i-story-configuration";
+
+export interface IComponentConfiguration {
+    title: string;
+    htmlTagName: string;
+    resources?: string[];
+    configurations: IStoryConfiguration[];
+}

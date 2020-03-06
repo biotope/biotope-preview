@@ -11,30 +11,34 @@ The components you would like to see inside of the preview each need a package.j
 
 ```json
 {
-    "name": "Component Name",
+    "title": "Component Title",
     "htmlTagName": "your-component-html-tag",
     "resources": [
         "path/to/component-script.js"
     ],
-    "previewConfigs": [
+    "configurations": [
         {
-            "name": "Name for your Component Preview in Storybook",
+            "title": "Title for your Component in Storybook",
             "props": [
                 {
                     "name": "text-prop",
-                    "value": "Lorem ipsum"
+                    "value": "Lorem ipsum",
+                    "knob": {
+                        "type": "text",
+                        "label": "Component Text",
+                    }
                 },
                 {
                     "name": "number-prop",
                     "value": 123
                 }
             ],
-            "slot": [
+            "children": [
                 {
                     "htmlTagName": "slotted-component-html-tag",
                     "resources": [...],
                     "props": [...],
-                    "slot": [...],
+                    "children": [...],
                     "innerHTML": "HTML content"
                 }
             ]
@@ -43,7 +47,7 @@ The components you would like to see inside of the preview each need a package.j
 }
 ```
 
-Please make sure that your configuration matches the TypeScript interface IStoryConfiguration defined in the preview package.
+Please make sure that your configuration matches the TypeScript interface IComponentConfiguration defined in the preview package.
 
 ### Generating the preview
 Since @biotope/preview uses your components' compiled source code inside the dist folder, before generating the preview you need to run
