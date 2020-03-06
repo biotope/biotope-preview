@@ -1,26 +1,8 @@
-import { IKnobConfiguration } from "./i-knob-configuration";
+import { IProp } from "./i-prop";
+import { IHtmlElementConfiguration } from "./i-html-element-configuration";
 export interface IStoryConfiguration {
-    name: string;
-    htmlTagName: string;
-    resources?: string[];
-    previewConfigs: IPreviewConfig[];
-}
-interface IPreviewConfig {
-    name: string;
+    title: string;
     props?: IProp[];
-    slot?: ISlottedConfiguration[];
+    children?: IHtmlElementConfiguration[];
     innerHTML?: string;
 }
-interface IProp {
-    name: string;
-    value: any;
-    knob?: IKnobConfiguration;
-}
-export interface ISlottedConfiguration {
-    htmlTagName: string;
-    resources?: string[];
-    props?: IProp[];
-    slot?: ISlottedConfiguration[];
-    innerHTML?: string;
-}
-export {};

@@ -2,6 +2,7 @@ import { getKnobRenderer } from "./get-knob-renderer";
 import { convertValueToAttribute } from "./convert-value-to-attribute";
 import { IStoryConfiguration } from "../interfaces/i-story-configuration";
 import { generateHtmlTag } from "./generate-html-tag";
+import { camelize } from "./helpers/camelize";
 
 const configTemplate = `
 export const #configName = () => {
@@ -34,10 +35,4 @@ export const generateStoryHtml = (config: IStoryConfiguration, htmlTagName: stri
     }
 
     return configString;
-}
-
-const camelize = (str: string) => {
-    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
-      return index === 0 ? word.toLowerCase() : word.toUpperCase();
-    }).replace(/\s+/g, '');
 }

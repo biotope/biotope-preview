@@ -9,4 +9,7 @@ import { getParamValueFromArgs } from "./process-helpers/get-param-value-from-ar
     const staticDir = getParamValueFromArgs(userConfig, "staticDir") || 'dist/resources/components';
     await runCreationOfStoriesFiles(componentsSrcDir);
     await runStorybook({staticDir, mode: 'dev'});
-})().catch(e => process.exit(e));
+})().catch(e => {
+    console.error(`Generation of biotope preview failed: ${e}`);
+    process.exit(e);
+});
