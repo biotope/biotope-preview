@@ -1,6 +1,6 @@
 const { src, dest } = require('gulp');
 const ts = require('gulp-typescript');
-import path = require('path');
+const path = require('path');
 const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 
 export function compileTsConfigs() {

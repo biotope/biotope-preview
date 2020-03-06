@@ -4,5 +4,5 @@
     const { compileTsConfigs } = require('./gulp-tasks/compile-ts-configs');
     const { buildPreview } = require('./gulp-tasks/build-preview');
 
-    gulp.series(compileTsConfigs, buildPreview);
+    gulp.series(compileTsConfigs, buildPreview)();
 })();

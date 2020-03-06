@@ -4,5 +4,5 @@
     const { compileTsConfigs } = require('./gulp-tasks/compile-ts-configs');
     const { servePreview } = require('./gulp-tasks/serve-preview');
 
-    gulp.series(compileTsConfigs, servePreview);
+    gulp.series(compileTsConfigs, servePreview)();
 })();
