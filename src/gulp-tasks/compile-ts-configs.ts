@@ -7,5 +7,5 @@ export function compileTsConfigs() {
     console.log("Compiling preview configurations...");
     return src(`${projectBasePath}/src/components/**/preview/*.ts`)
         .pipe(ts())
-        .pipe(dest(path.resolve(`${__dirname}/../configurations`)));
+        .pipe(dest(path.resolve(`${__dirname}/../../configurations`)));
 }
