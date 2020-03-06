@@ -8,7 +8,7 @@ const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 export function compileTsConfigs() {
     return src(`${projectBasePath}/src/components/**/preview/index.ts`)
         .pipe(ts())
-        .pipe(dest(`${__dirname}/configurations`));
+        .pipe(dest(path.resolve(`${__dirname}/../configurations`)));
 }
 
 export function buildPreview() {
