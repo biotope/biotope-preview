@@ -17,7 +17,6 @@
     "@types/node": "^13.7.7",
     "babel-loader": "^8.0.6",
     "gulp": "^4.0.2",
-    "gulp-rename": "^2.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "path": "^0.12.7",
     "ts-node": "^8.6.2",
