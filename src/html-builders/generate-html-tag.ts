@@ -15,7 +15,7 @@ export const generateHtmlTag = (config: IHtmlElementConfiguration): string => {
             return ` ${name}=${convertValueToAttribute(value)}`
         }
     ).join('');
-    const slot = config.children ? config.children.map(child => generateHtmlTag(child)).join('') : config.innerHTML;
+    const children = config.children ? config.children.map(child => generateHtmlTag(child)).join('') : config.innerHTML;
     const resources = config.resources ? ` data-resources=\"[{paths : [${config.resources.map((r => `'${r}'`))}]}]"` : '';
-    return `<${tagName}${resources}${propsString}>${slot ? slot : ''}</${tagName}>`;
+    return `<${tagName}${resources}${propsString}>${children ? children : ''}</${tagName}>`;
 };
