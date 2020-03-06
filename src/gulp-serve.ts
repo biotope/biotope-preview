@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-const serve = require('./gulp');
+const gulp = require('gulp');
+const serve = require('./serve');
 
-serve();
+gulp.task('serve', serve());
