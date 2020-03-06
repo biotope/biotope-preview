@@ -7,8 +7,6 @@ export const createStoriesFileForConfig = (config: IComponentConfiguration): Pro
     return new Promise((resolve, reject) => {
         fs.writeFile(path.resolve(__dirname, `../../stories/${config.htmlTagName}.stories.js`), generateComponentHtml(config), (err) => {
             if (err) reject();
-            console.log(generateComponentHtml(config));
-            console.log('Saved!');
             resolve();
         });
     });
