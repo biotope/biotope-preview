@@ -15,7 +15,6 @@ test("returns a valid child component for a component configuration", () => {
     });
 });
 
-
 test("returns a valid child component with resources for a component configuration", () => {
     expect(componentToChild({
         title: "xyz",
@@ -35,4 +34,21 @@ test("returns a valid child component with resources for a component configurati
         ],
         innerHTML: "yes"
     });
-})
+});
+
+test("returns empty component if selected config does not exist", () => {
+    expect(componentToChild({
+        title: "xyz",
+        htmlTagName: "component",
+        resources: [
+            "path/to/resource.js"
+        ],
+        configurations: {
+            configX: {
+                innerHTML: "yes"
+            }
+        }
+    }, 'configA')).toMatchObject({
+        htmlTagName: "component"
+    });
+});
