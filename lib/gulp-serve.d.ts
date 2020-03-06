@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-declare const gulp: any;
-declare const serve: any;
+declare const gulp1: any;
+declare const compileTsConfigs1: any, serve: any;

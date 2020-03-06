@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const gulp1 = require('gulp');
-const build = require('./gulp');
+const gulp = require('gulp');
+const { compileTsConfigs, build } = require('./gulp');
 
-gulp1.task('build', build());
+gulp1.series(compileTsConfigs, build);

@@ -1,1 +1,1 @@
-{"version":3,"file":"gulp-serve.js","sourceRoot":"","sources":["../src/gulp-serve.ts"],"names":[],"mappings":";AACA,MAAM,IAAI,GAAG,OAAO,CAAC,MAAM,CAAC,CAAC;AAC7B,MAAM,KAAK,GAAG,OAAO,CAAC,SAAS,CAAC,CAAC;AAEjC,IAAI,CAAC,IAAI,CAAC,OAAO,EAAE,KAAK,EAAE,CAAC,CAAC"}
+{"version":3,"file":"gulp-serve.js","sourceRoot":"","sources":["../src/gulp-serve.ts"],"names":[],"mappings":";AACA,MAAM,KAAK,GAAG,OAAO,CAAC,MAAM,CAAC,CAAC;AAC9B,MAAM,EAAE,iBAAiB,EAAE,KAAK,EAAE,GAAG,OAAO,CAAC,QAAQ,CAAC,CAAC;AAEvD,KAAK,CAAC,MAAM,CAAC,iBAAiB,EAAE,KAAK,CAAC,CAAC"}
