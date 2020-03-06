@@ -2,4 +2,4 @@
 const gulp = require('gulp');
 const { compileTsConfigs, build } = require('./gulp');
 
-gulp1.series(compileTsConfigs, build);
+gulp.series(compileTsConfigs, build);
