@@ -1,9 +1,6 @@
-import { IProp } from "./i-prop";
+import { IStoryConfiguration } from "./i-story-configuration";
 
-export interface IHtmlElementConfiguration {
+export interface IHtmlElementConfiguration extends IStoryConfiguration {
     htmlTagName: string;
     resources?: string[];
-    props?: IProp[];
-    children?: IHtmlElementConfiguration[];
-    innerHTML?: string;
 }
