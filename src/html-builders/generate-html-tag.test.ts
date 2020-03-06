@@ -13,6 +13,14 @@ test("returns HTML string with innerHTML", () => {
     })).toBe('<div>Test</div>')
 });
 
+test("returns HTML string with containing html", () => {
+    expect(generateHtmlTag({
+        htmlTagName: "div",
+        containingHTML: "<article>#content</article>",
+        innerHTML: "Test"
+    })).toBe('<article><div>Test</div></article>')
+});
+
 test("returns HTML string with props", () => {
     expect(generateHtmlTag({
         htmlTagName: "div",

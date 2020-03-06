@@ -179,6 +179,28 @@ test("returns HTML string for preview config with innerHTML", () => {
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
 
+test("returns HTML string for preview config with containing html", () => {
+    const expectedTemplate = `${imports}
+    export default { title: "Component", decorators: [withKnobs, withA11y] };
+
+    export const config1 = () => {
+        return \`<div><component>Test</component></div>\`;
+    };`
+    const generatedTemplate = generateComponentHtml({
+        title: "Component",
+        htmlTagName: "component",
+        configurations: {
+            config1: {
+                innerHTML: "Test",
+                containingHTML: `<div>#content</div>`
+            }
+        }
+    });
+
+    expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
+});
+
+
 test("returns HTML string for preview config with knobs", () => {
     const expectedTemplate = `${imports}
     export default { title: "Component", decorators: [withKnobs, withA11y] };
@@ -209,6 +231,36 @@ test("returns HTML string for preview config with knobs", () => {
                         }
                     }
                 ],
+            }
+        }
+    });
+
+    expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
+});
+
+test("returns HTML string for preview config and template", () => {
+    const expectedTemplate = `${imports}
+        export default { title: "Component", decorators: [withKnobs, withA11y] };
+
+        export const config1 = () => {
+            return \`<component></component>\`;
+        };
+
+        export const template1 = () => {
+            return \`<article><div></div></article>\`;
+        };
+    `;
+    const generatedTemplate = generateComponentHtml({
+        title: "Component",
+        htmlTagName: "component",
+        configurations: {
+            config1: {
+            }
+        },
+        templates: {
+            template1: {
+                htmlTagName: 'div',
+                containingHTML: '<article>#content</article>'
             }
         }
     });
