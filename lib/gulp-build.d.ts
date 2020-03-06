@@ -1,1 +1,1 @@
-export {};
+declare const build: any;

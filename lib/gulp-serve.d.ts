@@ -1,1 +1,1 @@
-export {};
+declare const serve: any;

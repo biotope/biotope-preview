@@ -1,8 +1,8 @@
 const { series, src, dest } = require('gulp');
 const ts = require('gulp-typescript');
 const rename = require('gulp-rename');
-const build = require('./lib/build');
-const serve = require('./lib/serve');
+const buildPreview = require('./lib/build');
+const servePreview = require('./lib/serve');
 const path = require('path');
 const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 
@@ -12,19 +12,11 @@ function compileTsConfigs() {
         .pipe(ts({
             outFile: "config.js"
         }))
-        .pipe(rename((path) => {
+        .pipe(rename((path: any) => {
             path.basename += ("-" + index++);
         }))
         .pipe(dest('configs'));
 }
 
-function buildPreview() {
-    build();
-}
-
-function servePreview() {
-    serve();
-}
-
-exports.build = series(compileTsConfigs, buildPreview)
-exports.serve = series(compileTsConfigs, servePreview)
+exports.build = series(compileTsConfigs, build);
+exports.serve = series(compileTsConfigs, serve);
