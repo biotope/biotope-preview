@@ -4,4 +4,5 @@ export interface IStoryConfiguration {
     props?: IProp[];
     children?: IHtmlElementConfiguration[];
     innerHTML?: string;
+    containingHTML?: string;
 }
