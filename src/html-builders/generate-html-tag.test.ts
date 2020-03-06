@@ -1,20 +1,20 @@
-import { generateSlotHtml } from "./generate-slot-html";
+import { generateHtmlTag } from "./generate-html-tag";
 
 test("returns HTML string for tag name only", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div"
     })).toBe('<div></div>')
 });
 
 test("returns HTML string with innerHTML", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div",
         innerHTML: "Test"
     })).toBe('<div>Test</div>')
 });
 
 test("returns HTML string with props", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div",
         props: [
             {
@@ -36,14 +36,14 @@ test("returns HTML string with props", () => {
 });
 
 test("returns HTML string with text knob", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div",
         props: [
             {
                 name: "prop1",
                 value: "test",
                 knob: {
-                    name: "Prop 1",
+                    label: "Prop 1",
                     type: "text"
                 }
             },
@@ -52,14 +52,14 @@ test("returns HTML string with text knob", () => {
 });
 
 test("returns HTML string with object knob", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div",
         props: [
             {
                 name: "prop1",
                 value: {x: 1},
                 knob: {
-                    name: "Object Prop",
+                    label: "Object Prop",
                     type: "object"
                 }
             },
@@ -68,7 +68,7 @@ test("returns HTML string with object knob", () => {
 });
 
 test("returns HTML string with resources", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div",
         resources: [
             "path/to/resource.js"
@@ -77,9 +77,9 @@ test("returns HTML string with resources", () => {
 });
 
 test("returns HTML string with slot", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div",
-        slot: [
+        children: [
             {
                 htmlTagName: "div"
             }
@@ -88,9 +88,9 @@ test("returns HTML string with slot", () => {
 });
 
 test("returns innerHTML only if no slot is configured", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div",
-        slot: [
+        children: [
             {
                 htmlTagName: "div"
             }
@@ -100,7 +100,7 @@ test("returns innerHTML only if no slot is configured", () => {
 });
 
 test("returns HTML string for full configuration", () => {
-    expect(generateSlotHtml({
+    expect(generateHtmlTag({
         htmlTagName: "div",
         resources: [
             "path/to/resource.js"
@@ -120,7 +120,7 @@ test("returns HTML string for full configuration", () => {
                 }
             }
         ],
-        slot: [
+        children: [
             {
                 htmlTagName: "div"
             }
