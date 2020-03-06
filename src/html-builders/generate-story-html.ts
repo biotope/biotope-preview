@@ -9,7 +9,7 @@ export const #configName = () => {
     return \`<#tagName#dependencies#attributes>#content</#tagName>\`;
 }`
 
-export const generateStoryHtml = (config: IStoryConfiguration, htmlTagName: string) => {
+export const generateStoryHtml = (config: IStoryConfiguration, title: string, htmlTagName: string) => {
     const props = config.props || [];
     const propsString = props.map(
         prop => {
@@ -24,7 +24,7 @@ export const generateStoryHtml = (config: IStoryConfiguration, htmlTagName: stri
     let configString = configTemplate.replace('#attributes', propsString);
 
     configString = configString.replace(/#tagName/g, htmlTagName);
-    configString = configString.replace(/#configName/g, camelize(config.title));
+    configString = configString.replace(/#configName/g, camelize(title));
 
     if(config.children) {
         configString = configString.replace('#content', config.children.map(child => generateHtmlTag(child)).join(''));

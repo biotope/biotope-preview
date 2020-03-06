@@ -14,7 +14,7 @@ export const generateComponentHtml = (config: IComponentConfiguration): string =
     if(!config) {
         throw Error('Could not read the story configuration.')
     }
-    const configs = config.configurations.map(storyConfig => generateStoryHtml(storyConfig, config.htmlTagName)).join(';');
+    const configs = Object.keys(config.configurations).map(key => generateStoryHtml(config.configurations[key], key, config.htmlTagName)).join(';');
     return storyTemplate
         .replace('#configs', configs)
         .replace(/#componentName/g, `"${config.title}"`)
