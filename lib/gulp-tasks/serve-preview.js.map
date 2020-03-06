@@ -1,0 +1,1 @@
+{"version":3,"file":"serve-preview.js","sourceRoot":"","sources":["../../src/gulp-tasks/serve-preview.ts"],"names":[],"mappings":";;AAAA,oFAA6E;AAC7E,oDAAgD;AAEzC,KAAK,UAAU,YAAY;IAC9B,OAAO,CAAC,GAAG,CAAC,wBAAwB,CAAC,CAAC;IAEtC,MAAM,yDAAyB,EAAE,CAAC;IAClC,MAAM,4BAAY,CAAC,EAAE,IAAI,EAAE,KAAK,EAAE,CAAC,CAAC;AACxC,CAAC;AALD,oCAKC"}

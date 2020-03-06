@@ -1,0 +1,1 @@
+{"version":3,"file":"build-preview.js","sourceRoot":"","sources":["../../src/gulp-tasks/build-preview.ts"],"names":[],"mappings":";;AAAA,oFAA6E;AAC7E,oDAAgD;AAEzC,KAAK,UAAU,YAAY;IAC9B,OAAO,CAAC,GAAG,CAAC,yBAAyB,CAAC,CAAC;IAEvC,MAAM,yDAAyB,EAAE,CAAC;IAClC,MAAM,4BAAY,CAAC,EAAE,IAAI,EAAE,QAAQ,EAAE,CAAC,CAAC;AAC3C,CAAC;AALD,oCAKC"}
