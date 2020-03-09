@@ -46,6 +46,28 @@ test("returns HTML string for resources", () => {
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
 
+test("returns HTML string for resources with global resources", () => {
+    const expectedTemplate = `${imports}
+    export default { title: "Component", decorators: [withKnobs, withA11y] };
+
+    export const config1 = () => {
+        return \`<component data-resources="[{paths : ['path/to/resource.js', 'global/resource.js']}]"></component>\`;
+    };`;
+    const generatedTemplate = generateComponentHtml({
+        title: "Component",
+        htmlTagName: "component",
+        resources: [
+            "path/to/resource.js"
+        ],
+        configurations: {
+            config1: {
+            }
+        }
+    }, ["global/resource.js"]);
+
+    expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
+});
+
 test("returns HTML string for props", () => {
     const expectedTemplate = `${imports}
     export default { title: "Component", decorators: [withKnobs, withA11y] };
@@ -199,7 +221,6 @@ test("returns HTML string for preview config with containing html", () => {
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
-
 
 test("returns HTML string for preview config with knobs", () => {
     const expectedTemplate = `${imports}

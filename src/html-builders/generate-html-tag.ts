@@ -16,7 +16,8 @@ export const generateHtmlTag = (config: IHtmlElementConfiguration): string => {
         }
     ).join('');
     const children = config.children ? config.children.map(child => generateHtmlTag(child)).join('') : config.innerHTML;
-    const resources = config.resources ? ` data-resources=\"[{paths : [${config.resources.map((r => `'${r}'`))}]}]"` : '';
+    
+    const resources = config.resources && config.resources.length > 0 ? ` data-resources=\"[{paths : [${config.resources.map((r => `'${r}'`))}]}]"` : '';
     const htmlBefore = config.containingHTML ? config.containingHTML.split('#content')[0] : '';
     const htmlAfter = config.containingHTML ? config.containingHTML.split('#content')[1] : '';
     return `${htmlBefore}<${tagName}${resources}${propsString}>${children ? children : ''}</${tagName}>${htmlAfter}`;

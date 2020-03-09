@@ -10,13 +10,28 @@ export default { title: #componentName, decorators: [withKnobs, withA11y] };
 #configs;
 `
 
-export const generateComponentHtml = (config: IComponentConfiguration): string => {
+export const generateComponentHtml = (config: IComponentConfiguration, globalResources: string[] = []): string => {
     if (!config) {
         throw Error('Could not read the story configuration.')
     }
-    const configs = Object.keys(config.configurations).map(key => generateStoryHtml(config.configurations[key], key, config.htmlTagName, config.resources)).join(';');
+
+    const configs = Object.keys(config.configurations).map(key => generateStoryHtml(
+        config.configurations[key],
+        key,
+        config.htmlTagName,
+        [...(config.resources ? config.resources : []), ...globalResources])).join(';');
+
     const templates = config.templates ? Object.keys(config.templates).map(key => {
-        return config.templates ? generateStoryHtml(config.templates[key], key, config.templates[key].htmlTagName, config.templates[key].resources) : '';
+        if(config.templates) {
+            const templateConfig = config.templates[key];
+            return config.templates ? generateStoryHtml(
+                templateConfig,
+                key,
+                templateConfig.htmlTagName,
+                [...(templateConfig.resources ? templateConfig.resources : []),...globalResources]) : '';
+        } else {
+            return ''
+        }
     }
     ).join(';') : '';
     return storyTemplate
