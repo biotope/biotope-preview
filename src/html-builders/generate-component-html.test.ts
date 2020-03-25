@@ -268,7 +268,7 @@ test("returns HTML string for preview config and template", () => {
         };
 
         export const template1 = () => {
-            return \`<article><div></div></article>\`;
+            return \`<article><component></component></article>\`;
         };
     `;
     const generatedTemplate = generateComponentHtml({
@@ -280,7 +280,6 @@ test("returns HTML string for preview config and template", () => {
         },
         templates: {
             template1: {
-                htmlTagName: 'div',
                 containingHTML: '<article>#content</article>'
             }
         }

@@ -27,8 +27,8 @@ export const generateComponentHtml = (config: IComponentConfiguration, globalRes
             return config.templates ? generateStoryHtml(
                 templateConfig,
                 key,
-                templateConfig.htmlTagName,
-                [...(templateConfig.resources ? templateConfig.resources : []),...globalResources]) : '';
+                config.htmlTagName,
+                [...(config.resources ? config.resources : []),...globalResources]) : '';
         } else {
             return ''
         }
