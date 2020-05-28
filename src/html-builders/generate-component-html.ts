@@ -1,8 +1,7 @@
 import { IComponentConfiguration } from "../interfaces/i-component-configuration";
 import { generateStoryHtml } from './generate-story-html';
 
-const storyTemplate = `import { storiesOf } from '@storybook/html';
-import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
+const storyTemplate = `import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
 
 export default { title: #componentName };
 

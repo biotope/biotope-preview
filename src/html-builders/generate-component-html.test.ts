@@ -1,7 +1,6 @@
 import { generateComponentHtml } from "./generate-component-html";
 
-const imports = `import { storiesOf } from '@storybook/html';
-import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";`;
+const imports = `import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";`;
 
 test("returns HTML string for tag name only", () => {
     const expectedTemplate = `${imports}
