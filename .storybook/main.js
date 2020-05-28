@@ -5,5 +5,6 @@ module.exports = {
         '@storybook/addon-knobs',
         '@storybook/addon-storysource',
         '@storybook/addon-viewport',
+        './source-code-utils/storybook-register',
     ]
 };
