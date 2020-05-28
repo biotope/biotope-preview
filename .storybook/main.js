@@ -5,6 +5,6 @@ module.exports = {
         '@storybook/addon-knobs',
         '@storybook/addon-storysource',
         '@storybook/addon-viewport',
-        'node_modules/@biotope/preview/.storybook/source-code-utils/storybook-register.js',
+        '../../@biotope/preview/.storybook/source-code-utils/storybook-register.js',
     ]
 };
