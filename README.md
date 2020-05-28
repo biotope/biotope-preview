@@ -76,7 +76,7 @@ to only serve a temporary storybook preview.
 To further configure the biotope preview, you can create a preview-config.js on your project's base level.
 You can the define the following (optional) parameters to adjust the process to your project structure:
 * **componentsSrcDir (string)**: Path that contains all component preview configuration files the preview should consider. Subfolders are parsed recursively. (default: 'src/components')
-* **globalResources (string[ ])**: Paths that should be added as a resource for all component preview configurations. (default: none)
+* **globalResources (string[])**: Paths that should be added as a resource for all component preview configurations. (default: [])
 * **resourcesDir (string)**: Path that contains all the (compiled) resources that you refer to inside your component preview configurations. (default: 'dist/resources/components')
 
 Here you can see a examplary preview-config.js:
