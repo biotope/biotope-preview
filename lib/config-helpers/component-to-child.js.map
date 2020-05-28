@@ -1,0 +1,1 @@
+{"version":3,"file":"component-to-child.js","sourceRoot":"","sources":["../../src/config-helpers/component-to-child.ts"],"names":[],"mappings":";;AAGa,QAAA,gBAAgB,GAAG,CAAC,eAAwC,EAAE,SAAiB,EAA6B,EAAE;IACvH,qCACI,WAAW,EAAE,eAAe,CAAC,WAAW,IACrC,CAAC,eAAe,CAAC,SAAS,IAAI,EAAC,SAAS,EAAE,eAAe,CAAC,SAAS,EAAC,CAAC,GACrE,eAAe,CAAC,cAAc,CAAC,SAAS,CAAC,EAC/C;AACL,CAAC,CAAA"}

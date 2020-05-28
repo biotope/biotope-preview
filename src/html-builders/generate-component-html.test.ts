@@ -15,9 +15,10 @@ test("returns HTML string for tag name only", () => {
     const generatedTemplate = generateComponentHtml({
         title: "Component",
         htmlTagName: "component",
-        configurations: [{
-            title: "Config 1",
-        }]
+        configurations: {
+            config1: {
+            }
+        }
     });
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
@@ -36,10 +37,33 @@ test("returns HTML string for resources", () => {
         resources: [
             "path/to/resource.js"
         ],
-        configurations: [{
-            title: "Config 1",
-        }]
+        configurations: {
+            config1: {
+            }
+        }
     });
+
+    expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
+});
+
+test("returns HTML string for resources with global resources", () => {
+    const expectedTemplate = `${imports}
+    export default { title: "Component", decorators: [withKnobs, withA11y] };
+
+    export const config1 = () => {
+        return \`<component data-resources="[{paths : ['path/to/resource.js', 'global/resource.js']}]"></component>\`;
+    };`;
+    const generatedTemplate = generateComponentHtml({
+        title: "Component",
+        htmlTagName: "component",
+        resources: [
+            "path/to/resource.js"
+        ],
+        configurations: {
+            config1: {
+            }
+        }
+    }, ["global/resource.js"]);
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
@@ -54,25 +78,26 @@ test("returns HTML string for props", () => {
     const generatedTemplate = generateComponentHtml({
         title: "Component",
         htmlTagName: "component",
-        configurations: [{
-            title: "Config 1",
-            props: [
-                {
-                    name: "prop1",
-                    value: "test"
-                },
-                {
-                    name: "prop2",
-                    value: 2
-                },
-                {
-                    name: "prop3",
-                    value: {
-                        subProp1: "test"
+        configurations: {
+            config1: {
+                props: [
+                    {
+                        name: "prop1",
+                        value: "test"
+                    },
+                    {
+                        name: "prop2",
+                        value: 2
+                    },
+                    {
+                        name: "prop3",
+                        value: {
+                            subProp1: "test"
+                        }
                     }
-                }
-            ],
-        }]
+                ],
+            }
+        }
     });
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
@@ -91,43 +116,44 @@ test("returns HTML string for multiple preview configs", () => {
     const generatedTemplate = generateComponentHtml({
         title: "Component",
         htmlTagName: "component",
-        configurations: [{
-            title: "Config 1",
-            props: [
-                {
-                    name: "prop1",
-                    value: "test"
-                },
-                {
-                    name: "prop2",
-                    value: 2
-                },
-                {
-                    name: "prop3",
-                    value: {
-                        subProp1: "test"
+        configurations: {
+            config1: {
+                props: [
+                    {
+                        name: "prop1",
+                        value: "test"
+                    },
+                    {
+                        name: "prop2",
+                        value: 2
+                    },
+                    {
+                        name: "prop3",
+                        value: {
+                            subProp1: "test"
+                        }
                     }
-                }
-            ],
-        }, {
-            title: "Config 2",
-            props: [
-                {
-                    name: "prop1",
-                    value: "test2"
-                },
-                {
-                    name: "prop2",
-                    value: 2
-                },
-                {
-                    name: "prop3",
-                    value: {
-                        subProp1: "test2"
+                ],
+            },
+            config2: {
+                props: [
+                    {
+                        name: "prop1",
+                        value: "test2"
+                    },
+                    {
+                        name: "prop2",
+                        value: 2
+                    },
+                    {
+                        name: "prop3",
+                        value: {
+                            subProp1: "test2"
+                        }
                     }
-                }
-            ],
-        }]
+                ],
+            }
+        }
     });
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
@@ -143,12 +169,13 @@ test("returns HTML string for preview config with slot", () => {
     const generatedTemplate = generateComponentHtml({
         title: "Component",
         htmlTagName: "component",
-        configurations: [{
-            title: "Config 1",
-            children: [{
-                htmlTagName: "div"
-            }]
-        }]
+        configurations: {
+            config1: {
+                children: [{
+                    htmlTagName: "div"
+                }]
+            }
+        }
     });
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
@@ -164,10 +191,32 @@ test("returns HTML string for preview config with innerHTML", () => {
     const generatedTemplate = generateComponentHtml({
         title: "Component",
         htmlTagName: "component",
-        configurations: [{
-            title: "Config 1",
-            innerHTML: "Test"
-        }]
+        configurations: {
+            config1: {
+                innerHTML: "Test"
+            }
+        }
+    });
+
+    expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
+});
+
+test("returns HTML string for preview config with containing html", () => {
+    const expectedTemplate = `${imports}
+    export default { title: "Component", decorators: [withKnobs, withA11y] };
+
+    export const config1 = () => {
+        return \`<div><component>Test</component></div>\`;
+    };`
+    const generatedTemplate = generateComponentHtml({
+        title: "Component",
+        htmlTagName: "component",
+        configurations: {
+            config1: {
+                innerHTML: "Test",
+                containingHTML: `<div>#content</div>`
+            }
+        }
     });
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
@@ -183,27 +232,57 @@ test("returns HTML string for preview config with knobs", () => {
     const generatedTemplate = generateComponentHtml({
         title: "Component",
         htmlTagName: "component",
-        configurations: [{
-            title: "Config 1",
-            props: [
-                {
-                    name: "prop1",
-                    value: "Test Value",
-                    knob: {
-                        type: "text",
-                        label: "Prop 1"
+        configurations: {
+            config1: {
+                props: [
+                    {
+                        name: "prop1",
+                        value: "Test Value",
+                        knob: {
+                            type: "text",
+                            label: "Prop 1"
+                        }
+                    },
+                    {
+                        name: "prop2",
+                        value: { x: 1 },
+                        knob: {
+                            type: "object",
+                            label: "Prop 2"
+                        }
                     }
-                },
-                {
-                    name: "prop2",
-                    value: {x: 1},
-                    knob: {
-                        type: "object",
-                        label: "Prop 2"
-                    }
-                }
-            ],
-        }]
+                ],
+            }
+        }
+    });
+
+    expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
+});
+
+test("returns HTML string for preview config and template", () => {
+    const expectedTemplate = `${imports}
+        export default { title: "Component", decorators: [withKnobs, withA11y] };
+
+        export const config1 = () => {
+            return \`<component></component>\`;
+        };
+
+        export const template1 = () => {
+            return \`<article><component></component></article>\`;
+        };
+    `;
+    const generatedTemplate = generateComponentHtml({
+        title: "Component",
+        htmlTagName: "component",
+        configurations: {
+            config1: {
+            }
+        },
+        templates: {
+            template1: {
+                containingHTML: '<article>#content</article>'
+            }
+        }
     });
 
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));

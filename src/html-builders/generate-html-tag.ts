@@ -15,7 +15,10 @@ export const generateHtmlTag = (config: IHtmlElementConfiguration): string => {
             return ` ${name}=${convertValueToAttribute(value)}`
         }
     ).join('');
-    const slot = config.children ? config.children.map(child => generateHtmlTag(child)).join('') : config.innerHTML;
-    const resources = config.resources ? ` data-resources=\"[{paths : [${config.resources.map((r => `'${r}'`))}]}]"` : '';
-    return `<${tagName}${resources}${propsString}>${slot ? slot : ''}</${tagName}>`;
+    const children = config.children ? config.children.map(child => generateHtmlTag(child)).join('') : config.innerHTML;
+    
+    const resources = config.resources && config.resources.length > 0 ? ` data-resources=\"[{paths : [${config.resources.map((r => `'${r}'`))}]}]"` : '';
+    const htmlBefore = config.containingHTML ? config.containingHTML.split('#content')[0] : '';
+    const htmlAfter = config.containingHTML ? config.containingHTML.split('#content')[1] : '';
+    return `${htmlBefore}<${tagName}${resources}${propsString}>${children ? children : ''}</${tagName}>${htmlAfter}`;
 };

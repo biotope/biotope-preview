@@ -3,5 +3,10 @@ export interface IComponentConfiguration {
     title: string;
     htmlTagName: string;
     resources?: string[];
-    configurations: IStoryConfiguration[];
+    configurations: {
+        [key: string]: IStoryConfiguration;
+    };
+    templates?: {
+        [key: string]: IStoryConfiguration;
+    };
 }
