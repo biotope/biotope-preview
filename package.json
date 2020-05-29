@@ -1,9 +1,10 @@
 {
   "author": "Biotope",
   "bin": {
-    "biotope-preview-build": "lib/build.js",
+    "biotope-preview-build": "lib/commands/build.js",
     "biotope-preview-serve": "lib/serve.js"
   },
+  "main": "lib/index.js",
   "bugs": {
     "url": "https://github.com/biotope/biotope-preview/issues"
   },
@@ -29,7 +30,6 @@
   "description": "A package to preview all your biotope components",
   "homepage": "https://github.com/biotope/biotope-preview#readme",
   "license": "ISC",
-  "main": "lib/build.js",
   "name": "@biotope/preview",
   "publishConfig": {
     "access": "public"
