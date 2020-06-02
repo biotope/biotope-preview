@@ -4,6 +4,7 @@ module.exports = {
         '@storybook/addon-a11y',
         '@storybook/addon-knobs',
         '@storybook/addon-viewport',
+        '@storybook/addon-docs/html/preset',
         '@biotope/storybook-addon-compiled-code',
     ]
 };
