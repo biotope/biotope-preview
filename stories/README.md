@@ -1,0 +1,1 @@
+This (initially empty) folder functions as a temporary place for the generated stories.js files. 
