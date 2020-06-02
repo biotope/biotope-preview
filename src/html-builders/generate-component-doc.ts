@@ -1,8 +1,13 @@
 import { IComponentConfiguration } from "../interfaces/i-component-configuration";
 
 const docImports = `import { Story } from '@storybook/addon-docs/blocks';`
-const singleDoc = `#markdown #component`;
-const story = `<Story id="#id" />`
+const singleDoc = `
+#markdown
+#component
+`;
+const story = `
+<Story id="#id" />
+`
 
 const kebabCase = (string: string) => string.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase()
 
