@@ -3,7 +3,7 @@ module.exports = {
     addons: [
         '@storybook/addon-a11y',
         '@storybook/addon-knobs',
-        '@storybook/addon-storysource',
         '@storybook/addon-viewport',
+        '@biotope/storybook-addon-compiled-code',
     ]
 };
