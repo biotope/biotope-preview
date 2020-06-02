@@ -1,1 +1,1 @@
-export declare const runCreationOfStoriesFiles: (componentsSrcDir?: string) => Promise<void>;
+export declare const runCreationOfStoriesFiles: (globalResources: string[]) => Promise<void>;

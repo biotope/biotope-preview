@@ -2,6 +2,6 @@ import { IRadioButtonsKnobConfiguration } from "../../interfaces/i-knob-configur
 import { escapeObjectForTemplateLiterals } from "../escape-object-for-template-literals";
 
 export const renderRadioButtonsKnob = (config: IRadioButtonsKnobConfiguration) => {
-    const { name, defaultValue, groupId, options }= config;
-    return `\"\${radios('${name}', ${escapeObjectForTemplateLiterals(options)}, ${escapeObjectForTemplateLiterals(defaultValue)}${groupId ? `, '${groupId}'` : ''})}\"`;
+    const { label, defaultValue, groupId, options }= config;
+    return `\"\${radios('${label}', ${escapeObjectForTemplateLiterals(options)}, ${escapeObjectForTemplateLiterals(defaultValue)}${groupId ? `, '${groupId}'` : ''})}\"`;
 }

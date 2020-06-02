@@ -7,34 +7,38 @@ npm install @biotope/preview --save
 ```
 
 ### Component configuration
-The components you would like to see inside of the preview each need a package.json inside their base folder with a configuration. This is required for the process to work:
+The components you would like to see inside of the preview each need configurations. The preview parses your components src directory for all files called "index.ts" inside folders called "preview". 
 
-```json
+```ts
 {
-    "name": "Component Name",
+    "title": "Component Title",
     "htmlTagName": "your-component-html-tag",
     "resources": [
         "path/to/component-script.js"
     ],
-    "previewConfigs": [
+    "configurations": [
         {
-            "name": "Name for your Component Preview in Storybook",
+            "title": "Title for your Component in Storybook",
             "props": [
                 {
                     "name": "text-prop",
-                    "value": "Lorem ipsum"
+                    "value": "Lorem ipsum",
+                    "knob": {
+                        "type": "text",
+                        "label": "Component Text",
+                    }
                 },
                 {
                     "name": "number-prop",
                     "value": 123
                 }
             ],
-            "slot": [
+            "children": [
                 {
                     "htmlTagName": "slotted-component-html-tag",
                     "resources": [...],
                     "props": [...],
-                    "slot": [...],
+                    "children": [...],
                     "innerHTML": "HTML content"
                 }
             ]
@@ -43,7 +47,7 @@ The components you would like to see inside of the preview each need a package.j
 }
 ```
 
-Please make sure that your configuration matches the TypeScript interface IStoryConfiguration defined in the preview package.
+Please make sure that your configuration matches the TypeScript interface IComponentConfiguration defined in the preview package.
 
 ### Generating the preview
 Since @biotope/preview uses your components' compiled source code inside the dist folder, before generating the preview you need to run
@@ -66,12 +70,23 @@ npx biotope-preview-serve
 
 to only serve a temporary storybook preview.
 
-You can pass the following parameters to adjust the process to your project structure:
-* **componentsSrcDir**: Path that contains all package.json files the preview should consider. Subfolders are parsed recursively. (default: 'src/components')
-* **staticDir**: Path that contains all the (compiled) resources that you refer to inside the package.json. (default: 'dist/resources/components')
 
-Please notice how the parameters are passed by the following example:
+### Global Configuration
 
-```bash
-npx biotope-preview-serve componentsSrcDir=src/to/components staticDir=dist/with/components
+To further configure the biotope preview, you can create a preview-config.js on your project's base level.
+You can the define the following (optional) parameters to adjust the process to your project structure:
+* **componentsSrcDir (string)**: Path that contains all component preview configuration files the preview should consider. Subfolders are parsed recursively. (default: 'src/components')
+* **globalResources (string[])**: Paths that should be added as a resource for all component preview configurations. (default: [])
+* **resourcesDir (string)**: Path that contains all the (compiled) resources that you refer to inside your component preview configurations. (default: 'dist/resources/components')
+
+Here you can see a examplary preview-config.js:
+
+```js
+module.exports = {
+    globalResources: [
+        "css/styles.css",
+    ],
+    componentsSrcDir: "src/components",
+    resourcesDir: "dist/resources",
+};
 ```

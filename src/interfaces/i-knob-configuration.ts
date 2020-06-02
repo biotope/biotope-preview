@@ -1,13 +1,15 @@
 export interface IKnobConfiguration {
-    type: string;
-    name: string;
+    type: IKnobType;
+    label: string;
     groupId?: string;
 }
 
 export interface IKnobRenderConfiguration {
-    name: string;
+    label: string;
     groupId?: string;
 }
+
+type IKnobType = "text" | "number" | "array" | "boolean" | "files" | "object" | "date" | "select" | "color";
 
 export type IGenericKnobConfiguration = 
     IStringKnobConfiguration |

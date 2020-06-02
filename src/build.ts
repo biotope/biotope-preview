@@ -1,13 +1,7 @@
-#!/usr/bin/env node
-import { runCreationOfStoriesFiles } from "./run-creation-of-stories-files";
-import { runStorybook } from "./run-storybook";
-import { getParamValueFromArgs } from "./process-helpers/get-param-value-from-args";
+export const build = () => {
+    const gulp = require('gulp');
+    const { compileTsConfigs } = require('./gulp-tasks/compile-ts-configs');
+    const { buildPreview } = require('./gulp-tasks/build-preview');
 
-(async () => {
-    const userConfig = process.argv;
-    const componentsSrcDir = getParamValueFromArgs(userConfig, "componentsSrcDir") || 'src/components';
-    const staticDir = getParamValueFromArgs(userConfig, "staticDir") || 'dist/resources/components';
-    await runCreationOfStoriesFiles(componentsSrcDir);
-    await runStorybook({staticDir});
-})().catch(e => process.exit(e));
-
+    gulp.series(compileTsConfigs, buildPreview)();
+}
