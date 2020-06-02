@@ -2,12 +2,13 @@ import { IComponentConfiguration } from "../interfaces/i-component-configuration
 import { generateStoryHtml } from './generate-story-html';
 
 const storyTemplate = `import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
-import docs from './#docFileName'
+import docs from './#docFileName.docs.mdx';
 
 export default { title: #componentName, parameters: {
     docs: {
         page: docs
     }
+
 } };
 
 #configs;
