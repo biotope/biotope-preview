@@ -1,1 +1,1 @@
-export declare const build: () => Promise<void>;
+export declare const build: () => void;
