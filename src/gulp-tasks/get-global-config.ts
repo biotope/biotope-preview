@@ -8,5 +8,6 @@ export function getGlobalConfig() {
         globalResources: previewConfig.globalResources || [],
         componentsSrcDir: previewConfig.componentsSrcDir || "src/components",
         resourcesDir: previewConfig.resourcesDir || "dist/resources",
+        theme: previewConfig.theme
     };
 }
