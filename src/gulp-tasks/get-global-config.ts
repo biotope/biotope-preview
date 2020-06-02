@@ -7,6 +7,7 @@ export function getGlobalConfig() {
     return {
         globalResources: previewConfig.globalResources || [],
         componentsSrcDir: previewConfig.componentsSrcDir || "src/components",
-        resourcesDir: previewConfig.resourcesDir || "dist/resources"
+        resourcesDir: previewConfig.resourcesDir || "dist/resources",
+        outputDir: previewConfig.outputDir || "dist",
     };
 }
