@@ -1,4 +1,5 @@
 import { generateHtmlSnippet } from './generate-html-snippet';
+import { IHtmlElementConfiguration } from '../interfaces/i-html-element-configuration';
 
 test("it", () => {
     const config = {
@@ -12,7 +13,7 @@ test("it", () => {
                 value: "21.02.2020",
                 knob: {
                     label: "Date",
-                    type: "string",
+                    type: "text",
                     groupId: "main"
                 }
             }
@@ -35,7 +36,7 @@ test("it", () => {
         ]
     }
 
-    expect(generateHtmlSnippet(config).replace(/\s/g, '')).toBe(`
+    expect(generateHtmlSnippet((config as IHtmlElementConfiguration)).replace(/\s/g, '')).toBe(`
         <neo-event-teaser data-resources=\"[{paths : ['NeoEventTeaser/index.js']}]\" date=\"21.02.2020\">
             <neo-headline level=4>Lorem ipsum</neo-headline>
             <neo-paragraph>

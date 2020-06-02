@@ -1,5 +1,2 @@
-export declare function getGlobalConfig(): {
-    globalResources: any;
-    componentsSrcDir: any;
-    resourcesDir: any;
-};
+import { IGlobalConfiguration } from "../interfaces/i-global-configuration";
+export declare function getGlobalConfig(): IGlobalConfiguration;
