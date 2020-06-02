@@ -1,7 +1,6 @@
-export const build = () => {
-    const gulp = require('gulp');
+export const build = async () => {
     const { compileTsConfigs } = require('./gulp-tasks/compile-ts-configs');
     const { buildPreview } = require('./gulp-tasks/build-preview');
-
-    gulp.series(compileTsConfigs, buildPreview)();
+    await compileTsConfigs();
+    await buildPreview();
 }
