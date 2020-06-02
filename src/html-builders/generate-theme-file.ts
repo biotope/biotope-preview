@@ -1,5 +1,6 @@
-import {writeFileSync} from "fs"
+// import {writeFileSync} from "fs";
+const fs = require('fs');
 
-export const generateThemeFile = (pathToThemefile: string) => {
-  writeFileSync("theme.js", pathToThemefile);
+export const generateThemeFile = (themefile: any) => {
+  fs.writeFileSync("../../.storybook/theme.js", themefile.theme);
 }
