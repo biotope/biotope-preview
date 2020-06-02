@@ -2,8 +2,13 @@ import { IComponentConfiguration } from "../interfaces/i-component-configuration
 import { generateStoryHtml } from './generate-story-html';
 
 const storyTemplate = `import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
+import docs from './#docFileName'
 
-export default { title: #componentName };
+export default { title: #componentName, parameters: {
+    docs: {
+        page: docs
+    }
+} };
 
 #configs;
 `
@@ -33,6 +38,7 @@ export const generateComponentHtml = (config: IComponentConfiguration, globalRes
     }
     ).join(';') : '';
     return storyTemplate
+        .replace('#docFileName', config.htmlTagName)
         .replace('#configs', `${configs}${templates ? `; ${templates}`: ''}`)
         .replace(/#componentName/g, `"${config.title}"`);
 }
