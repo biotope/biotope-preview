@@ -9,10 +9,12 @@ const story = `
 <Story id="#id" />
 `
 
+const kebabCase = (string: string) => string.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase()
+
 export const generateComponentDoc = (config: IComponentConfiguration): string => {
     if (!config) {
         throw Error('Could not read the story configuration.')
     }
 
-    return docImports + Object.keys(config.configurations).map(key => singleDoc.replace('#markdown', config.configurations[key].description || '').replace('#component', () => story.replace('#id', `${config.title}--${key}`))).join('');
+    return docImports + Object.keys(config.configurations).map(key => singleDoc.replace('#markdown', config.configurations[key].description || '').replace('#component', () => story.replace('#id', `${kebabCase(config.title)}--${kebabCase(key)}`))).join('');
 }
