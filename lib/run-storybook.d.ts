@@ -1,5 +1,4 @@
-export declare const runStorybook: ({ staticDir, mode, outputDir }: {
+export declare const runStorybook: ({ staticDir, mode }: {
     staticDir?: string | undefined;
     mode?: string | undefined;
-    outputDir?: string | undefined;
 }) => Promise<void>;
