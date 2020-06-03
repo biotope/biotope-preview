@@ -1,13 +1,13 @@
 # biotope-preview 🌻
 
-### Setup 
+### Setup
 Install the @biotope/preview package like any other regular npm package:
 ```bash
 npm install @biotope/preview --save
 ```
 
 ### Component configuration
-The components you would like to see inside of the preview each need configurations. The preview parses your components src directory for all files called "index.ts" inside folders called "preview". 
+The components you would like to see inside of the preview each need configurations. The preview parses your components src directory for all files called "index.ts" inside folders called "preview".
 
 ```ts
 {
@@ -56,7 +56,7 @@ Since @biotope/preview uses your components' compiled source code inside the dis
 npm run build
 ```
 
-Then you can use either 
+Then you can use either
 
 ```bash
 npx biotope-preview-build
@@ -89,4 +89,48 @@ module.exports = {
     componentsSrcDir: "src/components",
     resourcesDir: "dist/resources",
 };
+```
+
+### Customize your Storybook Theme
+
+The default Theme lives in the preview-config.ts in the root of the project.
+There are different Options to adapt the Theme, check the theme-Object below:
+
+```js
+module.exports = {
+	globalResources: [
+		'css/styles.css'
+	],
+	componentsSrcDir: 'src/components',
+	resourcesDir: 'dist/resources',
+	theme: {
+        base: 'light',
+        colorPrimary: '#607DBE',
+        colorSecondary: '#F07D61',
+        brandTitle: '@biotope/preview',
+        brandUrl: 'https://biotope.sh/',
+        brandImage: 'https://biotope.sh/_assets/biotope-logo.svg',
+	}
+};
+```
+
+if you change nothing that are the default values, but if you want to change for example just the colorSecondary you can adapt it like this:
+
+```js
+module.exports = {
+	globalResources: [
+		'css/styles.css'
+	],
+	componentsSrcDir: 'src/components',
+	resourcesDir: 'dist/resources',
+	theme: {
+        colorSecondary: '#ff238d'
+    }
+};
+```
+
+the other values will be not overwritten. After adabting the theme you have to run:
+
+```bash
+npx biotope-preview-build
 ```
