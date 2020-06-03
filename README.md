@@ -78,22 +78,33 @@ to only serve a temporary storybook preview.
 
 ### Global Configuration
 
-To further configure the biotope preview, you can create a preview-config.js on your project's base level.
+To further configure the biotope preview, you can create a preview-config.ts with a const called previewConfig on your project's base level.
 You can the define the following (optional) parameters to adjust the process to your project structure:
 * **componentsSrcDir (string)**: Path that contains all component preview configuration files the preview should consider. Subfolders are parsed recursively. (default: 'src/components')
 * **globalResources (string[])**: Paths that should be added as a resource for all component preview configurations. (default: [])
 * **resourcesDir (string)**: Path that contains all the (compiled) resources that you refer to inside your component preview configurations. (default: 'dist/resources/components')
 * **outputDir (string)**: Path where Storybook compiles its build to. (default: 'dist/preview')
 
-Here you can see a examplary preview-config.js:
+To help you build this file you can implement the interface IGlobalConfigurationInput from the preview package. Here you can see a examplary preview-config.ts:
 
-```js
-module.exports = {
+```ts
+import { IGlobalConfigurationInput } from '@biotope/preview/lib/interfaces/i-global-configuration-input';
+
+export const previewConfig: IGlobalConfigurationInput = {
     globalResources: [
         "css/styles.css",
     ],
     componentsSrcDir: "src/components",
     resourcesDir: "dist/resources",
-    outputDir: "preview",
+    theme: {
+        base: 'light',
+      
+        colorPrimary: '#607DBE',
+        colorSecondary: '#F07D61',
+      
+        brandTitle: '@biotope/preview',
+        brandUrl: 'https://biotope.sh/',
+        brandImage: 'https://biotope.sh/_assets/biotope-logo.svg',
+      }
 };
 ```
