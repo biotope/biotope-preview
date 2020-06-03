@@ -8,5 +8,5 @@ export const runCreationOfStoriesFiles = async (globalResources: string[]) => {
     const configurationsPaths = recursiveFilePaths.filter((path : string) => path.indexOf('index.js') !== -1);
     const importedConfigurations = configurationsPaths.map((filePath: string) => require(filePath).default);
     await Promise.all(importedConfigurations.map((config: IComponentConfiguration) => createStoriesFileForConfig(config, globalResources)));
-    await Promise.all(importedConfigurations.map((config: IComponentConfiguration) => createDocsFileForConfig(config, globalResources)));
+    await Promise.all(importedConfigurations.map((config: IComponentConfiguration) => createDocsFileForConfig(config)));
 }

@@ -2,11 +2,11 @@ import { IComponentConfiguration } from "../interfaces/i-component-configuration
 import { generateStoryHtml } from './generate-story-html';
 
 const storyTemplate = `import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
-import docs from './#docFileName.docs.mdx';
+#docImport
 
 export default { title: #componentName, parameters: {
     docs: {
-        page: docs
+        page: #docUsage
     }
 
 } };
@@ -39,7 +39,8 @@ export const generateComponentHtml = (config: IComponentConfiguration, globalRes
     }
     ).join(';') : '';
     return storyTemplate
-        .replace('#docFileName', config.htmlTagName)
+        .replace('#docImport', config.doc ? `import docs from './${config.htmlTagName}.docs.mdx';` : '')
+        .replace('#docUsage', config.doc ? 'docs' : 'null')
         .replace('#configs', `${configs}${templates ? `; ${templates}`: ''}`)
         .replace(/#componentName/g, `"${config.title}"`);
 }
