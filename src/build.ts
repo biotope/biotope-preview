@@ -1,6 +1,6 @@
 export const build = async () => {
-  const { compileTsConfigs } = require("./gulp-tasks/compile-ts-configs");
-  const { buildPreview } = require("./gulp-tasks/build-preview");
+  const { compileTsConfigs } = require("./tasks/compile-ts-configs");
+  const { buildPreview } = require("./tasks/build-preview");
   try {
     await compileTsConfigs();
     await buildPreview();
