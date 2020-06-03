@@ -93,16 +93,11 @@ module.exports = {
 
 ### Customize your Storybook Theme
 
-The default Theme lives in the preview-config.ts in the root of the project.
-There are different Options to adapt the Theme, check the theme-Object below:
+The theme is defined in the preview-config.ts in the root of your project.
+There are different parameters to adapt the theme. Here's an example:
 
 ```js
 module.exports = {
-	globalResources: [
-		'css/styles.css'
-	],
-	componentsSrcDir: 'src/components',
-	resourcesDir: 'dist/resources',
 	theme: {
         base: 'light',
         colorPrimary: '#607DBE',
@@ -113,24 +108,14 @@ module.exports = {
 	}
 };
 ```
-
-if you change nothing that are the default values, but if you want to change for example just the colorSecondary you can adapt it like this:
+There's a fallback theme, so you don't have to change the theme. You can also pass just one parameter, for example the colorSecondary:
 
 ```js
 module.exports = {
-	globalResources: [
-		'css/styles.css'
-	],
-	componentsSrcDir: 'src/components',
-	resourcesDir: 'dist/resources',
 	theme: {
         colorSecondary: '#ff238d'
     }
 };
 ```
 
-the other values will be not overwritten. After adabting the theme you have to run:
-
-```bash
-npx biotope-preview-build
-```
+For all available theming parameters, please check out the [Storybook documentation](https://storybook.js.org/docs/configurations/theming/).
