@@ -13,7 +13,7 @@ test("it", () => {
                 value: "21.02.2020",
                 knob: {
                     label: "Date",
-                    type: "string",
+                    type: "text",
                     groupId: "main"
                 }
             }
