@@ -1,21 +1,24 @@
 import path = require('path');
 
 const storybook = require('@storybook/html/standalone');
-const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 
 export const runStorybook = ({staticDir = 'dist/resources/components', mode = 'static', outputDir = 'dist'}): Promise<void> => {
     if(mode === 'static') {
         return storybook({
             mode: 'static',
             configDir: path.resolve(__dirname, '../.storybook'),
-            staticDir: [`${projectBasePath}/${staticDir}`],
-            outputDir: `${projectBasePath}/${outputDir}/preview`,
+            staticDir: [`${process.cwd()}/${staticDir}`],
+            outputDir: `${process.cwd()}/${outputDir}/preview`,
+        }).catch((err: Error) => {
+            throw err;
         });
     } else {
         return storybook({
             mode: 'dev',
             configDir: path.resolve(__dirname, '../.storybook'),
-            staticDir: [`${projectBasePath}/${staticDir}`],
-        });
+            staticDir: [`${process.cwd()}/${staticDir}`],
+        }).catch((err: Error) => {
+            throw err;
+        });;
     }
 }
