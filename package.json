@@ -2,7 +2,7 @@
   "author": "Biotope",
   "bin": {
     "biotope-preview-build": "lib/commands/build.js",
-    "biotope-preview-serve": "lib/commands/serve.js"
+    "biotope-preview-serve": "lib/serve.js"
   },
   "main": "lib/index.js",
   "bugs": {
