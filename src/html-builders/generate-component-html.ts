@@ -1,11 +1,15 @@
 import { IComponentConfiguration } from "../interfaces/i-component-configuration";
 import { generateStoryHtml } from './generate-story-html';
 
-const storyTemplate = `import { storiesOf } from '@storybook/html';
-import { withKnobs, text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
-import { withA11y } from "@storybook/addon-a11y";
+const storyTemplate = `import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
+#docsImport
 
-export default { title: #componentName, decorators: [withKnobs, withA11y] };
+export default { title: #componentName, parameters: {
+    docs: {
+        page: #docsUsage
+    }
+
+} };
 
 #configs;
 `
@@ -35,6 +39,8 @@ export const generateComponentHtml = (config: IComponentConfiguration, globalRes
     }
     ).join(';') : '';
     return storyTemplate
+        .replace('#docsImport', config.docs ? `import docs from './${config.htmlTagName}.docs.mdx';` : '')
+        .replace('#docsUsage', config.docs ? 'docs' : 'null')
         .replace('#configs', `${configs}${templates ? `; ${templates}`: ''}`)
         .replace(/#componentName/g, `"${config.title}"`);
 }

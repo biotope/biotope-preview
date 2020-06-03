@@ -8,5 +8,5 @@ export async function buildPreview() {
     const globalConfig = getGlobalConfig();
     await runCreationOfStoriesFiles(globalConfig.globalResources);
     await generateThemeFile(globalConfig.theme);
-    await runStorybook({ mode: 'static', staticDir: globalConfig.resourcesDir });
+    await runStorybook({ mode: 'static', staticDir: globalConfig.resourcesDir, outputDir: globalConfig.outputDir });
 }

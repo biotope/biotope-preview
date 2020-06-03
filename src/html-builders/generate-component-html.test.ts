@@ -1,12 +1,10 @@
 import { generateComponentHtml } from "./generate-component-html";
 
-const imports = `import { storiesOf } from '@storybook/html';
-import { withKnobs, text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
-import { withA11y } from "@storybook/addon-a11y";`;
+const imports = `import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";`;
 
 test("returns HTML string for tag name only", () => {
     const expectedTemplate = `${imports}
-        export default { title: "Component", decorators: [withKnobs, withA11y] };
+        export default { title: "Component", parameters: { docs: { page: null }} };
 
         export const config1 = () => {
             return \`<component></component>\`;
@@ -24,9 +22,31 @@ test("returns HTML string for tag name only", () => {
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
 
+test("returns HTML string with import of docs", () => {
+    const expectedTemplate = `${imports}
+        import docs from './component.docs.mdx';
+        export default { title: "Component", parameters: { docs: { page: docs }} };
+
+        export const config1 = () => {
+            return \`<component></component>\`;
+        };
+    `;
+    const generatedTemplate = generateComponentHtml({
+        title: "Component",
+        docs: "#Component",
+        htmlTagName: "component",
+        configurations: {
+            config1: {
+            }
+        }
+    });
+
+    expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
+});
+
 test("returns HTML string for resources", () => {
     const expectedTemplate = `${imports}
-    export default { title: "Component", decorators: [withKnobs, withA11y] };
+    export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
         return \`<component data-resources="[{paths : ['path/to/resource.js']}]"></component>\`;
@@ -48,7 +68,7 @@ test("returns HTML string for resources", () => {
 
 test("returns HTML string for resources with global resources", () => {
     const expectedTemplate = `${imports}
-    export default { title: "Component", decorators: [withKnobs, withA11y] };
+    export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
         return \`<component data-resources="[{paths : ['path/to/resource.js', 'global/resource.js']}]"></component>\`;
@@ -70,7 +90,7 @@ test("returns HTML string for resources with global resources", () => {
 
 test("returns HTML string for props", () => {
     const expectedTemplate = `${imports}
-    export default { title: "Component", decorators: [withKnobs, withA11y] };
+    export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
         return \`<component prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'></component>\`;
@@ -105,7 +125,7 @@ test("returns HTML string for props", () => {
 
 test("returns HTML string for multiple preview configs", () => {
     const expectedTemplate = `${imports}
-    export default { title: "Component", decorators: [withKnobs, withA11y] };
+    export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
         return \`<component prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'></component>\`;
@@ -161,7 +181,7 @@ test("returns HTML string for multiple preview configs", () => {
 
 test("returns HTML string for preview config with slot", () => {
     const expectedTemplate = `${imports}
-    export default { title: "Component", decorators: [withKnobs, withA11y] };
+    export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
         return \`<component><div></div></component>\`;
@@ -183,7 +203,7 @@ test("returns HTML string for preview config with slot", () => {
 
 test("returns HTML string for preview config with innerHTML", () => {
     const expectedTemplate = `${imports}
-    export default { title: "Component", decorators: [withKnobs, withA11y] };
+    export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
         return \`<component>Test</component>\`;
@@ -203,7 +223,7 @@ test("returns HTML string for preview config with innerHTML", () => {
 
 test("returns HTML string for preview config with containing html", () => {
     const expectedTemplate = `${imports}
-    export default { title: "Component", decorators: [withKnobs, withA11y] };
+    export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
         return \`<div><component>Test</component></div>\`;
@@ -224,7 +244,7 @@ test("returns HTML string for preview config with containing html", () => {
 
 test("returns HTML string for preview config with knobs", () => {
     const expectedTemplate = `${imports}
-    export default { title: "Component", decorators: [withKnobs, withA11y] };
+    export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
         return \`<component prop1=\"\${text('Prop 1', 'Test Value')}\" prop2='\${JSON.stringify(object('Prop 2', {\"x\":1})).replace(/"/g, '\"').replace(/'/g, '\"')}'></component>\`;
@@ -261,7 +281,7 @@ test("returns HTML string for preview config with knobs", () => {
 
 test("returns HTML string for preview config and template", () => {
     const expectedTemplate = `${imports}
-        export default { title: "Component", decorators: [withKnobs, withA11y] };
+        export default { title: "Component", parameters: { docs: { page: null }} };
 
         export const config1 = () => {
             return \`<component></component>\`;
