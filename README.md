@@ -1,17 +1,22 @@
 # biotope-preview 🌻
 
-### Setup 
-Install the @biotope/preview package like any other regular npm package:
+### Setup
 ```bash
 npm install @biotope/preview --save
 ```
 
 ### Component configuration
-The components you would like to see inside of the preview each need configurations. The preview parses your components src directory for all files called "index.ts" inside folders called "preview". 
+The components you would like to see inside of the preview need configurations. The preview parses your components src directory for all files called "index.ts" inside folders called "preview".
 
 ```ts
 {
     "title": "Component Title",
+    "docs": `
+        # Markdown
+        ## To describe my component.
+
+        I can as much markdown as I want.
+    `
     "htmlTagName": "your-component-html-tag",
     "resources": [
         "path/to/component-script.js"
@@ -78,6 +83,7 @@ You can the define the following (optional) parameters to adjust the process to 
 * **componentsSrcDir (string)**: Path that contains all component preview configuration files the preview should consider. Subfolders are parsed recursively. (default: 'src/components')
 * **globalResources (string[])**: Paths that should be added as a resource for all component preview configurations. (default: [])
 * **resourcesDir (string)**: Path that contains all the (compiled) resources that you refer to inside your component preview configurations. (default: 'dist/resources/components')
+* **outputDir (string)**: Path where Storybook compiles its build to. (default: 'dist/preview')
 
 Here you can see a examplary preview-config.js:
 
@@ -88,5 +94,6 @@ module.exports = {
     ],
     componentsSrcDir: "src/components",
     resourcesDir: "dist/resources",
+    outputDir: "preview",
 };
 ```
