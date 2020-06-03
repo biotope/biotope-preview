@@ -1,1 +1,1 @@
-export declare function compileTsConfigs(): any;
+export declare function compileTsConfigs(): Promise<any>;

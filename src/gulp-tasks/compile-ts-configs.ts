@@ -4,9 +4,9 @@ const debug = require('gulp-debug');
 const path = require('path');
 import { getGlobalConfig } from "./get-global-config";
 
-export function compileTsConfigs() {
+export async function compileTsConfigs() {
     console.log("Compiling preview configurations...");
-    const globalConfig = getGlobalConfig();
+    const globalConfig = await getGlobalConfig();
     return src(`${process.cwd()}/${globalConfig.componentsSrcDir}/**/preview/*.ts`)
         .pipe(debug())
         .pipe(ts())

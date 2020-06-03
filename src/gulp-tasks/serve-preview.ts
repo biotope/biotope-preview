@@ -4,7 +4,7 @@ import { getGlobalConfig } from "./get-global-config";
 
 export async function servePreview() {
     console.log("Serving the preview...");
-    const globalConfig = getGlobalConfig();
+    const globalConfig = await getGlobalConfig();
     await runCreationOfStoriesFiles(globalConfig.globalResources);
     await runStorybook({ mode: 'dev', staticDir: globalConfig.resourcesDir, outputDir: globalConfig.outputDir });
 }
