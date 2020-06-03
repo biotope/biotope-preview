@@ -1,5 +1,5 @@
 const ts = require("typescript");
-const fs = require("fs");
+import fs from "fs-extra";
 const path = require("path");
 const recursive = require("recursive-readdir");
 const projectBasePath = path.resolve(__dirname).split("/node_modules")[0];
@@ -28,8 +28,8 @@ export async function compileTsConfigs() {
     transpiledFiles.forEach((transpiledCode: string, index: number) => {
       const { component, filename } = tsFilesPaths[index].match(regex).groups;
       const foldername = `${__dirname}/../../configurations/${component}`;
-      if (!fs.readdirSync(foldername)) fs.mkdirSync(foldername);
-      fs.writeFileSync(`${foldername}/${filename}.js`, transpiledCode);
+      fs.ensureDirSync(foldername);
+      fs.outputFileSync(`${foldername}/${filename}.js`, transpiledCode);
     });
     resolve();
   });
