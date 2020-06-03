@@ -61,7 +61,7 @@ Since @biotope/preview uses your components' compiled source code inside the dis
 npm run build
 ```
 
-Then you can use either 
+Then you can use either
 
 ```bash
 npx biotope-preview-build
@@ -84,6 +84,7 @@ You can the define the following (optional) parameters to adjust the process to 
 * **globalResources (string[])**: Paths that should be added as a resource for all component preview configurations. (default: [])
 * **resourcesDir (string)**: Path that contains all the (compiled) resources that you refer to inside your component preview configurations. (default: 'dist/resources/components')
 * **outputDir (string)**: Path where Storybook compiles its build to. (default: 'dist/preview')
+* **theme (object)**: See "Customize your Storybook theme".
 
 Here you can see a examplary preview-config.js:
 
@@ -97,3 +98,32 @@ module.exports = {
     outputDir: "preview",
 };
 ```
+
+### Customize your Storybook Theme
+
+The theme can be defined in the preview-config.js in the root of your project.
+There are different parameters to adapt the theme. Here's an example:
+
+```js
+module.exports = {
+	theme: {
+        base: 'light',
+        colorPrimary: '#607DBE',
+        colorSecondary: '#F07D61',
+        brandTitle: '@biotope/preview',
+        brandUrl: 'https://biotope.sh/',
+        brandImage: 'https://biotope.sh/_assets/biotope-logo.svg',
+	}
+};
+```
+There's a fallback theme, so you don't have to change the theme. You can also pass just one parameter, for example the colorSecondary:
+
+```js
+module.exports = {
+	theme: {
+        colorSecondary: '#ff238d'
+    }
+};
+```
+
+For all available theming parameters, please check out the [Storybook documentation](https://storybook.js.org/docs/configurations/theming/).
