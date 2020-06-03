@@ -1,5 +1,5 @@
-import { createStoriesFileForConfig } from './file-handlers/create-stories-file-for-config';
-import { createDocsFileForConfig } from './file-handlers/create-docs-file-for-config';
+import { createStoriesFileForConfig } from './file-handlers/create-stories-file';
+import { createDocsFileForConfig } from './file-handlers/create-docs-file';
 import { IComponentConfiguration } from './interfaces/i-component-configuration';
 const recursive = require("recursive-readdir");
 
