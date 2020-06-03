@@ -1,13 +1,13 @@
 # biotope-preview 🌻
 
-### Setup 
+### Setup
 Install the @biotope/preview package like any other regular npm package:
 ```bash
 npm install @biotope/preview --save
 ```
 
 ### Component configuration
-The components you would like to see inside of the preview each need configurations. The preview parses your components src directory for all files called "index.ts" inside folders called "preview". 
+The components you would like to see inside of the preview each need configurations. The preview parses your components src directory for all files called "index.ts" inside folders called "preview".
 
 ```ts
 {
@@ -56,7 +56,7 @@ Since @biotope/preview uses your components' compiled source code inside the dis
 npm run build
 ```
 
-Then you can use either 
+Then you can use either
 
 ```bash
 npx biotope-preview-build
@@ -90,3 +90,32 @@ module.exports = {
     resourcesDir: "dist/resources",
 };
 ```
+
+### Customize your Storybook Theme
+
+The theme is defined in the preview-config.ts in the root of your project.
+There are different parameters to adapt the theme. Here's an example:
+
+```js
+module.exports = {
+	theme: {
+        base: 'light',
+        colorPrimary: '#607DBE',
+        colorSecondary: '#F07D61',
+        brandTitle: '@biotope/preview',
+        brandUrl: 'https://biotope.sh/',
+        brandImage: 'https://biotope.sh/_assets/biotope-logo.svg',
+	}
+};
+```
+There's a fallback theme, so you don't have to change the theme. You can also pass just one parameter, for example the colorSecondary:
+
+```js
+module.exports = {
+	theme: {
+        colorSecondary: '#ff238d'
+    }
+};
+```
+
+For all available theming parameters, please check out the [Storybook documentation](https://storybook.js.org/docs/configurations/theming/).
