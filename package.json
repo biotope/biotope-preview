@@ -2,7 +2,7 @@
   "author": "Biotope",
   "bin": {
     "biotope-preview-build": "lib/commands/build.js",
-    "biotope-preview-serve": "lib/serve.js"
+    "biotope-preview-serve": "lib/commands/serve.js"
   },
   "main": "lib/index.js",
   "bugs": {
@@ -16,7 +16,7 @@
     "@storybook/addon-knobs": "^6.0.0-beta.17",
     "@storybook/addon-viewport": "^6.0.0-beta.17",
     "@storybook/html": "^6.0.0-beta.17",
-    "@types/node": "^13.7.7",
+    "@types/node": "^13.13.9",
     "@types/recursive-readdir": "^2.2.0",
     "gulp": "^4.0.2",
     "gulp-debug": "^4.0.0",

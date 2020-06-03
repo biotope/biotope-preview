@@ -9,12 +9,16 @@ export const runStorybook = ({staticDir = 'dist/resources/components', mode = 's
             configDir: path.resolve(__dirname, '../.storybook'),
             staticDir: [`${process.cwd()}/${staticDir}`],
             outputDir: `${process.cwd()}/${outputDir}/preview`,
+        }).catch((err: Error) => {
+            throw err;
         });
     } else {
         return storybook({
             mode: 'dev',
             configDir: path.resolve(__dirname, '../.storybook'),
             staticDir: [`${process.cwd()}/${staticDir}`],
-        });
+        }).catch((err: Error) => {
+            throw err;
+        });;
     }
 }
