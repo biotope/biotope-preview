@@ -1,18 +1,10 @@
 import { IThemeConfiguration } from "../interfaces/i-theme-configuration";
+import { FALLBACK_THEME } from "../constants/fallback-theme";
 
 const fs = require('fs');
 const path = require('path');
 
-const fallbackTheme = {
-  base: 'light',
-  colorPrimary: '#607DBE',
-  colorSecondary: '#F07D61',
-  brandTitle: '@biotope/preview',
-  brandUrl: 'https://biotope.sh/',
-  brandImage: 'https://biotope.sh/_assets/biotope-logo.svg',
-}
-
-export const generateThemeFile = (themeConfig: IThemeConfiguration) => {
+export const createThemeFile = (themeConfig: IThemeConfiguration) => {
   return new Promise((resolve, reject) => {
     fs.writeFile(
       `${path.resolve(__dirname, '../../.storybook')}/theme.js`,
@@ -20,7 +12,7 @@ export const generateThemeFile = (themeConfig: IThemeConfiguration) => {
       import { create } from '@storybook/theming/create';
 
       export default create(${
-        JSON.stringify({ ...fallbackTheme, ...themeConfig })
+        JSON.stringify({ ...FALLBACK_THEME, ...themeConfig })
       });
       `,
       (err: Error) => {
