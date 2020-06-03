@@ -1,6 +1,6 @@
 import { addons } from '@storybook/addons';
-import biotopeTheme from './biotope-theme';
+import theme from './theme';
 
 addons.setConfig({
-  theme: biotopeTheme,
+  theme
 });
