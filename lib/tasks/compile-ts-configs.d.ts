@@ -1,1 +1,1 @@
-export declare function compileTsConfigs(): Promise<void>;
+export declare function compileTsConfigs(): Promise<unknown>;

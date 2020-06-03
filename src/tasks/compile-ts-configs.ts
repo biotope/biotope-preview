@@ -18,7 +18,7 @@ export async function compileTsConfigs() {
     regex.test(path)
   );
   const transpiledFiles = tsFilesPaths.map((path: string) => {
-    fs.readFile((err: string, data: string) => {
+    fs.readFile(path, (err: string, data: string) => {
       if (err) {
         throw err;
       }
