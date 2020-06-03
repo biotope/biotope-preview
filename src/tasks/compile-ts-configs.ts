@@ -29,7 +29,6 @@ export async function compileTsConfigs() {
       const { component, filename } = tsFilesPaths[index].match(regex).groups;
       const foldername = `${__dirname}/../../configurations/${component}`;
       if (!fs.readdirSync(foldername)) fs.mkdirSync(foldername);
-      console.log(`${__dirname}/../../configurations/${component}/index.js`);
       fs.writeFileSync(`${foldername}/${filename}.js`, transpiledCode);
     });
     resolve();
