@@ -7,7 +7,6 @@ export async function buildPreview() {
     console.log("Building the preview...");
     const globalConfig = getGlobalConfig();
     await runCreationOfStoriesFiles(globalConfig.globalResources);
-    await generateThemeFile(globalConfig);
-    // console.log(generateThemeFile(globalConfig));
+    await generateThemeFile(globalConfig.theme);
     await runStorybook({ mode: 'static', staticDir: globalConfig.resourcesDir });
 }
