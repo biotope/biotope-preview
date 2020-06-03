@@ -9,6 +9,7 @@ export function getGlobalConfig(): IGlobalConfiguration {
     return {
         globalResources: previewConfig.globalResources || [],
         componentsSrcDir: previewConfig.componentsSrcDir || "src/components",
-        resourcesDir: previewConfig.resourcesDir || "dist/resources"
+        resourcesDir: previewConfig.resourcesDir || "dist/resources",
+        outputDir: previewConfig.outputDir || "dist",
     };
 }
