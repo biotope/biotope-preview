@@ -1,5 +1,5 @@
 const ts = require("typescript");
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 const path = require("path");
 const recursive = require("recursive-readdir");
 const projectBasePath = path.resolve(__dirname).split("/node_modules")[0];
