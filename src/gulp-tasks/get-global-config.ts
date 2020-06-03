@@ -6,7 +6,7 @@ const projectBasePath = path.resolve(__dirname).split('/node_modules')[0];
 
 export function getGlobalConfig(): IGlobalConfiguration {
     console.log("Reading global config...");
-    const previewConfig: IGlobalConfiguration = require(`${projectBasePath}/preview-config.js`);
+    const previewConfig: IGlobalConfiguration = require(`${projectBasePath}/preview-config.ts`).previewConfig;
     return {
         globalResources: previewConfig.globalResources || [],
         componentsSrcDir: previewConfig.componentsSrcDir || "src/components",
