@@ -3,11 +3,16 @@ const fs = require("fs");
 const path = require("path");
 const recursive = require("recursive-readdir");
 const projectBasePath = path.resolve(__dirname).split("/node_modules")[0];
-const regex = new RegExp(".*/preview/index.ts$");
+const regex = new RegExp("(.*)/preview/index.ts$");
 import { getGlobalConfig } from "./get-global-config";
-const transpileFile = (data: string) => {
-  return ts.transpileModule(data, {}).outputText;
+
+const transpile = (data: string) => {
+    return ts.transpileModule(data, {}).outputText;
+  };
+const transpileFiles = (path: string) => {
+  return transpile(fs.readFileSync(path));
 };
+
 export async function compileTsConfigs() {
   console.log("Compiling preview configurations...");
   const globalConfig = getGlobalConfig();
@@ -18,23 +23,15 @@ export async function compileTsConfigs() {
     regex.test(path)
   );
   const transpiledFiles = tsFilesPaths.map((path: string) => {
-    fs.readFile(path, (err: string, data: string) => {
-      if (err) {
-        throw err;
-      }
-      return transpileFile(data);
-    });
+    transpileFiles(path);
   });
+console.log(tsFilesPaths.forEach((path: string) => console.log(path.match(regex))
+))
   return new Promise((resolve, reject) => {
-    transpiledFiles.map((transpiledFile: string) => {
-      console.log(transpileFile);
-      fs.writeFile(
+    transpiledFiles.forEach((transpiledFile: string) => {
+      fs.writeFileSync(
         path.resolve(`${__dirname}/../../configurations/index.js`),
-        transpiledFile,
-        (err: string) => {
-          if (err) reject();
-        }
-      );
+        transpiledFile,);
     });
     resolve();
   });
