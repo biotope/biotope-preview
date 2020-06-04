@@ -22,9 +22,9 @@ export const generateHtmlTag = (config: IHtmlElementConfiguration): string => {
     ? config.children.map((child) => generateHtmlTag(child)).join("")
     : config.innerHTMLasKnob
     ? getKnobRenderer("text")({
-        defaultValue: config.innerHTML ? config.innerHTML : "Lorem ipsum",
+        defaultValue: config.innerHTML || "Lorem ipsum",
         label: "inner HTML",
-      } as any)
+      } as any).substring(1).slice(0,-1)
     : config.innerHTML;
   const resources =
     config.resources && config.resources.length > 0
