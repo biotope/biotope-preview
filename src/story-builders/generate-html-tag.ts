@@ -15,8 +15,7 @@ export const generateHtmlTag = (config: IHtmlElementConfiguration): string => {
             return ` ${name}=${convertValueToAttribute(value)}`
         }
     ).join('');
-    const children = config.children ? config.children.map(child => generateHtmlTag(child)).join('') : config.innerHTML;
-    
+    const children = config.children ? config.children.map(child => generateHtmlTag(child)).join('') : (config.innerHTMLasKnob ? getKnobRenderer("text") : config.innerHTML);
     const resources = config.resources && config.resources.length > 0 ? ` data-resources=\"[{paths : [${config.resources.map((r => `'${r}'`))}]}]"` : '';
     const htmlBefore = config.containingHTML ? config.containingHTML.split('#content')[0] : '';
     const htmlAfter = config.containingHTML ? config.containingHTML.split('#content')[1] : '';
