@@ -6,4 +6,5 @@ export interface IStoryConfiguration {
     children?: IHtmlElementConfiguration[];
     innerHTML?: string;
     containingHTML?: string;
+    innerHTMLasKnob?: boolean;
 }

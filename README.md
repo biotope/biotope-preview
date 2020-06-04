@@ -38,13 +38,15 @@ The components you would like to see inside of the preview need configurations. 
                     "value": 123
                 }
             ],
+            "innerHTML": "Lorem ipsum",
+            "innerHTMLasKnob": true,
             "children": [
                 {
                     "htmlTagName": "slotted-component-html-tag",
                     "resources": [...],
                     "props": [...],
                     "children": [...],
-                    "innerHTML": "HTML content"
+                    "innerHTML": "HTML content",
                 }
             ]
         }

@@ -13,6 +13,14 @@ test("returns HTML string with innerHTML", () => {
     })).toBe('<div>Test</div>')
 });
 
+test("returns HTML string with innerHTML", () => {
+    expect(generateHtmlTag({
+        htmlTagName: "div",
+        innerHTML: "Test",
+        innerHTMLasKnob: true,
+    })).toBe('<div>${text(\'inner HTML\', \'Test\')}</div>')
+});
+
 test("returns HTML string with containing html", () => {
     expect(generateHtmlTag({
         htmlTagName: "div",
