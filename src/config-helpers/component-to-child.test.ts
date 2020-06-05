@@ -6,12 +6,12 @@ test("returns a valid child component for a component configuration", () => {
         htmlTagName: "div",
         configurations: {
             config: {
-                innerHTML: "yes"
+                innerHtml: "yes"
             }
         }
     }, 'config')).toMatchObject({
         htmlTagName: "div",
-        innerHTML: "yes"
+        innerHtml: "yes"
     });
 });
 
@@ -24,7 +24,7 @@ test("returns a valid child component with resources for a component configurati
         ],
         configurations: {
             config: {
-                innerHTML: "yes"
+                innerHtml: "yes"
             }
         }
     }, 'config')).toMatchObject({
@@ -32,7 +32,7 @@ test("returns a valid child component with resources for a component configurati
         resources: [
             "path/to/resource.js"
         ],
-        innerHTML: "yes"
+        innerHtml: "yes"
     });
 });
 
@@ -45,7 +45,7 @@ test("returns empty component if selected config does not exist", () => {
         ],
         configurations: {
             configX: {
-                innerHTML: "yes"
+                innerHtml: "yes"
             }
         }
     }, 'configA')).toMatchObject({

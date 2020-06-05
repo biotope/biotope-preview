@@ -201,7 +201,7 @@ test("returns HTML string for preview config with slot", () => {
     expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
 
-test("returns HTML string for preview config with innerHTML", () => {
+test("returns HTML string for preview config with innerHtml", () => {
     const expectedTemplate = `${imports}
     export default { title: "Component", parameters: { docs: { page: null }} };
 
@@ -213,7 +213,7 @@ test("returns HTML string for preview config with innerHTML", () => {
         htmlTagName: "component",
         configurations: {
             config1: {
-                innerHTML: "Test"
+                innerHtml: "Test"
             }
         }
     });
@@ -233,8 +233,8 @@ test("returns HTML string for preview config with containing html", () => {
         htmlTagName: "component",
         configurations: {
             config1: {
-                innerHTML: "Test",
-                containingHTML: `<div>#content</div>`
+                innerHtml: "Test",
+                containingHtml: `<div>#content</div>`
             }
         }
     });
@@ -300,7 +300,7 @@ test("returns HTML string for preview config and template", () => {
         },
         templates: {
             template1: {
-                containingHTML: '<article>#content</article>'
+                containingHtml: '<article>#content</article>'
             }
         }
     });
