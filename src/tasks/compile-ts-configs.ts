@@ -32,5 +32,5 @@ export async function compileTsConfigs() {
       fs.outputFileSync(`${foldername}/${filename}.js`, transpiledCode);
     });
     resolve();
-  });
+  }).catch((err) => console.log("Couldn't compile preview configurations", err));
 }

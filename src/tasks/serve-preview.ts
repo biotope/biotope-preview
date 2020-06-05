@@ -15,6 +15,6 @@ export async function servePreview() {
       outputDir: globalConfig.outputDir,
     });
   } catch (err) {
-    console.log("Ooops...something went wrong!"), err;
+    console.log("Couldn't serve the preview!", err);
   }
 }
