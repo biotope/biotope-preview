@@ -10,7 +10,7 @@ export const runStorybook = ({staticDir = 'dist/resources/components', mode = 's
             staticDir: [`${process.cwd()}/${staticDir}`],
             outputDir: `${process.cwd()}/${outputDir}/preview`,
         }).catch((err: Error) => {
-            throw err;
+            console.log("Couldn't run storybook", err);
         });
     } else {
         return storybook({
@@ -18,7 +18,7 @@ export const runStorybook = ({staticDir = 'dist/resources/components', mode = 's
             configDir: path.resolve(__dirname, '../.storybook'),
             staticDir: [`${process.cwd()}/${staticDir}`],
         }).catch((err: Error) => {
-            throw err;
+            console.log("Couldn't run storybook", err);
         });;
     }
 }

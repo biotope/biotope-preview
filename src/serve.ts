@@ -6,6 +6,6 @@
     await compileTsConfigs();
     await servePreview();
   } catch (err) {
-    console.log("Ooops...something went wrong!", err);
+    console.log("Ooops...something went wrong in the preview!", err);
   }
 })();

@@ -5,6 +5,6 @@ export const build = async () => {
     await compileTsConfigs();
     await buildPreview();
   } catch (err) {
-    console.log("Ooops...something went wrong!", err);
+    console.log("Ooops...something went wrong in the preview!", err);
   }
 };
