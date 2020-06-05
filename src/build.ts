@@ -1,7 +1,10 @@
-export const build = () => {
-    const gulp = require('gulp');
-    const { compileTsConfigs } = require('./gulp-tasks/compile-ts-configs');
-    const { buildPreview } = require('./gulp-tasks/build-preview');
-
-    gulp.series(compileTsConfigs, buildPreview)();
-}
+export const build = async () => {
+  const { compileTsConfigs } = require("./tasks/compile-ts-configs");
+  const { buildPreview } = require("./tasks/build-preview");
+  try {
+    await compileTsConfigs();
+    await buildPreview();
+  } catch (err) {
+    console.log("Ooops...something went wrong!");
+  }
+};
