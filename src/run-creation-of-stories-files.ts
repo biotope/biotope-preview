@@ -27,6 +27,6 @@ export const runCreationOfStoriesFiles = async (globalResources: string[]) => {
       )
     );
   } catch (err) {
-    console.log("Couldn't create stories files for preview", err);
+    console.log("Couldn't create story files for preview", err);
   }
 };
