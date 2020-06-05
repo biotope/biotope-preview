@@ -1,0 +1,1 @@
+{"version":3,"file":"fallback-theme.js","sourceRoot":"","sources":["../../src/constants/fallback-theme.ts"],"names":[],"mappings":";;;AAAa,QAAA,cAAc,GAAG;IAC1B,IAAI,EAAE,OAAO;IACb,YAAY,EAAE,SAAS;IACvB,cAAc,EAAE,SAAS;IACzB,UAAU,EAAE,kBAAkB;IAC9B,QAAQ,EAAE,qBAAqB;IAC/B,UAAU,EAAE,6CAA6C;CAC5D,CAAA"}
