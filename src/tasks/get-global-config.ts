@@ -6,8 +6,8 @@ export function getGlobalConfig(): IGlobalConfiguration {
     try {
         const previewConfig: IGlobalConfiguration = require(`${process.cwd()}/preview-config.js`);
         return {
-            ...previewConfig,
             ...DEFAULT_PREVIEW_CONFIG,
+            ...previewConfig,
         };
     }
     catch {
