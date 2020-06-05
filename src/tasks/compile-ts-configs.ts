@@ -1,8 +1,6 @@
 const ts = require("typescript");
 import * as fs from "fs-extra";
-const path = require("path");
 const recursive = require("recursive-readdir");
-const projectBasePath = path.resolve(__dirname).split("/node_modules")[0];
 const regex = new RegExp(/.*\/(?<component>.*)\/preview\/(?<filename>.*)\.ts$/);
 import { getGlobalConfig } from "./get-global-config";
 
@@ -17,7 +15,7 @@ export async function compileTsConfigs() {
   console.log("Compiling preview configurations...");
   const globalConfig = getGlobalConfig();
   const allComponentsFiles = await recursive(
-    `${projectBasePath}/${globalConfig.componentsSrcDir}/`
+    `${process.cwd()}/${globalConfig.componentsSrcDir}/`
   );
   const tsFilesPaths = allComponentsFiles.filter((path: string) =>
     regex.test(path)
