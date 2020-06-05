@@ -9,23 +9,23 @@ test("returns HTML string for tag name only", () => {
 test("returns HTML string with innerHTML", () => {
     expect(generateHtmlTag({
         htmlTagName: "div",
-        innerHTML: "Test"
+        innerHtml: "Test"
     })).toBe('<div>Test</div>')
 });
 
 test("returns HTML string with innerHTML", () => {
     expect(generateHtmlTag({
         htmlTagName: "div",
-        innerHTML: "Test",
-        innerHTMLasKnob: true,
+        innerHtml: "Test",
+        innerHtmlAsKnob: true,
     })).toBe('<div>${text(\'inner HTML\', \'Test\')}</div>')
 });
 
 test("returns HTML string with containing html", () => {
     expect(generateHtmlTag({
         htmlTagName: "div",
-        containingHTML: "<article>#content</article>",
-        innerHTML: "Test"
+        containingHtml: "<article>#content</article>",
+        innerHtml: "Test"
     })).toBe('<article><div>Test</div></article>')
 });
 
@@ -111,7 +111,7 @@ test("returns innerHTML only if no slot is configured", () => {
                 htmlTagName: "div"
             }
         ],
-        innerHTML: "Test"
+        innerHtml: "Test"
     })).toBe(`<div><div></div></div>`);
 });
 
@@ -141,6 +141,6 @@ test("returns HTML string for full configuration", () => {
                 htmlTagName: "div"
             }
         ],
-        innerHTML: "Test"
+        innerHtml: "Test"
     })).toBe(`<div data-resources="[{paths : ['path/to/resource.js']}]" prop1=\"test\" prop2=2 prop3='{\"subProp1\":\"test\"}'><div></div></div>`);
 });

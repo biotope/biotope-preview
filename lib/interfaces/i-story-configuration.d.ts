@@ -3,7 +3,7 @@ import { IHtmlElementConfiguration } from "./i-html-element-configuration";
 export interface IStoryConfiguration {
     props?: IPropConfiguration[];
     children?: IHtmlElementConfiguration[];
-    innerHTML?: string;
-    containingHTML?: string;
-    innerHTMLasKnob?: boolean;
+    innerHtml?: string;
+    containingHtml?: string;
+    innerHtmlAsKnob?: boolean;
 }
