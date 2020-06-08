@@ -1,6 +1,7 @@
 import { createStoriesFileForConfig } from "./file-handlers/create-stories-file";
 import { createDocsFileForConfig } from "./file-handlers/create-docs-file";
 import { IComponentConfiguration } from "./interfaces/i-component-configuration";
+import * as fs from "fs-extra";
 const recursive = require("recursive-readdir");
 
 export const runCreationOfStoriesFiles = async (globalResources: string[]) => {
@@ -14,6 +15,8 @@ export const runCreationOfStoriesFiles = async (globalResources: string[]) => {
     const importedConfigurations = configurationsPaths.map(
       (filePath: string) => require(filePath).default
     );
+    fs.ensureDirSync(`${__dirname}/../stories/`);
+    fs.emptyDirSync(`${__dirname}/../stories/`);
     await Promise.all(
       importedConfigurations.map((config: IComponentConfiguration) =>
         createStoriesFileForConfig(config, globalResources).catch((err) =>

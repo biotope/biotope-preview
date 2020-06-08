@@ -1,1 +1,0 @@
-This (initially empty) folder functions as a temporary place for the compiled component configurations. 
