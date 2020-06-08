@@ -48,7 +48,7 @@
     "release": "np --no-yarn",
     "test": "jest"
   },
-  "version": "0.4.3",
+  "version": "0.4.4",
   "devDependencies": {
     "@types/fs-extra": "^9.0.1"
   }
