@@ -16,7 +16,7 @@ The components you would like to see inside of the preview need configurations. 
         ## To describe my component.
 
         I can write as much markdown as I want.
-    `
+    `,
     "htmlTagName": "your-component-html-tag",
     "resources": [
         "path/to/component-script.js"

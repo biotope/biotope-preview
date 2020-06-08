@@ -1,18 +1,30 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.4.0/custom-elements-es5-adapter.js" integrity="sha256-t3CF/CSG7eF8WUulDvxPaqXIEqDU7fOQTEv1DHVdbFs=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.4.0/custom-elements-es5-adapter.js"
+    integrity="sha256-t3CF/CSG7eF8WUulDvxPaqXIEqDU7fOQTEv1DHVdbFs=" crossorigin="anonymous"></script>
 <script>
     function loadResources() {
         var script = document.createElement('script');
-        script.src = 'https://unpkg.com/@biotope/resource-loader@2.1.1/dist/resourceLoader.min.js';
+        script.src = 'https://unpkg.com/@biotope/resource-loader@3.0.0-beta1.1/dist/resourceLoader.min.js';
         document.body.appendChild(script);
         script.addEventListener('load', () => {
             resourceLoader({
-                    base: '/'
-                });
+                base: '/',
+                handler: [{
+                    match: (options) => options.resource.path.indexOf('.js') > -1,
+                    handle: (options) => {
+                        const script = document.createElement('script');
+                        script.src = options.resource.path;
+                        script.type = "module";
+                        script.async = true;
+                        script.charset = 'utf-8';
+                        document.body.append(script);
+                    }
+                }]
             });
+        });
     }
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         loadResources();
-        const callback = function(mutationsList) {
+        const callback = function (mutationsList) {
             for (let i = 0, len = mutationsList.length; i < len; i++) {
                 if (mutationsList[i].type == 'childList') {
                     loadResources();
@@ -22,7 +34,10 @@
         };
 
         const observer = new MutationObserver(callback);
-        const config = { childList: true, subtree: false };
+        const config = {
+            childList: true,
+            subtree: false
+        };
         observer.observe(document.getElementById('root'), config);
-        }, false);
+    }, false);
 </script>
