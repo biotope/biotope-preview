@@ -1,9 +1,9 @@
-import { camelize } from "./camelize"
+import { camelize } from './camelize';
 
-test("camelizes pascal case", () => {
-    expect(camelize('SuperNice')).toBe('superNice');
+test('camelizes pascal case', () => {
+  expect(camelize('SuperNice')).toBe('superNice');
 });
 
-test("camelizes string with spaces", () => {
-    expect(camelize('Component Name')).toBe('componentName');
+test('camelizes string with spaces', () => {
+  expect(camelize('Component Name')).toBe('componentName');
 });

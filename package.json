@@ -46,10 +46,12 @@
     "storybook:serve": "node lib/serve.js",
     "storybook:build": "node lib/build.js",
     "release": "np --no-yarn",
-    "test": "jest"
+    "test": "jest",
+    "biotope-quality-gate": "biotope-quality-gate --fix"
   },
   "version": "0.4.4",
   "devDependencies": {
+    "@biotope/quality-gate": "^1.0.3",
     "@types/fs-extra": "^9.0.1"
   }
 }
