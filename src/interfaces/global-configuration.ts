@@ -1,7 +1,7 @@
 import { ThemeConfiguration } from './theme-configuration';
 
 export interface GlobalConfiguration {
-  componentsSrcDir: string;
+  previewConfigPatterns: string[];
   globalResources: string[];
   resourcesDir: string;
   theme: ThemeConfiguration;

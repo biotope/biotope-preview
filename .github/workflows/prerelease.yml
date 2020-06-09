@@ -1,0 +1,22 @@
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    prerelease:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - name: Use Node.js
+            uses: actions/setup-node@v1
+            with:
+              node-version: '12.x'
+          - run: npm install
+          - run: npm run build --if-present
+          - run: npm test
+          - name: Make prerelease to npm
+            uses: epeli/npm-release@v1
+            with:
+                type: prerelease
+                token: ${{ secrets.NPM_TOKEN }}
