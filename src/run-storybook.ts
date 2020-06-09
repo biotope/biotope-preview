@@ -1,4 +1,4 @@
-import { logger } from './logger/index';
+import { logger } from './logger';
 
 import path = require('path');
 import storybook = require('@storybook/html/standalone');

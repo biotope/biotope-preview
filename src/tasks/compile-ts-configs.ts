@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import { getGlobalConfig } from './get-global-config';
-import { logger } from '../logger/index';
+import { logger } from '../logger';
 
 import ts = require('typescript');
 import globby = require('globby');
