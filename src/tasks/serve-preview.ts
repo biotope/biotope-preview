@@ -2,9 +2,10 @@ import { runCreationOfStoriesFiles } from '../run-creation-of-stories-files';
 import { runStorybook } from '../run-storybook';
 import { getGlobalConfig } from './get-global-config';
 import { createThemeFile } from '../file-handlers/create-theme-file';
+import { logger } from '../logger';
 
 export async function servePreview(): Promise<void> {
-  console.log('Serving the preview...');
+  logger.info('Serving the preview...');
   const globalConfig = getGlobalConfig();
   try {
     await runCreationOfStoriesFiles(globalConfig.globalResources);
@@ -15,6 +16,7 @@ export async function servePreview(): Promise<void> {
       outputDir: globalConfig.outputDir,
     });
   } catch (err) {
-    console.log("Couldn't serve the preview!", err);
+    logger.error(err);
+    logger.error("Couldn't serve the preview!");
   }
 }

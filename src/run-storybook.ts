@@ -1,7 +1,10 @@
+import { logger } from './logger';
+
 import path = require('path');
 import storybook = require('@storybook/html/standalone');
 
 export const runStorybook = ({ staticDir = 'dist/resources/components', mode = 'static', outputDir = 'dist' }): Promise<void> => {
+  logger.info('Starting Storybook...');
   if (mode === 'static') {
     return storybook({
       mode: 'static',
@@ -9,7 +12,8 @@ export const runStorybook = ({ staticDir = 'dist/resources/components', mode = '
       staticDir: [`${process.cwd()}/${staticDir}`],
       outputDir: `${process.cwd()}/${outputDir}/preview`,
     }).catch((err: Error) => {
-      console.log("Couldn't run storybook", err);
+      logger.error(err);
+      logger.error("Couldn't run storybook");
     });
   }
   return storybook({
@@ -17,6 +21,7 @@ export const runStorybook = ({ staticDir = 'dist/resources/components', mode = '
     configDir: path.resolve(__dirname, '../.storybook'),
     staticDir: [`${process.cwd()}/${staticDir}`],
   }).catch((err: Error) => {
-    console.log("Couldn't run storybook", err);
+    logger.error(err);
+    logger.error("Couldn't run storybook");
   });
 };
