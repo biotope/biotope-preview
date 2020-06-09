@@ -21,8 +21,7 @@ export const generateHtmlTag = (config: HtmlElementConfiguration): string => {
   let children;
   if (config.children) {
     children = config.children.map((child) => generateHtmlTag(child)).join('');
-  }
-  if (config.innerHtml) {
+  } else if (config.innerHtml) {
     children = config.innerHtmlAsKnob
       ? getKnobRenderer('text')({
         defaultValue: config.innerHtml || 'Lorem ipsum',
