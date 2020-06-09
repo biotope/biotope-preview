@@ -1,8 +1,7 @@
+import fs from 'fs';
+import path from 'path';
 import { ThemeConfiguration } from '../interfaces/theme-configuration';
 import { FALLBACK_THEME } from '../constants/fallback-theme';
-
-const fs = require('fs');
-const path = require('path');
 
 export const createThemeFile = (
   themeConfig: ThemeConfiguration,

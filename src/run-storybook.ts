@@ -1,6 +1,5 @@
 import path = require('path');
-
-const storybook = require('@storybook/html/standalone');
+import storybook = require('@storybook/html/standalone');
 
 export const runStorybook = ({ staticDir = 'dist/resources/components', mode = 'static', outputDir = 'dist' }): Promise<void> => {
   if (mode === 'static') {

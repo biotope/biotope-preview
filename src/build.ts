@@ -1,6 +1,7 @@
+import { compileTsConfigs } from './tasks/compile-ts-configs';
+import { buildPreview } from './tasks/build-preview';
+
 export const build = async (): Promise<void> => {
-  const { compileTsConfigs } = require('./tasks/compile-ts-configs');
-  const { buildPreview } = require('./tasks/build-preview');
   try {
     await compileTsConfigs();
     await buildPreview();

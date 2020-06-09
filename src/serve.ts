@@ -1,7 +1,8 @@
 #!/usr/bin/env node
+import { compileTsConfigs } from './tasks/compile-ts-configs';
+import { servePreview } from './tasks/serve-preview';
+
 (async (): Promise<void> => {
-  const { compileTsConfigs } = require('./tasks/compile-ts-configs');
-  const { servePreview } = require('./tasks/serve-preview');
   try {
     await compileTsConfigs();
     await servePreview();
