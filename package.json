@@ -37,7 +37,7 @@
     "url": "git+https://github.com/biotope/biotope-preview.git"
   },
   "scripts": {
-    "build": "rm -r lib && tsc",
+    "build": "tsc",
     "storybook:serve": "node lib/serve.js",
     "storybook:build": "node lib/build.js",
     "release": "np --no-yarn",
