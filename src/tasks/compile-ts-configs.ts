@@ -33,7 +33,6 @@ export async function compileTsConfigs() {
       const { component, filename } = tsFilesPaths[index].match(regex).groups;
       const foldername = `${componentsConfigFolder}/${component}`;
       fs.ensureDirSync(foldername);
-      fs.emptyDirSync(foldername);
       fs.outputFileSync(`${foldername}/${filename}.js`, transpiledCode);
     });
     resolve();
