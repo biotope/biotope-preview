@@ -1,7 +1,7 @@
 import { IThemeConfiguration } from "./i-theme-configuration";
 
 export interface IGlobalConfiguration {
-    componentsSrcDir: string;
+    previewConfigPatterns: string[];
     globalResources: string[];
     resourcesDir: string;
     theme: IThemeConfiguration;
