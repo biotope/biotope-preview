@@ -9,11 +9,14 @@ export const runCreationOfStoriesFiles = async (globalResources: string[]) => {
     const recursiveFilePaths = await recursive(
       `${__dirname}/../configurations`
     );
-    const configurationsPaths = recursiveFilePaths.filter(
-      (path: string) => path.indexOf("index.js") !== -1
-    );
-    const importedConfigurations = configurationsPaths.map(
-      (filePath: string) => require(filePath).default
+    const importedConfigurations = recursiveFilePaths.map(
+      (filePath: string) => {
+        const file = require(filePath);
+        if(!file.default) {
+          throw new Error('Couldn\'t read preview configurations. Please make sure that each file matching the previewConfigPatterns exposes its configuration as a default export.')
+        }
+        return file.default;
+      }
     );
     fs.ensureDirSync(`${__dirname}/../stories/`);
     fs.emptyDirSync(`${__dirname}/../stories/`);
