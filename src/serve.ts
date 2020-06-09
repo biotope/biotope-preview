@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-(async () => {
-  const { compileTsConfigs } = require("./tasks/compile-ts-configs");
-  const { servePreview } = require("./tasks/serve-preview");
+import { compileTsConfigs } from './tasks/compile-ts-configs';
+import { servePreview } from './tasks/serve-preview';
+
+(async (): Promise<void> => {
   try {
     await compileTsConfigs();
     await servePreview();
   } catch (err) {
-    console.log("Ooops...something went wrong in the preview!", err);
+    console.log('Ooops...something went wrong in the preview!', err);
   }
 })();

@@ -1,1 +1,1 @@
-export const escapeObjectForTemplateLiterals = (object: any): any => JSON.stringify(object).replace(/"/g, '\"').replace(/'/g, '\"');
+export const escapeObjectForTemplateLiterals = (object: any): string => JSON.stringify(object).replace(/"/g, '"').replace(/'/g, '"');
