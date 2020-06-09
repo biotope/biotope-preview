@@ -1,7 +1,9 @@
 import * as fs from 'fs-extra';
-import ts from 'typescript';
-import globby from 'globby';
 import { getGlobalConfig } from './get-global-config';
+import { logger } from '../logger/index';
+
+import ts = require('typescript');
+import globby = require('globby');
 
 const regex = new RegExp(/.*\/(?<component>.*)\/preview\/(?<filename>.*)\.ts$/);
 
@@ -9,7 +11,7 @@ const transpile = (tsSourceCode: string): string => ts.transpileModule(tsSourceC
 const transpileFile = (path: string): string => transpile(fs.readFileSync(path, 'utf8'));
 
 export async function compileTsConfigs(): Promise<unknown> {
-  console.log('Compiling preview configurations...');
+  logger.info('Compiling preview configurations...');
   const componentsConfigFolder = `${__dirname}/../../configurations`;
   const globalConfig = getGlobalConfig();
   const allComponentsFiles = await globby(
@@ -19,6 +21,9 @@ export async function compileTsConfigs(): Promise<unknown> {
   );
   const tsFilesPaths = allComponentsFiles.filter((path: string) => regex.test(path));
   const transpiledFiles = tsFilesPaths.map(transpileFile);
+
+  fs.ensureDirSync(componentsConfigFolder);
+  fs.emptyDirSync(componentsConfigFolder);
 
   return new Promise((resolve) => {
     transpiledFiles.forEach((transpiledCode: string, index: number) => {
@@ -31,5 +36,8 @@ export async function compileTsConfigs(): Promise<unknown> {
       }
     });
     resolve();
-  }).catch((err) => console.log("Couldn't compile preview configurations", err));
+  }).catch((err) => {
+    logger.error(err);
+    logger.error("Couldn't compile preview configurations");
+  });
 }

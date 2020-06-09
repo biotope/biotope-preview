@@ -1,11 +1,14 @@
 import { compileTsConfigs } from './tasks/compile-ts-configs';
 import { buildPreview } from './tasks/build-preview';
+import { logger } from './logger/index';
 
 export const build = async (): Promise<void> => {
   try {
     await compileTsConfigs();
+    logger.info('Preview configurations compiled!');
     await buildPreview();
+    logger.info('Preview build finished!');
   } catch (err) {
-    console.log('Ooops...something went wrong in the preview!', err);
+    logger.error(err);
   }
 };
