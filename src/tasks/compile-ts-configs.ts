@@ -8,18 +8,16 @@ const regex = new RegExp(/.*\/(?<component>.*)\/preview\/(?<filename>.*)\.ts$/);
 const transpile = (tsSourceCode: string): string => ts.transpileModule(tsSourceCode, {}).outputText;
 const transpileFile = (path: string): string => transpile(fs.readFileSync(path, 'utf8'));
 
-export async function compileTsConfigs() {
-  console.log("Compiling preview configurations...");
+export async function compileTsConfigs(): Promise<unknown> {
+  console.log('Compiling preview configurations...');
   const componentsConfigFolder = `${__dirname}/../../configurations`;
   const globalConfig = getGlobalConfig();
   const allComponentsFiles = await globby(
     globalConfig.previewConfigPatterns.map(
-      pattern => `${process.cwd()}/${pattern}`
-    )
+      (pattern) => `${process.cwd()}/${pattern}`,
+    ),
   );
-  const tsFilesPaths = allComponentsFiles.filter((path: string) =>
-    regex.test(path)
-  );
+  const tsFilesPaths = allComponentsFiles.filter((path: string) => regex.test(path));
   const transpiledFiles = tsFilesPaths.map(transpileFile);
 
   return new Promise((resolve) => {
