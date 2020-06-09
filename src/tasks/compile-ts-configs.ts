@@ -27,7 +27,6 @@ export async function compileTsConfigs(): Promise<unknown> {
         const { component, filename } = groups;
         const foldername = `${componentsConfigFolder}/${component}`;
         fs.ensureDirSync(foldername);
-        fs.emptyDirSync(foldername);
         fs.outputFileSync(`${foldername}/${filename}.js`, transpiledCode);
       }
     });
