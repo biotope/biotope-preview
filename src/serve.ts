@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-(async () => {
+export const serve=async () => {
   const { compileTsConfigs } = require("./tasks/compile-ts-configs");
   const { servePreview } = require("./tasks/serve-preview");
   try {
@@ -8,4 +7,4 @@
   } catch (err) {
     console.log("Ooops...something went wrong in the preview!", err);
   }
-})();
+};
