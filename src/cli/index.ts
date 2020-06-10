@@ -6,12 +6,12 @@ const { program } = require("commander");
 
 program
   .option("-s, --serve", "serve")
-  .option("-c, --config", "custom config");
+  .option("-c, --config <config-path>", "custom config", `/preview-config.js`);
 
 program.parse(process.argv);
 
 if (program.serve) {
-  serve();
+  serve(`${process.cwd()}/${program.config}`);
 } else {
-  build();
+  build(`${process.cwd()}/${program.config}`);
 }

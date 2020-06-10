@@ -4,9 +4,9 @@ import { getGlobalConfig } from './get-global-config';
 import { createThemeFile } from '../file-handlers/create-theme-file';
 import { logger } from '../logger';
 
-export async function servePreview(): Promise<void> {
+export async function servePreview(configPath: string): Promise<void> {
   logger.info('Serving the preview...');
-  const globalConfig = getGlobalConfig();
+  const globalConfig = getGlobalConfig(configPath);
   try {
     await runCreationOfStoriesFiles(globalConfig.globalResources);
     await createThemeFile(globalConfig.theme);

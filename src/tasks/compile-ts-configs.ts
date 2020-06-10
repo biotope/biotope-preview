@@ -10,10 +10,10 @@ const regex = new RegExp(/.*\/(?<component>.*)\/preview\/(?<filename>.*)\.ts$/);
 const transpile = (tsSourceCode: string): string => ts.transpileModule(tsSourceCode, {}).outputText;
 const transpileFile = (path: string): string => transpile(fs.readFileSync(path, 'utf8'));
 
-export async function compileTsConfigs(): Promise<unknown> {
+export async function compileTsConfigs(configPath: string): Promise<unknown> {
   logger.info('Compiling preview configurations...');
   const componentsConfigFolder = `${__dirname}/../../configurations`;
-  const globalConfig = getGlobalConfig();
+  const globalConfig = getGlobalConfig(configPath);
   const allComponentsFiles = await globby(
     globalConfig.previewConfigPatterns.map(
       (pattern) => `${process.cwd()}/${pattern}`,
