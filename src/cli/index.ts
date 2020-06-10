@@ -5,7 +5,7 @@ import { serve } from "../serve";
 const { program } = require("commander");
 
 program
-  .option("-s, --serve", "output extra debugging")
+  .option("-s, --serve", "serve")
   .option("-c, --config", "custom config");
 
 program.parse(process.argv);
