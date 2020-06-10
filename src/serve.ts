@@ -1,3 +1,5 @@
+import { logger } from './logger';
+
 export const serve=async () => {
   const { compileTsConfigs } = require("./tasks/compile-ts-configs");
   const { servePreview } = require("./tasks/serve-preview");
@@ -5,6 +7,6 @@ export const serve=async () => {
     await compileTsConfigs();
     await servePreview();
   } catch (err) {
-    console.log("Ooops...something went wrong in the preview!", err);
+    logger.error(err);
   }
 };

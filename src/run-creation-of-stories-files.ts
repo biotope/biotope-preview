@@ -1,35 +1,42 @@
-import { createStoriesFileForConfig } from "./file-handlers/create-stories-file";
-import { createDocsFileForConfig } from "./file-handlers/create-docs-file";
-import { IComponentConfiguration } from "./interfaces/i-component-configuration";
-import * as fs from "fs-extra";
-const recursive = require("recursive-readdir");
+import * as fs from 'fs-extra';
+import { createStoriesFileForConfig } from './file-handlers/create-stories-file';
+import { createDocsFileForConfig } from './file-handlers/create-docs-file';
+import { ComponentConfiguration } from './interfaces/component-configuration';
+import { logger } from './logger';
 
-export const runCreationOfStoriesFiles = async (globalResources: string[]) => {
+import recursive = require('recursive-readdir');
+
+export const runCreationOfStoriesFiles = async (globalResources: string[]): Promise<void> => {
+  logger.info('Creating stories files...');
   try {
     const recursiveFilePaths = await recursive(
-      `${__dirname}/../configurations`
+      `${__dirname}/../configurations`,
     );
-    const configurationsPaths = recursiveFilePaths.filter(
-      (path: string) => path.indexOf("index.js") !== -1
-    );
-    const importedConfigurations = configurationsPaths.map(
-      (filePath: string) => require(filePath).default
+    const importedConfigurations = recursiveFilePaths.map(
+      (filePath: string) => {
+        const file = require(filePath);
+        if (!file.default) {
+          throw new Error('Couldn\'t read preview configurations. Please make sure that each file matching the previewConfigPatterns exposes its configuration as a default export.');
+        }
+        return file.default;
+      },
     );
     fs.ensureDirSync(`${__dirname}/../stories/`);
     fs.emptyDirSync(`${__dirname}/../stories/`);
     await Promise.all(
-      importedConfigurations.map((config: IComponentConfiguration) =>
-        createStoriesFileForConfig(config, globalResources).catch((err) =>
-          console.log(err)
-        )
-      )
+      importedConfigurations.map(
+        (config: ComponentConfiguration) => createStoriesFileForConfig(config, globalResources)
+          .catch((err) => logger.error(err)),
+      ),
     );
     await Promise.all(
-      importedConfigurations.map((config: IComponentConfiguration) =>
-        createDocsFileForConfig(config).catch((err) => console.log(err))
-      )
+      importedConfigurations.map(
+        (config: ComponentConfiguration) => createDocsFileForConfig(config)
+          .catch((err) => logger.error(err)),
+      ),
     );
   } catch (err) {
-    console.log("Couldn't create story files for preview", err);
+    logger.error(err);
+    logger.error("Couldn't create story files for preview");
   }
 };
