@@ -1,12 +1,11 @@
 import { runCreationOfStoriesFiles } from '../run-creation-of-stories-files';
 import { runStorybook } from '../run-storybook';
-import { getGlobalConfig } from './get-global-config';
 import { createThemeFile } from '../file-handlers/create-theme-file';
 import { logger } from '../logger';
+import { GlobalConfiguration } from '../interfaces/global-configuration';
 
-export async function buildPreview(): Promise<void> {
+export async function buildPreview(globalConfig: GlobalConfiguration): Promise<void> {
   logger.info('Building the preview...');
-  const globalConfig = getGlobalConfig();
   try {
     await runCreationOfStoriesFiles(globalConfig.globalResources);
     logger.info('Stories files created!');
