@@ -4,6 +4,10 @@ test('returns script string for js resource', () => {
   expect(createTagStringForResource('path/to/resource.js')).toBe('<script src="path/to/resource.js" type="module" async charset="utf-8"></script>');
 });
 
+test('returns script string for mjs resource', () => {
+  expect(createTagStringForResource('path/to/resource.mjs')).toBe('<script src="path/to/resource.mjs" type="module" async charset="utf-8"></script>');
+});
+
 test('returns link string for css resource', () => {
   expect(createTagStringForResource('path/to/resource.css')).toBe('<link href="path/to/resource.css" rel="stylesheet"></link>');
 });
