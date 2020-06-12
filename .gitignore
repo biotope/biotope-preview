@@ -1,5 +1,6 @@
 node_modules
 lib
+.storybook/preview-head.html
 .storybook/theme.js
 configurations
 stories

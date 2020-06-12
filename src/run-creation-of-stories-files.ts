@@ -6,7 +6,7 @@ import { logger } from './logger';
 
 import recursive = require('recursive-readdir');
 
-export const runCreationOfStoriesFiles = async (globalResources: string[]): Promise<void> => {
+export const runCreationOfStoriesFiles = async (): Promise<void> => {
   logger.info('Creating stories files...');
   try {
     const recursiveFilePaths = await recursive(
@@ -25,7 +25,7 @@ export const runCreationOfStoriesFiles = async (globalResources: string[]): Prom
     fs.emptyDirSync(`${__dirname}/../stories/`);
     await Promise.all(
       importedConfigurations.map(
-        (config: ComponentConfiguration) => createStoriesFileForConfig(config, globalResources)
+        (config: ComponentConfiguration) => createStoriesFileForConfig(config)
           .catch((err) => logger.error(err)),
       ),
     );

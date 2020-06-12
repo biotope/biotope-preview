@@ -16,7 +16,6 @@ export default { title: #componentName, parameters: {
 
 export const generateComponentString = (
   config: ComponentConfiguration,
-  globalResources: string[] = [],
 ): string => {
   if (!config) {
     throw Error('Could not read the story configuration.');
@@ -26,7 +25,7 @@ export const generateComponentString = (
     config.configurations[key],
     key,
     config.htmlTagName,
-    [...(config.resources ? config.resources : []), ...globalResources],
+    [...(config.resources ? config.resources : [])],
   )).join(';');
 
   const templates = config.templates ? Object.keys(config.templates).map((key) => {
@@ -36,7 +35,7 @@ export const generateComponentString = (
         templateConfig,
         key,
         config.htmlTagName,
-        [...(config.resources ? config.resources : []), ...globalResources],
+        [...(config.resources ? config.resources : [])],
       ) : '';
     }
     return '';
