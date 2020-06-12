@@ -16,7 +16,7 @@ export const runCreationOfStoriesFiles = async (globalResources: string[]): Prom
       (filePath: string) => {
         const file = require(filePath);
         if (!file.default) {
-          throw new Error('Couldn\'t read preview configurations. Please make sure that each file matching the previewConfigPatterns exposes its configuration as a default export.');
+          throw new Error(`Couldn\'t read preview configurations in ${filePath}. Please make sure that each file matching the previewConfigPatterns exposes its configuration as a default export.`);
         }
         return file.default;
       },

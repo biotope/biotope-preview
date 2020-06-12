@@ -6,7 +6,7 @@ const { program } = require("commander");
 
 program
   .option("-s, --serve", "serve")
-  .option("-c, --config <config-path>", "custom config", `/preview-config.js`);
+  .option("-c, --config <config-path>", "custom config", `preview-config.js`);
 
 program.parse(process.argv);
 
