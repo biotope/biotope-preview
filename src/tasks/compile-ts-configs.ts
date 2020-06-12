@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
-import { getGlobalConfig } from './get-global-config';
 import { logger } from '../logger';
+import { GlobalConfiguration } from '../interfaces/global-configuration';
 
 import ts = require('typescript');
 import globby = require('globby');
@@ -10,10 +10,9 @@ const regex = new RegExp(/.*\/(?<component>.*)\/preview\/(?<filename>.*)\.ts$/);
 const transpile = (tsSourceCode: string): string => ts.transpileModule(tsSourceCode, {}).outputText;
 const transpileFile = (path: string): string => transpile(fs.readFileSync(path, 'utf8'));
 
-export async function compileTsConfigs(): Promise<unknown> {
+export async function compileTsConfigs(globalConfig: GlobalConfiguration): Promise<unknown> {
   logger.info('Compiling preview configurations...');
   const componentsConfigFolder = `${__dirname}/../../configurations`;
-  const globalConfig = getGlobalConfig();
   const allComponentsFiles = await globby(
     globalConfig.previewConfigPatterns.map(
       (pattern) => `${process.cwd()}/${pattern}`,
