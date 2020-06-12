@@ -6,9 +6,8 @@ import path = require('path');
 
 export const createStoriesFileForConfig = (
   config: ComponentConfiguration,
-  globalResources: string[] = [],
 ): Promise<void> => new Promise((resolve, reject) => {
-  fs.writeFile(path.resolve(__dirname, `../../stories/${config.htmlTagName}.stories.js`), generateComponentString(config, globalResources), (err) => {
+  fs.writeFile(path.resolve(__dirname, `../../stories/${config.htmlTagName}.stories.js`), generateComponentString(config), (err) => {
     if (err) reject();
     resolve();
   });
