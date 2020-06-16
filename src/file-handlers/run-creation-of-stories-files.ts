@@ -1,8 +1,8 @@
 import * as fs from 'fs-extra';
-import { createStoriesFile } from './file-handlers/create-stories-file';
-import { createDocsFile } from './file-handlers/create-docs-file';
-import { ComponentConfiguration } from './interfaces/component-configuration';
-import { logger } from './logger';
+import { createStoriesFile } from './create-stories-file';
+import { createDocsFile } from './create-docs-file';
+import { ComponentConfiguration } from '../interfaces/component-configuration';
+import { logger } from '../logger';
 
 import recursive = require('recursive-readdir');
 
