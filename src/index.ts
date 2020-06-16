@@ -29,6 +29,6 @@ export const createPreview = async (
     logger.info('Preview build finished!');
   } catch (err) {
     logger.error(err);
-    logger.error("Couldn't build the preview");
+    logger.error("Couldn't create the preview");
   }
 };
