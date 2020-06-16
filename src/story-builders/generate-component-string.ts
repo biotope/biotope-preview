@@ -17,10 +17,6 @@ export default { title: #componentName, parameters: {
 export const generateComponentString = (
   config: ComponentConfiguration,
 ): string => {
-  if (!config) {
-    throw Error('Could not read the story configuration.');
-  }
-
   const configs = Object.keys(config.configurations).map((key) => generateStoryString(
     config.configurations[key],
     key,

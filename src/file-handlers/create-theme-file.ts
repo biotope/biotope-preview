@@ -7,9 +7,9 @@ import path = require('path');
 
 export const createThemeFile = (
   themeConfig: ThemeConfiguration,
-): Promise<void> => new Promise((resolve, reject) => {
+): void => {
   logger.info('Creating theme file...');
-  fs.writeFile(
+  fs.writeFileSync(
     `${path.resolve(__dirname, '../../.storybook')}/theme.js`,
     `
       import { create } from '@storybook/theming/create';
@@ -18,9 +18,5 @@ export const createThemeFile = (
   JSON.stringify({ ...FALLBACK_THEME, ...themeConfig })
 });
       `,
-    (err: Error) => {
-      if (err) reject();
-      resolve();
-    },
   );
-});
+};

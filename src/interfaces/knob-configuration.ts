@@ -9,7 +9,7 @@ export interface KnobRenderConfiguration {
   groupId?: string;
 }
 
-type KnobType = 'text' | 'number' | 'array' | 'boolean' | 'files' | 'object' | 'date' | 'select' | 'color';
+export type KnobType = 'text' | 'number' | 'array' | 'boolean' | 'files' | 'object' | 'date' | 'radioButtons' | 'select' | 'color';
 
 export type GenericKnobConfiguration =
     StringKnobConfiguration |

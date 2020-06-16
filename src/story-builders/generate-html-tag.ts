@@ -21,13 +21,13 @@ export const generateHtmlTag = (config: HtmlElementConfiguration): string => {
   let children;
   if (config.children) {
     children = config.children.map((child) => generateHtmlTag(child)).join('');
+  } else if (config.innerHtmlAsKnob) {
+    children = getKnobRenderer('text')({
+      defaultValue: config.innerHtml || 'Lorem ipsum',
+      label: 'inner HTML',
+    } as any).substring(1).slice(0, -1);
   } else if (config.innerHtml) {
-    children = config.innerHtmlAsKnob
-      ? getKnobRenderer('text')({
-        defaultValue: config.innerHtml || 'Lorem ipsum',
-        label: 'inner HTML',
-      } as any).substring(1).slice(0, -1)
-      : config.innerHtml;
+    children = config.innerHtml;
   }
   const resources = config.resources && config.resources.length > 0
     ? ` data-resources="[{paths : [${config.resources.map(

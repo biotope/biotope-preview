@@ -10,9 +10,9 @@ export async function buildPreview(globalConfig: GlobalConfiguration): Promise<v
   try {
     await runCreationOfStoriesFiles();
     logger.info('Stories files created!');
-    await addGlobalResourcesToPreviewHead(globalConfig.globalResources);
+    addGlobalResourcesToPreviewHead(globalConfig.globalResources);
     logger.info('Scripts/links for global resources added!');
-    await createThemeFile(globalConfig.theme);
+    createThemeFile(globalConfig.theme);
     logger.info('Theme file created!');
     await runStorybook({ mode: 'static', staticDir: globalConfig.resourcesDir, outputDir: globalConfig.outputDir });
   } catch (err) {
