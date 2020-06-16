@@ -8,9 +8,6 @@ import { addGlobalResourcesToPreviewHead } from '../file-handlers/add-global-res
 export async function buildPreview(globalConfig: GlobalConfiguration): Promise<void> {
   logger.info('Building the preview...');
   try {
-    const component = require(`${process.cwd()}/dist/components/bio-background-video/bio-background-video.js`);
-    console.log(component);
-
     await runCreationOfStoriesFiles();
     logger.info('Stories files created!');
     addGlobalResourcesToPreviewHead(globalConfig.globalResources);
