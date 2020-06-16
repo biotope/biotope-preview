@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import { build } from '../build';
-import { serve } from '../serve';
+import { createPreview } from '../index';
 
 const { program } = require('commander');
 
@@ -10,8 +9,4 @@ program
 
 program.parse(process.argv);
 
-if (program.serve) {
-  serve(program.config);
-} else {
-  build(program.config);
-}
+createPreview(program.serve, program.config);
