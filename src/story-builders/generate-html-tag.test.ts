@@ -21,6 +21,13 @@ test('returns HTML string with innerHTML as knob', () => {
   })).toBe('<div>${text(\'inner HTML\', \'Test\')}</div>');
 });
 
+test('returns HTML string with fallback innerHTML as knob', () => {
+  expect(generateHtmlTag({
+    htmlTagName: 'div',
+    innerHtmlAsKnob: true,
+  })).toBe('<div>${text(\'inner HTML\', \'Lorem ipsum\')}</div>');
+});
+
 test('returns HTML string with containing html', () => {
   expect(generateHtmlTag({
     htmlTagName: 'div',
