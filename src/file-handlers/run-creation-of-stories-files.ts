@@ -10,7 +10,7 @@ export const runCreationOfStoriesFiles = async (): Promise<void> => {
   logger.info('Creating stories files...');
   try {
     const recursiveFilePaths = await recursive(
-      `${__dirname}/../configurations`,
+      `${__dirname}/../../configurations`,
     );
     const importedConfigurations = recursiveFilePaths.map(
       (filePath: string) => {
@@ -21,8 +21,8 @@ export const runCreationOfStoriesFiles = async (): Promise<void> => {
         return file.default;
       },
     );
-    fs.ensureDirSync(`${__dirname}/../stories/`);
-    fs.emptyDirSync(`${__dirname}/../stories/`);
+    fs.ensureDirSync(`${__dirname}/../../stories/`);
+    fs.emptyDirSync(`${__dirname}/../../stories/`);
     importedConfigurations.map(
       (config: ComponentConfiguration) => createStoriesFile(config),
     );
