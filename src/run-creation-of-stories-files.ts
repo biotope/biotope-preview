@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
-import { createStoriesFileForConfig } from './file-handlers/create-stories-file';
-import { createDocsFileForConfig } from './file-handlers/create-docs-file';
+import { createStoriesFile } from './file-handlers/create-stories-file';
+import { createDocsFile } from './file-handlers/create-docs-file';
 import { ComponentConfiguration } from './interfaces/component-configuration';
 import { logger } from './logger';
 
@@ -23,17 +23,11 @@ export const runCreationOfStoriesFiles = async (): Promise<void> => {
     );
     fs.ensureDirSync(`${__dirname}/../stories/`);
     fs.emptyDirSync(`${__dirname}/../stories/`);
-    await Promise.all(
-      importedConfigurations.map(
-        (config: ComponentConfiguration) => createStoriesFileForConfig(config)
-          .catch((err) => logger.error(err)),
-      ),
+    importedConfigurations.map(
+      (config: ComponentConfiguration) => createStoriesFile(config),
     );
-    await Promise.all(
-      importedConfigurations.map(
-        (config: ComponentConfiguration) => createDocsFileForConfig(config)
-          .catch((err) => logger.error(err)),
-      ),
+    importedConfigurations.map(
+      (config: ComponentConfiguration) => createDocsFile(config),
     );
   } catch (err) {
     logger.error(err);

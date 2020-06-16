@@ -13,7 +13,7 @@ test('returns HTML string with innerHTML', () => {
   })).toBe('<div>Test</div>');
 });
 
-test('returns HTML string with innerHTML', () => {
+test('returns HTML string with innerHTML as knob', () => {
   expect(generateHtmlTag({
     htmlTagName: 'div',
     innerHtml: 'Test',
