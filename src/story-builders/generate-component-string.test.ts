@@ -66,28 +66,6 @@ test('returns HTML string for resources', () => {
   expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
 
-test('returns HTML string for resources with global resources', () => {
-  const expectedTemplate = `${imports}
-    export default { title: "Component", parameters: { docs: { page: null }} };
-
-    export const config1 = () => {
-        return \`<component data-resources="[{paths : ['path/to/resource.js', 'global/resource.js']}]"></component>\`;
-    };`;
-  const generatedTemplate = generateComponentString({
-    title: 'Component',
-    htmlTagName: 'component',
-    resources: [
-      'path/to/resource.js',
-    ],
-    configurations: {
-      config1: {
-      },
-    },
-  }, ['global/resource.js']);
-
-  expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
-});
-
 test('returns HTML string for props', () => {
   const expectedTemplate = `${imports}
     export default { title: "Component", parameters: { docs: { page: null }} };
@@ -279,19 +257,19 @@ test('returns HTML string for preview config with knobs', () => {
   expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
 
-test('returns HTML string for config with containing HTML', () => {
+test('returns HTML string for template with containing HTML', () => {
   const expectedTemplate = `${imports}
         export default { title: "Component", parameters: { docs: { page: null }} };
 
-        export const config1 = () => {
-          return \`<article><component></component></article>\`;
+        export const template1 = () => {
+            return \`<article><component></component></article>\`;
         };
     `;
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
     configurations: {
-      config1: {
+      template1: {
         containingHtml: '<article>#content</article>',
       },
     },

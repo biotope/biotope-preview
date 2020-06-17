@@ -29,21 +29,9 @@ export const generateComponentString = (
     [...(config.resources ? config.resources : []), ...globalResources],
   )).join(';');
 
-  const templates = config.templates ? Object.keys(config.templates).map((key) => {
-    if (config.templates) {
-      const templateConfig = config.templates[key];
-      return config.templates ? generateStoryString(
-        templateConfig,
-        key,
-        config.htmlTagName,
-        [...(config.resources ? config.resources : []), ...globalResources],
-      ) : '';
-    }
-    return '';
-  }).join(';') : '';
   return storyTemplate
     .replace('#docsImport', config.docs ? `import docs from './${config.htmlTagName}.docs.mdx';` : '')
     .replace('#docsUsage', config.docs ? 'docs' : 'null')
-    .replace('#configs', `${configs}${templates ? `; ${templates}` : ''}`)
+    .replace('#configs', configs)
     .replace(/#componentName/g, `"${config.title}"`);
 };
