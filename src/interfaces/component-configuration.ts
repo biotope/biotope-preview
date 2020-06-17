@@ -8,7 +8,4 @@ export interface ComponentConfiguration {
   configurations: {
     [key: string]: StoryConfiguration;
   };
-  templates?: {
-    [key: string]: StoryConfiguration;
-  };
 }

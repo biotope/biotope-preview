@@ -257,16 +257,12 @@ test('returns HTML string for preview config with knobs', () => {
   expect(generatedTemplate.replace(/\s/g, '')).toBe(expectedTemplate.replace(/\s/g, ''));
 });
 
-test('returns HTML string for preview config and template', () => {
+test('returns HTML string for config with containing HTML', () => {
   const expectedTemplate = `${imports}
         export default { title: "Component", parameters: { docs: { page: null }} };
 
         export const config1 = () => {
-            return \`<component></component>\`;
-        };
-
-        export const template1 = () => {
-            return \`<article><component></component></article>\`;
+          return \`<article><component></component></article>\`;
         };
     `;
   const generatedTemplate = generateComponentString({
@@ -274,10 +270,6 @@ test('returns HTML string for preview config and template', () => {
     htmlTagName: 'component',
     configurations: {
       config1: {
-      },
-    },
-    templates: {
-      template1: {
         containingHtml: '<article>#content</article>',
       },
     },
