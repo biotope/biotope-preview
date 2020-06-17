@@ -1,6 +1,6 @@
 import { StringKnobConfiguration } from '../../interfaces/knob-configuration';
 
-export const renderStringKnob = (config: StringKnobConfiguration, textType = 'text'): string => {
+export const renderStringKnob = (config: StringKnobConfiguration): string => {
   const { label, defaultValue, groupId } = config;
-  return `"\${${textType}('${label}', '${defaultValue}'${groupId ? `, '${groupId}'` : ''})}"`;
+  return `"\${text('${label}', '${defaultValue}'${groupId ? `, '${groupId}'` : ''})}"`;
 };
