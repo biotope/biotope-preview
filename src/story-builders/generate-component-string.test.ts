@@ -13,6 +13,7 @@ test('returns HTML string for tag name only', () => {
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     configurations: {
       config1: {
       },
@@ -34,6 +35,7 @@ test('returns HTML string with import of docs', () => {
   const generatedTemplate = generateComponentString({
     title: 'Component',
     docs: '#Component',
+    legacyScriptPath: '',
     htmlTagName: 'component',
     configurations: {
       config1: {
@@ -54,6 +56,7 @@ test('returns HTML string for resources', () => {
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     resources: [
       'path/to/resource.js',
     ],
@@ -71,11 +74,12 @@ test('returns HTML string for props', () => {
     export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
-        return \`<component prop1="test" prop2=2 prop3='{"subProp1":"test"}'></component>\`;
+        return \`<component prop1="test" prop2="2" prop3='{"subProp1":"test"}'></component>\`;
     };`;
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     configurations: {
       config1: {
         props: [
@@ -106,14 +110,15 @@ test('returns HTML string for multiple preview configs', () => {
     export default { title: "Component", parameters: { docs: { page: null }} };
 
     export const config1 = () => {
-        return \`<component prop1="test" prop2=2 prop3='{"subProp1":"test"}'></component>\`;
+        return \`<component prop1="test" prop2="2" prop3='{"subProp1":"test"}'></component>\`;
     };
     export const config2 = () => {
-        return \`<component prop1="test2" prop2=2 prop3='{"subProp1":"test2"}'></component>\`;
+        return \`<component prop1="test2" prop2="2" prop3='{"subProp1":"test2"}'></component>\`;
     };`;
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     configurations: {
       config1: {
         props: [
@@ -167,6 +172,7 @@ test('returns HTML string for preview config with slot', () => {
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     configurations: {
       config1: {
         children: [{
@@ -189,6 +195,7 @@ test('returns HTML string for preview config with innerHtml', () => {
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     configurations: {
       config1: {
         innerHtml: 'Test',
@@ -209,6 +216,7 @@ test('returns HTML string for preview config with containing html', () => {
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     configurations: {
       config1: {
         innerHtml: 'Test',
@@ -230,6 +238,7 @@ test('returns HTML string for preview config with knobs', () => {
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     configurations: {
       config1: {
         props: [
@@ -268,6 +277,7 @@ test('returns HTML string for config with containing HTML', () => {
   const generatedTemplate = generateComponentString({
     title: 'Component',
     htmlTagName: 'component',
+    legacyScriptPath: '',
     configurations: {
       config1: {
         containingHtml: '<article>#content</article>',

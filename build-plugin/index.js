@@ -1,11 +1,15 @@
-const { build } = require('../lib');
+const { buildPreview, servePreview } = require('../lib');
 
 const biotopePreviewPlugin = (config) => ({
   name: 'biotope-build-preview-plugin',
   hook: 'before-emit',
-  priority: 5,
+  priority: 7,
   runner() {
-    build(config ? config.configFilePath : undefined);
+    if (config.serve) {
+      servePreview(config ? config.configFilePath : undefined);
+    } else {
+      buildPreview(config ? config.configFilePath : undefined);
+    }
   },
 });
 

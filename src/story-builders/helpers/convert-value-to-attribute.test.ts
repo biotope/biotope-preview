@@ -1,7 +1,7 @@
 import { convertValueToAttribute } from './convert-value-to-attribute';
 
 test('returns value for number', () => {
-  expect(convertValueToAttribute(1)).toBe(1);
+  expect(convertValueToAttribute(1)).toBe('"1"');
 });
 
 test('returns value for string', () => {

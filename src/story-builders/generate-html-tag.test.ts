@@ -55,7 +55,7 @@ test('returns HTML string with props', () => {
         },
       },
     ],
-  })).toBe('<div prop1="test" prop2=2 prop3=\'{"subProp1":"test"}\'></div>');
+  })).toBe('<div prop1="test" prop2="2" prop3=\'{"subProp1":"test"}\'></div>');
 });
 
 test('returns HTML string with text knob', () => {
@@ -150,5 +150,5 @@ test('returns HTML string for full configuration', () => {
       },
     ],
     innerHtml: 'Test',
-  })).toBe('<div data-resources="[{paths : [\'path/to/resource.js\']}]" prop1="test" prop2=2 prop3=\'{"subProp1":"test"}\'><div></div></div>');
+  })).toBe('<div data-resources="[{paths : [\'path/to/resource.js\']}]" prop1="test" prop2="2" prop3=\'{"subProp1":"test"}\'><div></div></div>');
 });

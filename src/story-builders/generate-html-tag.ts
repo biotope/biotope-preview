@@ -2,13 +2,13 @@ import { HtmlElementConfiguration } from '../interfaces/html-element-configurati
 import { convertValueToAttribute } from './helpers/convert-value-to-attribute';
 import { getKnobRenderer } from './helpers/get-knob-renderer';
 
-export const generateHtmlTag = (config: HtmlElementConfiguration): string => {
+export const generateHtmlTag = (config: HtmlElementConfiguration, withKnobs = true): string => {
   const tagName = config.htmlTagName;
   const props = config.props || [];
   const propsString = props
     .map((prop) => {
       const { knob, value, name } = prop;
-      if (knob) {
+      if (withKnobs && knob) {
         const renderKnob = getKnobRenderer(knob.type);
         return ` ${name}=${renderKnob({
           ...knob,

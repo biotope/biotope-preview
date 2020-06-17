@@ -1,4 +1,4 @@
-import { ComponentConfiguration } from '../interfaces/component-configuration';
+import { ExtendedComponentConfiguration } from '../interfaces/component-configuration';
 import { generateStoryString } from './generate-story-string';
 
 const storyTemplate = `import { text, boolean, number, color, select, array, object, radios, files } from "@storybook/addon-knobs";
@@ -15,7 +15,7 @@ export default { title: #componentName, parameters: {
 `;
 
 export const generateComponentString = (
-  config: ComponentConfiguration,
+  config: ExtendedComponentConfiguration,
 ): string => {
   const configs = Object.keys(config.configurations).map((key) => generateStoryString(
     config.configurations[key],

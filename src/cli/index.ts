@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { createPreview } from '../index';
+import { buildPreview, servePreview } from '../index';
 
 const { program } = require('commander');
 
@@ -9,4 +9,8 @@ program
 
 program.parse(process.argv);
 
-createPreview(program.serve, program.config);
+if (program.serve) {
+  servePreview(program.config);
+} else {
+  buildPreview(program.config);
+}

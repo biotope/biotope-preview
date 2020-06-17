@@ -5,3 +5,10 @@ export interface PropConfiguration {
   value: any;
   knob?: KnobConfiguration;
 }
+
+
+export interface TypedPropConfiguration<T> {
+  name: keyof T;
+  value: T;
+  knob?: KnobConfiguration;
+}
