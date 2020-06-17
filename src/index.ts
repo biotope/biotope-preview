@@ -22,7 +22,6 @@ export const buildPreview = async (
     createThemeFile(globalConfig.theme);
     logger.info('Theme file created!');
     await runStorybook({
-      mode: 'static',
       staticDir: globalConfig.resourcesDir,
       outputDir: globalConfig.outputDir,
     });
