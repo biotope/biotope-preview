@@ -9,6 +9,6 @@ export interface PropConfiguration {
 
 export interface TypedPropConfiguration<T> {
   name: keyof T;
-  value: T;
+  value: any;
   knob?: KnobConfiguration;
 }
