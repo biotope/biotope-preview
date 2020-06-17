@@ -5,34 +5,26 @@ import { GlobalConfiguration } from '../interfaces/global-configuration';
 import ts = require('typescript');
 import globby = require('globby');
 
-const regex = new RegExp(/.*\/(?<component>.*)\/preview\/(?<filename>.*)\.ts$/);
-
 const transpile = (tsSourceCode: string): string => ts.transpileModule(tsSourceCode, {}).outputText;
 const transpileFile = (path: string): string => transpile(fs.readFileSync(path, 'utf8'));
 
 export async function compileTsConfigs(globalConfig: GlobalConfiguration): Promise<unknown> {
   logger.info('Compiling preview configurations...');
   const componentsConfigFolder = `${__dirname}/../../configurations`;
-  const allComponentsFiles = await globby(
+  const configFilesPaths = await globby(
     globalConfig.previewConfigPatterns.map(
       (pattern) => `${process.cwd()}/${pattern}`,
     ),
   );
-  const tsFilesPaths = allComponentsFiles.filter((path: string) => regex.test(path));
-  const transpiledFiles = tsFilesPaths.map(transpileFile);
+  const transpiledFiles = configFilesPaths.map(transpileFile);
 
   fs.ensureDirSync(componentsConfigFolder);
   fs.emptyDirSync(componentsConfigFolder);
 
   return new Promise((resolve) => {
     transpiledFiles.forEach((transpiledCode: string, index: number) => {
-      const groups = tsFilesPaths[index]?.match(regex)?.groups;
-      if (groups) {
-        const { component, filename } = groups;
-        const foldername = `${componentsConfigFolder}/${component}`;
-        fs.ensureDirSync(foldername);
-        fs.outputFileSync(`${foldername}/${filename}.js`, transpiledCode);
-      }
+      fs.ensureDirSync(componentsConfigFolder);
+      fs.outputFileSync(`${componentsConfigFolder}/${index}.js`, transpiledCode);
     });
     resolve();
   }).catch((err) => {

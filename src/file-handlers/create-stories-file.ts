@@ -4,12 +4,6 @@ import { generateComponentString } from '../story-builders/generate-component-st
 
 import path = require('path');
 
-export const createStoriesFileForConfig = (
+export const createStoriesFile = (
   config: ComponentConfiguration,
-  globalResources: string[] = [],
-): Promise<void> => new Promise((resolve, reject) => {
-  fs.writeFile(path.resolve(__dirname, `../../stories/${config.htmlTagName}.stories.js`), generateComponentString(config, globalResources), (err) => {
-    if (err) reject();
-    resolve();
-  });
-});
+): void => fs.writeFileSync(path.resolve(__dirname, `../../stories/${config.htmlTagName}.stories.js`), generateComponentString(config));

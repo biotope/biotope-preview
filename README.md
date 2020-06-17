@@ -54,7 +54,7 @@ The components you would like to see inside of the preview need configurations. 
 }
 ```
 
-Please make sure that your configuration matches the TypeScript interface IComponentConfiguration defined in the preview package.
+Please make sure that your configuration matches the TypeScript interface ComponentConfiguration defined in the preview package.
 
 ### Generating the preview
 Since @biotope/preview uses your components' compiled source code inside the dist folder, before generating the preview you need to run
@@ -63,20 +63,22 @@ Since @biotope/preview uses your components' compiled source code inside the dis
 npm run build
 ```
 
-Then you can use either
+Then you can use.
 
 ```bash
-npx biotope-preview-build
+npx biotope-preview
 ```
 
-to create a preview folder in your project with a index.html you then can serve somewhere, or
+to create a preview folder in your project with a index.html you then can serve somewhere.
 
-```bash
-npx biotope-preview-serve
-```
+#### CLI parameters
+* **-s / --serve**: Only serve the preview without building.
+* **-c / --config {path}**: You can pass in a path to the global preview config (relative to the project base path).
 
-to only serve a temporary storybook preview.
+### Plugin for biotope build
+@biotope/preview/build-plugin exposes a plugin for biotope build >v8. You can pass in an object with the following parameters:
 
+* **configFilePath (string)**: You can pass in a path to the global preview config (relative to the project base path). 
 
 ### Global Configuration
 
@@ -108,6 +110,7 @@ There are different parameters to adapt the theme. Here's an example:
 
 ```js
 module.exports = {
+    ...,
 	theme: {
         base: 'light',
         colorPrimary: '#607DBE',
@@ -118,7 +121,7 @@ module.exports = {
 	}
 };
 ```
-There's a fallback theme, so you don't have to change the theme. You can also pass just one parameter, for example the colorSecondary:
+There's a fallback theme, so you don't have to change the theme. You can also just override one parameter, for example the colorSecondary:
 
 ```js
 module.exports = {

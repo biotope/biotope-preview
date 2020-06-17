@@ -16,17 +16,12 @@ export default { title: #componentName, parameters: {
 
 export const generateComponentString = (
   config: ComponentConfiguration,
-  globalResources: string[] = [],
 ): string => {
-  if (!config) {
-    throw Error('Could not read the story configuration.');
-  }
-
   const configs = Object.keys(config.configurations).map((key) => generateStoryString(
     config.configurations[key],
     key,
     config.htmlTagName,
-    [...(config.resources ? config.resources : []), ...globalResources],
+    [...(config.resources ? config.resources : [])],
   )).join(';');
 
   return storyTemplate
