@@ -7,11 +7,12 @@ import { renderArrayKnob } from '../story-builders/knob-renderers/render-array-k
 import { renderSelectKnob } from '../story-builders/knob-renderers/render-select-knob';
 import { renderRadioButtonsKnob } from '../story-builders/knob-renderers/render-radio-buttons-knob';
 import { renderFilesKnob } from '../story-builders/knob-renderers/render-files-knob';
+import { renderColorKnob } from '../story-builders/knob-renderers/render-color-knob';
 
 export const KNOB_RENDERER_MAP: {[key in KnobType]: Function} = {
   text: renderStringKnob,
   date: renderStringKnob,
-  color: renderStringKnob,
+  color: renderColorKnob,
   number: renderNumberKnob,
   boolean: renderBooleanKnob,
   object: renderObjectKnob,
