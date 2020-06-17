@@ -4,11 +4,6 @@ export interface KnobConfiguration {
   groupId?: string;
 }
 
-export interface KnobRenderConfiguration {
-  label: string;
-  groupId?: string;
-}
-
 export type KnobType = 'text' | 'number' | 'array' | 'boolean' | 'files' | 'object' | 'date' | 'radioButtons' | 'select' | 'color';
 
 export type GenericKnobConfiguration =
@@ -21,11 +16,11 @@ export type GenericKnobConfiguration =
     RadioButtonsKnobConfiguration |
     FilesKnobConfiguration;
 
-export interface StringKnobConfiguration extends KnobRenderConfiguration {
+export interface StringKnobConfiguration extends KnobConfiguration {
   defaultValue: string;
 }
 
-export interface NumberKnobConfiguration extends KnobRenderConfiguration {
+export interface NumberKnobConfiguration extends KnobConfiguration {
   defaultValue: number;
   options?: {
     range?: boolean;
@@ -35,30 +30,30 @@ export interface NumberKnobConfiguration extends KnobRenderConfiguration {
   };
 }
 
-export interface BooleanKnobConfiguration extends KnobRenderConfiguration {
+export interface BooleanKnobConfiguration extends KnobConfiguration {
   defaultValue: boolean;
 }
 
-export interface ObjectKnobConfiguration extends KnobRenderConfiguration {
+export interface ObjectKnobConfiguration extends KnobConfiguration {
   defaultValue: any;
 }
 
-export interface ArrayKnobConfiguration extends KnobRenderConfiguration{
+export interface ArrayKnobConfiguration extends KnobConfiguration{
   defaultValue: string[];
 }
 
-export interface SelectKnobConfiguration extends KnobRenderConfiguration {
+export interface SelectKnobConfiguration extends KnobConfiguration {
   defaultValue: any;
   options: any;
 }
 
-export interface RadioButtonsKnobConfiguration extends KnobRenderConfiguration {
+export interface RadioButtonsKnobConfiguration extends KnobConfiguration {
   defaultValue: any;
   options: {
     [key: string]: string;
   };
 }
 
-export interface FilesKnobConfiguration extends KnobRenderConfiguration {
+export interface FilesKnobConfiguration extends KnobConfiguration {
   acceptedFormats?: string[];
 }
