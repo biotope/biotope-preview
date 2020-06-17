@@ -110,6 +110,13 @@ test('returns HTML string with slot', () => {
   })).toBe('<div><div></div></div>');
 });
 
+test('returns innerHTML', () => {
+  expect(generateHtmlTag({
+    htmlTagName: 'div',
+    innerHtml: 'Test',
+  })).toBe('<div>Test</div>');
+});
+
 test('returns innerHTML only if no slot is configured', () => {
   expect(generateHtmlTag({
     htmlTagName: 'div',

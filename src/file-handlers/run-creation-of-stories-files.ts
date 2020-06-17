@@ -47,6 +47,8 @@ export const runCreationOfStoriesFiles = async (
             htmlTagName: component.componentName,
             resources: config.resources,
             props: config.configurations[key].props,
+            innerHtml: config.configurations[key].innerHtml,
+            containingHtml: config.configurations[key].containingHtml,
           }))));
         } else {
           const extendedConfig = {
