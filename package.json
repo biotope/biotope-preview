@@ -46,7 +46,7 @@
     "test": "jest",
     "lint": "biotope-quality-gate -f -w"
   },
-  "version": "0.4.4",
+  "version": "0.5.0",
   "devDependencies": {
     "@biotope/quality-gate": "^1.0.3",
     "@types/jest": "^25.1.3",
